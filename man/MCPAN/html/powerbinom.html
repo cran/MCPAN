@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Approximate power for multiple contrast tests of binomial proportions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for powerbinom {MCPAN}"><tr><td>powerbinom {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Approximate power for multiple contrast tests of binomial proportions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Approximative power calculation for multiple contrast tests of binomial proportions, based on probabilities of the multivariate standard normal distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+powerbinom(p, n, alpha = 0.05, type = "Williams", cmat = NULL, method = "Wald", alternative = "less")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p</code></td>
+<td>
+a numeric vector, the proportions assumed under the alternative </td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+an integer vector, the number of observations, must be of same length as <code>p</code> </td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+a single numeric value, the alpha-level of the test  </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+if <code>cmat</code> is not specified, the type of multiple contrast test to be applied on the proportions <code>p</code>; will be ignored if <code>cmat</code> is specified</td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+a numeric contrast matrix, number of columns must be the same as length of <code>n</code>, and <code>p</code>; if secified, <code>type</code> will be ignored </td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a character string, the method for variance estimation in test / confidence interval construction: one of "Wald", "ADD1", "ADD2"; see <code><a href="../../../doc/html/search/SearchObject.html?binomRDtest">binomRDtest</a></code> </td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a character string, specifying the alternative, options are "two.sided", "less", "greater" </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Calls <code><a href="../../../doc/html/search/SearchObject.html?powermcp">powermcp</a></code>. 
+</p>
+<p>
+Power for an Union-Intersection-Test is calculated, i.e. the power that H0 is rejected for at least one of the contrasts specified by <code>cmat</code> or <code>type</code>.
+</p>
+<p>
+Note, that currently only power calculation for Union-Intersection-Tests of 
+type H0: ALL Lm&lt;=0 vs.  HA: ANY Lm&gt;0 (alternative="greater"), H0: ALL Lm&gt;=0 vs.  HA: ANY Lm&lt;0 (alternative="less"), or H0: ALL Lm=0 vs.  HA: ANY Lm&lt;or&gt;0 (alternative="two.sided") are implemented.
+Power for tests against delta&gt;0 or delta&lt;0 is not implemented.
+</p>
+<p>
+Calcualtion is based on probabilities of the multivariate standard normal distribution, thus will be only appropriate if normal approximation for the test statistics holds.
+Therefore, results might be misleading for small sample sizes, such as n &lt; 40, and a warning is posted. In this case, simulation is recommended.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A single numeric value, the power.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="../../../doc/html/search/SearchObject.html?powermcp">powermcp</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Assume, one wants to perform a test for increasing trend
+#  using Williams type of contrasts among I=5 groups
+#  (e.g. 4 doses and one control).
+#  Proportions are assumed to have values
+#  pi=(0.1,0.12,0.14,0.14,0.2) under the alternative.
+
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(20,20,20,20,20), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(30,30,30,30,30), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(60,60,60,60,60), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(80,80,80,80,80), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(100,100,100,100,100), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(150,150,150,150,150), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+ n=c(190,140,140,140,140), type = "Williams",
+  method = "ADD1", alternative = "greater")
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

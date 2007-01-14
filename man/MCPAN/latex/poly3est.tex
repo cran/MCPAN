@@ -1,0 +1,53 @@
+\HeaderA{poly3est}{Only for internal use.}{poly3est}
+\keyword{misc}{poly3est}
+\begin{Description}\relax
+Poly-3- adjusted point and variance estimates for long term carcinogenicity data
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+poly3est(time, status, tmax, method = "BP", k=NULL)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{time}] a numeric vector of times of death of the individuals
+\item[\code{status}] a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  
+\item[\code{tmax}] a single numeric vector, the final time of the trial 
+\item[\code{method}] a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
+
+\item[\code{k}] a single numeric value, adjustment according to Bailer and Portier (1988), defaults to 3
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+Only for internal use of \code{\LinkA{poly3test}{poly3test}} and \code{\LinkA{poly3ci}{poly3ci}}.
+\end{Details}
+\begin{Value}
+A list containing:
+\begin{ldescription}
+\item[\code{Y }] number of tumours
+\item[\code{n}] number of individuals
+\item[\code{estimate}] poly-3-adjusted rates according to Bailer, Portier (1988)
+\item[\code{weight}] a vector of poly-3-adjusted weights, of length n 
+\item[\code{estp}] poly-3-adjusted rate (according to method)
+\item[\code{nadj}] adjusted n (sum of weights)
+\item[\code{varp}] variance estimate (according to method)
+\item[\code{varcor}] variance estimate, if necessary corrected such that estimates of 0 can not occur
+\end{ldescription}
+\end{Value}
+\begin{Note}\relax
+Please note, that appropriateness of the point estimates seriously depends on whether the assumptions in Bailer and Portier are met or not.
+\end{Note}
+\begin{Author}\relax
+Frank Schaarschmidt
+\end{Author}
+\begin{References}\relax
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+\end{References}
+

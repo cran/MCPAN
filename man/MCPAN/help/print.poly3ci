@@ -1,0 +1,31 @@
+print.poly3ci             package:MCPAN             R Documentation
+
+_P_r_i_n_t _m_e_t_h_o_d _f_o_r _p_o_l_y_3_c_i
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Print method for objects of class "poly3ci" as can be created by
+     calling poly3ci
+
+_U_s_a_g_e:
+
+     ## S3 method for class 'poly3ci':
+     print(x, digits = 4, ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: an object of class "poly3ci" 
+
+  digits: a single integer value specifying the number of digits for
+          rounding 
+
+     ...: further arguments to be passed to "print.default" 
+
+_V_a_l_u_e:
+
+     A print out.
+
+_A_u_t_h_o_r(_s):
+
+     Frank Schaarschmidt
+

@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Simultaneous confidence intervals for contrasts of independent binomial proportions (in a oneway layout)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for binomRDci {MCPAN}"><tr><td>binomRDci {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Simultaneous confidence intervals for contrasts of independent binomial proportions (in a oneway layout)</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Simultaneous asymptotic CI for contrasts of binomial proportions,
+assuming that standard normal approximation holds.
+The contrasts can be interpreted as differences of (weighted averages)
+of proportions (risk ratios).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+binomRDci(x,...)
+
+## Default S3 method:
+binomRDci(x, n, names=NULL,
+ type="Dunnett", cmat=NULL, method="Wald",
+ alternative="two.sided", conf.level=0.95, ...)
+
+## S3 method for class 'formula':
+binomRDci(formula, data,
+ type="Dunnett", cmat=NULL, method="Wald",
+ alternative="two.sided", conf.level=0.95,...)
+
+## S3 method for class 'table':
+binomRDci(x, type="Dunnett",
+ cmat=NULL, method="Wald", alternative="two.sided",
+ conf.level=0.95,...)
+
+## S3 method for class 'matrix':
+binomRDci(x, type="Dunnett",
+ cmat=NULL, method="Wald", alternative="two.sided",
+ conf.level=0.95,...)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a numeric vector, giving the number of successes in I independent samples,
+or an object of class <code>"table"</code>, representing the 2xk-table,
+or an object of class <code>"matrix"</code>, representing the 2xk-table
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+a numeric vector, giving the number of trials (i.e. the sample size) in each of the I groups
+(only required if <code>x</code> is a numeric vector, ignored otherwise) </td></tr>
+<tr valign="top"><td><code>names</code></td>
+<td>
+an optional character string, giving the names of the groups/ sample in <code>x</code>, <code>n</code>;
+if not specified the possible names of x are taken as group names (ignored if <code>x</code> is a table or matrix)</td></tr>
+<tr valign="top"><td><code>formula</code></td>
+<td>
+a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
+while treatment should be a factor specifying the treatment levels</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+a data.frame, containing the variables specified in formula</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+a character string, giving the name of a contrast method,
+as defined in <code>contrMat(multcomp)</code>; ignored if <code>cmat</code> is sepcified </td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+a optional contrast matrix </td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a single character string, specifying the method for confidence interval construction; options are: <code>"Wald"</code>, <code>"ADD1"</code>, or <code>"ADD2"</code> </td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a single character string, one of "two.sided", "less", "greater" </td></tr>
+<tr valign="top"><td><code>conf.level</code></td>
+<td>
+a single numeric value, simultaneous confidence level </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+arguments to be passed to <code><a href="../../../doc/html/search/SearchObject.html?binomest">binomest</a></code>, currently only <code>success</code> labelling the event which should be considered as success</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+See the examples for different usages.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A object of class "binomRDci", a list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>conf.int</code></td>
+<td>
+a matrix with 2 columns: lower and upper confidence bounds, and M rows</td></tr>
+<tr valign="top"><td><code>alternative </code></td>
+<td>
+character string, as input</td></tr>
+<tr valign="top"><td><code>conf.level</code></td>
+<td>
+single numeric value, as input</td></tr>
+<tr valign="top"><td><code>estimate</code></td>
+<td>
+a matrix with 1 column: containing the estimates of the contrasts</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+the observed number of successes in the treatment groups</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+the number of trials in the treatment groups</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+the estimated proportions in the treatment groups</td></tr>
+<tr valign="top"><td><code>success</code></td>
+<td>
+a character string labelling the event considered as success</td></tr>
+<tr valign="top"><td><code>names</code></td>
+<td>
+the group names</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a character string, specifying the method of interval construction</td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+the contrast matrix used</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+Note, that all implemented methods are approximate only. The coverage probability of the 
+intervals might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
+See the simulation results in Sill (2007) for details.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Statistical procedures and characterization of coverage probabilities are described in:
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+</p>
+<p>
+Background references:
+</p>
+<p>
+The ideas underlying the "ADD1" and "ADD2" adjustment are described in:
+</p>
+<p>
+Agresti, A. and Caffo, B.(2000):
+Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures.
+American Statistician 54, p. 280-288.
+</p>
+<p>
+And have been generalized for a single contrast of I proportions in:
+</p>
+<p>
+Price, R.M. and Bonett, D.G. (2004):
+An improved confidence interval for a linear function of binomial proportions.
+Computational Statistics and Data Analysis 45, 449-456.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="../../../doc/html/search/SearchObject.html?summary.binomRDci">summary.binomRDci</a></code>, <code><a href="../../../doc/html/search/SearchObject.html?plot.sci">plot.sci</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# In simple cases, counts of successes
+# and number of trials can be just typed:
+
+ntrials &lt;- c(40,20,20,20)
+xsuccesses &lt;- c(1,2,2,4)
+names(xsuccesses) &lt;- LETTERS[1:4]
+ex1D&lt;-binomRDci(x=xsuccesses, n=ntrials, method="ADD1",
+ type="Dunnett")
+ex1D
+
+ex1W&lt;-binomRDci(x=xsuccesses, n=ntrials, method="ADD1",
+ type="Williams", alternative="greater")
+ex1W
+
+# results can be plotted:
+plot(ex1D, main="Comparisons to control group A")
+
+# summary gives a more detailed print out:
+summary(ex1W)
+
+# if data are represented as dichotomous variable
+# in a data.frame one can make use of table:
+
+data(liarozole)
+
+head(liarozole)
+
+binomRDci(Improved ~ Treatment, data=liarozole, type="Tukey")
+# here it might be important to define which level of the
+# variable 'Improved' is to be considered as success
+binomRDci(Improved ~ Treatment, data=liarozole, type="Tukey", success="y")
+
+# If data are available as a named kx2-contigency table:
+
+tab&lt;-table(liarozole)
+tab
+
+binomRDci(tab, type="Tukey", success="y")
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

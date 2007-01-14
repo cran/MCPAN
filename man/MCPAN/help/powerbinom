@@ -1,0 +1,113 @@
+powerbinom               package:MCPAN               R Documentation
+
+_A_p_p_r_o_x_i_m_a_t_e _p_o_w_e_r _f_o_r _m_u_l_t_i_p_l_e _c_o_n_t_r_a_s_t _t_e_s_t_s _o_f _b_i_n_o_m_i_a_l _p_r_o_p_o_r_t_i_o_n_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Approximative power calculation for multiple contrast tests of
+     binomial proportions, based on probabilities of the multivariate
+     standard normal distribution.
+
+_U_s_a_g_e:
+
+     powerbinom(p, n, alpha = 0.05, type = "Williams", cmat = NULL, method = "Wald", alternative = "less")
+
+_A_r_g_u_m_e_n_t_s:
+
+       p: a numeric vector, the proportions assumed under the
+          alternative 
+
+       n: an integer vector, the number of observations, must be of
+          same length as 'p' 
+
+   alpha: a single numeric value, the alpha-level of the test  
+
+    type: if 'cmat' is not specified, the type of multiple contrast
+          test to be applied on the proportions 'p'; will be ignored if
+          'cmat' is specified
+
+    cmat: a numeric contrast matrix, number of columns must be the same
+          as length of 'n', and 'p'; if secified, 'type' will be
+          ignored 
+
+  method: a character string, the method for variance estimation in
+          test / confidence interval construction: one of "Wald",
+          "ADD1", "ADD2"; see 'binomRDtest' 
+
+alternative: a character string, specifying the alternative, options
+          are "two.sided", "less", "greater" 
+
+_D_e_t_a_i_l_s:
+
+     Calls 'powermcp'. 
+
+     Power for an Union-Intersection-Test is calculated, i.e. the power
+     that H0 is rejected for at least one of the contrasts specified by
+     'cmat' or 'type'.
+
+     Note, that currently only power calculation for
+     Union-Intersection-Tests of  type H0: ALL Lm<=0 vs.  HA: ANY Lm>0
+     (alternative="greater"), H0: ALL Lm>=0 vs.  HA: ANY Lm<0
+     (alternative="less"), or H0: ALL Lm=0 vs.  HA: ANY Lm<or>0
+     (alternative="two.sided") are implemented. Power for tests against
+     delta>0 or delta<0 is not implemented.
+
+     Calcualtion is based on probabilities of the multivariate standard
+     normal distribution, thus will be only appropriate if normal
+     approximation for the test statistics holds. Therefore, results
+     might be misleading for small sample sizes, such as n < 40, and a
+     warning is posted. In this case, simulation is recommended.
+
+_V_a_l_u_e:
+
+     A single numeric value, the power.
+
+_N_o_t_e:
+
+_A_u_t_h_o_r(_s):
+
+     Frank Schaarschmidt
+
+_R_e_f_e_r_e_n_c_e_s:
+
+_S_e_e _A_l_s_o:
+
+     'powermcp'
+
+_E_x_a_m_p_l_e_s:
+
+     # Assume, one wants to perform a test for increasing trend
+     #  using Williams type of contrasts among I=5 groups
+     #  (e.g. 4 doses and one control).
+     #  Proportions are assumed to have values
+     #  pi=(0.1,0.12,0.14,0.14,0.2) under the alternative.
+
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(20,20,20,20,20), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(30,30,30,30,30), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(60,60,60,60,60), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(80,80,80,80,80), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(100,100,100,100,100), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(150,150,150,150,150), type = "Williams",
+       method = "ADD1", alternative = "greater")
+
+     powerbinom(p=c(0.1, 0.12, 0.14, 0.14, 0.2),
+      n=c(190,140,140,140,140), type = "Williams",
+       method = "ADD1", alternative = "greater")
+

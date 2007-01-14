@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: A function to calculate the correlation matrix</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for corrMatgen {MCPAN}"><tr><td>corrMatgen {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>A function to calculate the correlation matrix</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Correlation matrix for teststatistics and confidence intervals assuming multivariate standard normal distribution
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+corrMatgen(CM, varp)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>CM</code></td>
+<td>
+a matrix of contrast coefficients, dimension MxI, where M=number of contrasts, and I=number of groups in a oneway layout </td></tr>
+<tr valign="top"><td><code>varp</code></td>
+<td>
+a numeric vector of groupwise variance estimates (length = I) </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+A matrix of dimension MxM.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+<p>
+For correlation of contrasts of binomial proportion, see:
+Bretz F, Hothorn L.:
+Detecting dose-response using contrasts: asymptotic power and sample size determination for binomial data.
+Statistics in Medicine 2002; 21: 3325-3335.
+</p>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

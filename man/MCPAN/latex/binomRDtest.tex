@@ -1,0 +1,105 @@
+\HeaderA{binomRDtest}{Simultaneous test for contrasts of independent binomial proportions (in a oneway layout)}{binomRDtest}
+\methaliasA{binomRDtest.default}{binomRDtest}{binomRDtest.default}
+\methaliasA{binomRDtest.formula}{binomRDtest}{binomRDtest.formula}
+\methaliasA{binomRDtest.matrix}{binomRDtest}{binomRDtest.matrix}
+\methaliasA{binomRDtest.table}{binomRDtest}{binomRDtest.table}
+\keyword{htest}{binomRDtest}
+\begin{Description}\relax
+P-value of maximum test and adjusted p-values for M contrasts of I groups
+in a one-way layout. Tests are performed for contrasts of proportions,
+which can be interpreted as differences of (weighted averages of) proportions.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+binomRDtest(x, ...)
+
+## Default S3 method:
+binomRDtest(x, n, names=NULL,
+ type="Dunnett", cmat=NULL, method="Wald",
+ alternative="two.sided",...)
+
+## S3 method for class 'formula':
+binomRDtest(formula, data,
+ type="Dunnett", cmat=NULL, method="Wald",
+ alternative="two.sided",...)
+
+## S3 method for class 'table':
+binomRDtest(x, type="Dunnett",
+ cmat=NULL, method="Wald", alternative="two.sided",...)
+
+## S3 method for class 'matrix':
+binomRDtest(x, type="Dunnett",
+ cmat=NULL, method="Wald", alternative="two.sided",...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] a numeric vector, giving the number of successes in I independent samples,
+or an object of class \code{"table"}, representing the 2xk-table,
+or an object of class \code{"matrix"}, representing the 2xk-table
+
+\item[\code{n}] a numerioc vector, giving the number of trials (i.e. the sample size) in each of the I groups 
+\item[\code{names}] an optional character vector, giving the names of the groups in \code{x}, \code{n}; if not specified, possibly availbale names of x are taken as group names
+\item[\code{formula}] a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
+while treatment should be a factor specifying the treatment levels
+\item[\code{data}] a data.frame, containing the variables specified in formula
+\item[\code{type}] a character string specifying the contrast type 
+\item[\code{cmat}] an optional user defined contrast matrix of dimension MxI
+\item[\code{method}] a single charcter string, specifying the method for adjustment,
+with options: "Wald" (Maximum likelihood estimators),
+"ADD1" (add1-adjustment on the raw proportion estimates)
+"ADD2" (add2-adjustment on proportion estimates following Agresti Caffo (2000))
+
+\item[\code{alternative}] a character string specifying the direction of the alternative hypothesis
+\item[\code{...}] arguments to be passed to \code{\LinkA{binomest}{binomest}}, currently only \code{success} labelling the event which should be considered as success
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+For usage, see the examples.
+\end{Details}
+\begin{Value}
+An object of class "binomRDtest", a list containing:
+\begin{ldescription}
+\item[\code{teststat}] a numeric vector of teststatistics of length M
+\item[\code{pval}] a single numeric p-value, the p-value of the maximum test (minimum p-value)
+\item[\code{p.val.adj}] a vector of length M, the adjusted p-values of the single contrasts
+\item[\code{alternative}] a single character vector, as the input
+\item[\code{x}] the observed number of successes in the treatment groups
+\item[\code{n}] the number of trials in the treatment groups
+\item[\code{p}] the estimated proportions in the treatment groups
+\item[\code{success}] a character string labelling the event considered as success
+\item[\code{method}] as input, a character string
+\item[\code{cmat}] used contrast matrix
+\end{ldescription}
+\end{Value}
+\begin{Note}\relax
+Note, that all implemented methods are approximate only. The size of the 
+test might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
+See the simulation results in Sill (2007) for details.
+\end{Note}
+\begin{Author}\relax
+Frank Schaarschmidt
+\end{Author}
+\begin{References}\relax
+Statistical procedures and characterization of coverage probabilities are described in:
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+\end{References}
+\begin{SeeAlso}\relax
+\code{\LinkA{summary.binomRDtest}{summary.binomRDtest}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+
+ntrials <- c(40,20,20,20)
+xsuccesses <- c(1,2,2,4)
+names(xsuccesses) <- LETTERS[1:4]
+binomRDtest(x=xsuccesses, n=ntrials, method="ADD1", type="Dunnett")
+
+binomRDtest(x=xsuccesses, n=ntrials, method="ADD1", type="Williams", alternative="greater")
+
+binomRDtest(x=xsuccesses, n=ntrials, method="ADD2", type="Williams", alternative="greater")
+\end{ExampleCode}
+\end{Examples}
+

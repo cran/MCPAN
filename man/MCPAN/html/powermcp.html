@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Approximative power calculation for multiple contrast tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for powermcp {MCPAN}"><tr><td>powermcp {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Approximative power calculation for multiple contrast tests</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Approximative power calculation for multiple contrast tests, based on normal approximation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+powermcp(TExpH1, alpha = 0.05, corrmatH1, alternative = "two.sided")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>TExpH1</code></td>
+<td>
+numeric vector: the expectation of the test statistics under the alternative </td></tr>
+<tr valign="top"><td><code>alpha</code></td>
+<td>
+a single numeric value: alpha-level, defaults to 0.05 </td></tr>
+<tr valign="top"><td><code>corrmatH1</code></td>
+<td>
+a numeric matrix, the correlation matrix of the teststatistics under the alternative, must have same dimensions as length of <code>TExpH1</code>  </td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a single character string, specifying the alternative, one of "two.sided", "less", or "greater"  </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Any-pair-power is calcualted, the power of a Union-Intersection-Test.
+</p>
+<p>
+The probability, that any teststatistic exceeds the critical value is calculated from a central multivariate standard normal distribution.
+The appropriateness of the result strongly depends on the assumptions, that teststatistics are truely following a standard normal distributions,
+which might not be the case for small sample sizes.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A single numeric value, the approximative power.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

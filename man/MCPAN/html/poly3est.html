@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Only for internal use.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for poly3est {MCPAN}"><tr><td>poly3est {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Only for internal use.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Poly-3- adjusted point and variance estimates for long term carcinogenicity data
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+poly3est(time, status, tmax, method = "BP", k=NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>time</code></td>
+<td>
+a numeric vector of times of death of the individuals</td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  </td></tr>
+<tr valign="top"><td><code>tmax</code></td>
+<td>
+a single numeric vector, the final time of the trial </td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
+</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+a single numeric value, adjustment according to Bailer and Portier (1988), defaults to 3</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Only for internal use of <code><a href="../../../doc/html/search/SearchObject.html?poly3test">poly3test</a></code> and <code><a href="../../../doc/html/search/SearchObject.html?poly3ci">poly3ci</a></code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>Y </code></td>
+<td>
+number of tumours</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+number of individuals</td></tr>
+<tr valign="top"><td><code>estimate</code></td>
+<td>
+poly-3-adjusted rates according to Bailer, Portier (1988)</td></tr>
+<tr valign="top"><td><code>weight</code></td>
+<td>
+a vector of poly-3-adjusted weights, of length n </td></tr>
+<tr valign="top"><td><code>estp</code></td>
+<td>
+poly-3-adjusted rate (according to method)</td></tr>
+<tr valign="top"><td><code>nadj</code></td>
+<td>
+adjusted n (sum of weights)</td></tr>
+<tr valign="top"><td><code>varp</code></td>
+<td>
+variance estimate (according to method)</td></tr>
+<tr valign="top"><td><code>varcor</code></td>
+<td>
+variance estimate, if necessary corrected such that estimates of 0 can not occur</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+Please note, that appropriateness of the point estimates seriously depends on whether the assumptions in Bailer and Portier are met or not.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+</p>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>
