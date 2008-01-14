@@ -1,0 +1,59 @@
+\HeaderA{poly3estf}{Only for internal use.}{poly3estf}
+\keyword{htest}{poly3estf}
+\begin{Description}\relax
+Poly-3- adjusted point and variance estimates for long term carcinogenicity data if data are given as a numeric time vector,
+a logical status vector and a factor containing a grouping variable
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+poly3estf(time, status, tmax=NULL, f, method = "BP", k=NULL)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{time}] a numeric vector of times of death of the individuals
+\item[\code{status}] a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  
+\item[\code{tmax}] a single numeric value, the time of sacrifice in the trial, or the last last time of death, defaults to the maximal value observed in \code{time} 
+\item[\code{f}] a factor of the same length as \code{time} \code{status}, giving the levels of a grouping variable in a one-way layout 
+\item[\code{method}] a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
+
+\item[\code{k}] single numeric value, the adjustment parameter according to Bailer and Portier (1988), defaults to 3 
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+For internal use.
+\end{Details}
+\begin{Value}
+A list containing:
+\begin{ldescription}
+\item[\code{Y }] a numeric vector, groupwise number of tumours
+\item[\code{n}] a numeric vector, groupwise number of individuals
+\item[\code{estimate}] a numeric vector, groupwise poly-3-adjusted rates according to Bailer, Portier (1988)
+\item[\code{weight}] a numeric vector of poly-3-adjusted weights 
+\item[\code{estp}] a numeric vector, groupwise poly-3-adjusted rate (according to method)
+\item[\code{nadj}] adjusted n (sum of weights)
+\item[\code{varp}] a numeric vector, groupwise variance estimate (according to method)
+\item[\code{varcor}] a numeric vector, groupwise variance estimate, if necessary corrected such that estimates of 0 can not occur
+\item[\code{names}] a character vector, the levels of the grouping variable \code{f} 
+\item[\code{k}] a single numeric value, as input
+\end{ldescription}
+\end{Value}
+\begin{Note}\relax
+See \code{\LinkA{poly3est}{poly3est}}
+\end{Note}
+\begin{Author}\relax
+Frank Schaarschmidt
+\end{Author}
+\begin{References}\relax
+See \code{\LinkA{poly3est}{poly3est}}
+\end{References}
+\begin{Examples}
+\begin{ExampleCode}
+\end{ExampleCode}
+\end{Examples}
+

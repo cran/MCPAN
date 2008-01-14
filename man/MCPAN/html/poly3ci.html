@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Simultaneous confidence intervals for contrasts of poly-3-adjusted tumour rates</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for poly3ci {MCPAN}"><tr><td>poly3ci {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Simultaneous confidence intervals for contrasts of poly-3-adjusted tumour rates</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Function to calculate simultaneous confidence intervals for several contrasts
+of poly-3-adjusted tumour rates in a oneway layout.
+Assuming a data situation as in Peddada(2005) or Bailer and Portier (1988).
+Simultaneous asymptotic CI for contrasts of tumour rates, assuming that
+standard normal approximation holds.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+poly3ci(time, status, f, type = "Dunnett", cmat = NULL, method = "BP", alternative = "two.sided", conf.level = 0.95)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>time</code></td>
+<td>
+a numeric vector of times of death of the individuals</td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  </td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+a factor, giving the classification variable </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+a character string, giving the name of a contrast method, as defined in <code>contrMat(multcomp)</code> </td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+a optional contrast matrix </td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler and Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti and Caffo (2000) for binomials)
+</td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a single character string </td></tr>
+<tr valign="top"><td><code>conf.level</code></td>
+<td>
+a single numeric value, simultaneous confidence level </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+A object of class "poly3ci", a list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>conf.int </code></td>
+<td>
+a matrix with 2 columns: lower and upper confidence bounds, and M rows</td></tr>
+<tr valign="top"><td><code>alternative </code></td>
+<td>
+character string, as input</td></tr>
+<tr valign="top"><td><code>conf.level</code></td>
+<td>
+single numeric value, as input</td></tr>
+<tr valign="top"><td><code>estimate</code></td>
+<td>
+a numeric vector with the point estimates of the contrasts</td></tr>
+<tr valign="top"><td><code>time</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+as input, with colnames= factor levels of f</td></tr>
+<tr valign="top"><td><code>sample.est</code></td>
+<td>
+a list containing sample estimates</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+Please note that all methods here described are only approximative, and might violate the nominal level in certain situations.
+Please note further that appropriateness of the point estimates, and consequently of tests and confidence intervals is based on the assumptions in Bailer and Portier (1988),
+which might be a matter of controversies.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Assumption for poly-3-adjustment:
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+</p>
+<p>
+Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):
+A survival-adjusted quantal response test for comparing tumor incidence rates.
+Applied Statistics 54, 51-61.
+</p>
+<p>
+Bieler, G.S. and Williams, R.L. (1993):
+Ratio estimates, the Delta Method, and quantal response tests for increased carcinogenicity.
+Biometrics 49, 793-801.
+</p>
+<p>
+Statistical procedures and characterization of coverage probabilities are described in:
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+</p>
+<p>
+Agresti, A. and Caffo, B.(2000):
+Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures.
+American Statistician 54, p. 280-288.
+</p>
+
+
+<h3>See Also</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(methyl)
+methylD&lt;-poly3ci(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Dunnett", method = "ADD1" )
+methylD
+plot(methylD, main="Simultaneous CI for Poly-3-adjusted tumour rates")
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

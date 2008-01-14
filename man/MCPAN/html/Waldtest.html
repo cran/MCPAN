@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Simultaneous Wald tests</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for Waldtest {MCPAN}"><tr><td>Waldtest {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Simultaneous Wald tests</h2>
+
+
+<h3>Description</h3>
+
+<p>
+General function for adjusted p-values for an UIT in a one-way layout using multivariate normal distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Waldtest(estp, varp, cmat, alternative = "greater")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>estp</code></td>
+<td>
+numeric vector of point estimates of length I, with I = the number of samples</td></tr>
+<tr valign="top"><td><code>varp</code></td>
+<td>
+numeric vector of variance estimates of length I, to be used for interval construction </td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+Contrast matrix of dimension MxI, with M = the number of contrasts, I= the number of samples </td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+character string </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+A list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>teststat</code></td>
+<td>
+a numeric vector of teststatistics of length M</td></tr>
+<tr valign="top"><td><code>pval</code></td>
+<td>
+a single numeric p-value, the p-value of the maximum test (minimum p-value)</td></tr>
+<tr valign="top"><td><code>p.val.adj</code></td>
+<td>
+a vector of length M, the adjusted p-values of the single contrasts</td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a single character vector, as the input</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+For user level implementations see:
+</p>
+<p>
+<code><a href="../../../doc/html/search/SearchObject.html?binomRDtest">binomRDtest</a></code>,
+<code><a href="../../../doc/html/search/SearchObject.html?poly3test">poly3test</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,31 @@
+summary.binomRDci           package:MCPAN           R Documentation
+
+_D_e_t_a_i_l_e_d _p_r_i_n_t _o_u_t _f_o_r _b_i_n_o_m_R_D_c_i
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Produces a more detailed print out of objects of class
+     "binomRDci", including summary statistics, the used contrast
+     matrix and the confidence intervals.
+
+_U_s_a_g_e:
+
+     ## S3 method for class 'binomRDci':
+     summary(object, ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+  object: an object of class "binomRDci" as created by function
+          'binomRDci' 
+
+     ...: further arguments to be passed to summary, currently only
+          'digits' for rounding is supported 
+
+_V_a_l_u_e:
+
+     A print out.
+
+_A_u_t_h_o_r(_s):
+
+     Frank Schaarschmidt
+

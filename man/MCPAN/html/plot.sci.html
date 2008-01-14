@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot simultaneous confidence intervals</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for plot.sci {MCPAN}"><tr><td>plot.sci {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot simultaneous confidence intervals</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Creates a high level plot of confidence intervals from objects returned
+by functions binomRDci, binomORci, poly3ci.
+Plot function for objects of class "sci".
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'sci':
+plot(x, line = 0, linelty = 2, linelwd = 1, linecol = "black", CIvert = FALSE, CIlty = 1, CIlwd = 1, ...)
+## S3 method for class 'binomRDci':
+plot(x,...)
+## S3 method for class 'poly3ci':
+plot(x,...)
+## S3 method for class 'binomORci':
+plot(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+an object of class "sci", "binomRDci", "poly3ci", as can be obtained by calling <code><a href="../../../doc/html/search/SearchObject.html?binomRDci">binomRDci</a></code>,<code><a href="../../../doc/html/search/SearchObject.html?poly3ci">poly3ci</a></code>            </td></tr>
+<tr valign="top"><td><code>line</code></td>
+<td>
+as single numeric value or vector, position of line(s) to be added orthogonal to the plotted CI </td></tr>
+<tr valign="top"><td><code>linelty</code></td>
+<td>
+line type(s) for <code>line</code> as defined in <code><a href="../../graphics/html/par.html">par</a></code> </td></tr>
+<tr valign="top"><td><code>linelwd</code></td>
+<td>
+line width(s) for <code>line</code> as defined in <code><a href="../../graphics/html/par.html">par</a></code>  </td></tr>
+<tr valign="top"><td><code>linecol</code></td>
+<td>
+colour(s) for <code>line</code> as defined in <code><a href="../../graphics/html/par.html">par</a></code>  </td></tr>
+<tr valign="top"><td><code>CIvert</code></td>
+<td>
+logical value, specifying whether confidence intervals shall be represented by vertical (if TRUE) or horizontal (if FALSE) lines </td></tr>
+<tr valign="top"><td><code>CIlty</code></td>
+<td>
+single value, line type for confidence intervals as defined in <code><a href="../../graphics/html/par.html">par</a></code>  </td></tr>
+<tr valign="top"><td><code>CIlwd</code></td>
+<td>
+single value, line type for confidence intervals as defined in <code><a href="../../graphics/html/par.html">par</a></code>  </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+parameters to be passed to <code>plot.default</code>, as documented in
+<code><a href="../../graphics/html/plotdefault.html">plot.default</a></code>, <code><a href="../../graphics/html/plot.html">plot</a></code>, or <code><a href="../../graphics/html/par.html">par</a></code>  </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Currently, the <code>plot</code> parameters <code>ylim, xlim, las, axes, type, pch</code>
+and the <code>axis</code> parameters <code>labels, las</code> are chosen internally by the function
+and can not be set by the user. 
+Currently, combining several plots via <code>par("mfrow")</code> or <code><a href="../../graphics/html/layout.html">layout</a></code> in one device is not possible.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A plot.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# An example with three dose groups
+# compared to Placebo, binomial response:
+
+resp&lt;-c(2,8,6,13)
+trials&lt;-c(34,33,36,34)
+names(resp)&lt;-c("Placebo", "50", "75", "150")
+
+ci&lt;-binomRDci(x=resp, n=trials,
+ type="Dunnett", method="ADD1")
+plot(ci, line=c(0,0.1,0.2),linelty=c(1,2,3))
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

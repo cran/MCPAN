@@ -1,0 +1,95 @@
+\HeaderA{poly3test}{Approximate simultaneous test for poly-3-adjusted tumour rates}{poly3test}
+\keyword{htest}{poly3test}
+\begin{Description}\relax
+P-value of maximum test and adjusted p-values for M contrasts of I groups in a one-way layout.
+Based on approximation of the true distribution of the M test statistics by an M-variate normal distribution.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+poly3test(time, status, f, type = "Dunnett", cmat = NULL, method = "BP", alternative = "two.sided")
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{time}] a numeric vector of times of death of the individuals
+\item[\code{status}] a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  
+\item[\code{f}] a factor of the same length as \code{time} \code{status}, giving the levels of a grouping variable in a one-way layout 
+\item[\code{type}] a character string specifying the contrast type 
+\item[\code{cmat}] an optional user defined contrast matrix of dimension MxI
+\item[\code{method}] a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
+
+\item[\code{alternative}] a character string specifying the direction of the alternative hypothesis
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+Please note
+\end{Details}
+\begin{Value}
+An object of class "poly3test", a list containing:
+
+\begin{ldescription}
+\item[\code{teststat}] a numeric vector of teststatistics of length M
+\item[\code{pval}] a single numeric p-value, the p-value of the maximum test (minimum p-value)
+\item[\code{p.val.adj}] a vector of length M, the adjusted p-values of the single contrasts
+\item[\code{alternative}] a single character vector, as the input
+\item[\code{time}] as input
+\item[\code{status}] as input
+\item[\code{f}] as input
+\item[\code{method}] as input
+\item[\code{cmat}] used contrast matrix
+\item[\code{sample.est}] a list containing sample estimates
+\end{ldescription}
+\end{Value}
+\begin{Note}\relax
+Please note that all methods here described are only approximative, and might violate the nominal level in certain situations.
+Please note further that appropriateness of the point estimates, and consequently of tests and confidence intervals is based on the assumptions in Bailer and Portier (1988),
+which might be a matter of controversies.
+\end{Note}
+\begin{Author}\relax
+Frank Schaarschmidt
+\end{Author}
+\begin{References}\relax
+Assumption with regard to data as in:
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+
+Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):
+A survival-adjusted quantal response test for comparing tumor incidence rates.
+Applied Statistics 54, 51-61.
+
+Statistical procedures and characterization of coverage probabilities are described in:
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+\end{References}
+\begin{SeeAlso}\relax
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+
+# poly-3-adjusted tumour rates with a potential
+# down-turn effect for the highest dose group "4":
+
+data(methyl)
+
+# many-to-one:
+methylD<-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Dunnett", method = "ADD1" )
+methylD
+
+# Williams-Contrast:
+methylW<-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Williams", method = "ADD1" )
+methylW
+
+# Changepoint-Contrast:
+methylCh<-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Change", method = "ADD1" )
+methylCh
+
+\end{ExampleCode}
+\end{Examples}
+

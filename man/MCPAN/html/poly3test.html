@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Approximate simultaneous test for poly-3-adjusted tumour rates</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for poly3test {MCPAN}"><tr><td>poly3test {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Approximate simultaneous test for poly-3-adjusted tumour rates</h2>
+
+
+<h3>Description</h3>
+
+<p>
+P-value of maximum test and adjusted p-values for M contrasts of I groups in a one-way layout.
+Based on approximation of the true distribution of the M test statistics by an M-variate normal distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+poly3test(time, status, f, type = "Dunnett", cmat = NULL, method = "BP", alternative = "two.sided")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>time</code></td>
+<td>
+a numeric vector of times of death of the individuals</td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
+where TRUE (1) = tumour present, FALSE (0) = no tumour present  </td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+a factor of the same length as <code>time</code> <code>status</code>, giving the levels of a grouping variable in a one-way layout </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+a character string specifying the contrast type </td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+an optional user defined contrast matrix of dimension MxI</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+a single charcter string, specifying the method for adjustment,
+with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
+"BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
+"ADD1" (as Bailer Portier, including an add1-adjustment on the raw tumour rates)
+"ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
+</td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a character string specifying the direction of the alternative hypothesis</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Please note
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of class "poly3test", a list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>teststat</code></td>
+<td>
+a numeric vector of teststatistics of length M</td></tr>
+<tr valign="top"><td><code>pval</code></td>
+<td>
+a single numeric p-value, the p-value of the maximum test (minimum p-value)</td></tr>
+<tr valign="top"><td><code>p.val.adj</code></td>
+<td>
+a vector of length M, the adjusted p-values of the single contrasts</td></tr>
+<tr valign="top"><td><code>alternative</code></td>
+<td>
+a single character vector, as the input</td></tr>
+<tr valign="top"><td><code>time</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+as input</td></tr>
+<tr valign="top"><td><code>cmat</code></td>
+<td>
+used contrast matrix</td></tr>
+<tr valign="top"><td><code>sample.est</code></td>
+<td>
+a list containing sample estimates</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+Please note that all methods here described are only approximative, and might violate the nominal level in certain situations.
+Please note further that appropriateness of the point estimates, and consequently of tests and confidence intervals is based on the assumptions in Bailer and Portier (1988),
+which might be a matter of controversies.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Assumption with regard to data as in:
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+</p>
+<p>
+Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):
+A survival-adjusted quantal response test for comparing tumor incidence rates.
+Applied Statistics 54, 51-61.
+</p>
+<p>
+Statistical procedures and characterization of coverage probabilities are described in:
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+</p>
+
+
+<h3>See Also</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# poly-3-adjusted tumour rates with a potential
+# down-turn effect for the highest dose group "4":
+
+data(methyl)
+
+# many-to-one:
+methylD&lt;-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Dunnett", method = "ADD1" )
+methylD
+
+# Williams-Contrast:
+methylW&lt;-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Williams", method = "ADD1" )
+methylW
+
+# Changepoint-Contrast:
+methylCh&lt;-poly3test(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Change", method = "ADD1" )
+methylCh
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

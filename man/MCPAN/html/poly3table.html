@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Summarize long term carcinogenicity data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for poly3table {MCPAN}"><tr><td>poly3table {MCPAN}</td><td align="right">R Documentation</td></tr></table>
+<h2>Summarize long term carcinogenicity data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Function to summarize data of long term carcinogenicity trials in a text format.
+Data are assumed to consist of (1) a dichotomous variable, 
+defining whether the tumour of interest was present in an individual animal at time of death,
+and (2) a numeric variable containing the time of death of an individual animal,
+and (3) a grouping factor.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+poly3table(time, status, f, tumour = NULL, symbol = "*")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>time</code></td>
+<td>
+a numeric vector, containing the time of death of an individual </td></tr>
+<tr valign="top"><td><code>status</code></td>
+<td>
+a logical (or dichotomous categorical) vector </td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+a factor, specifying treatment groups</td></tr>
+<tr valign="top"><td><code>tumour</code></td>
+<td>
+the value which <code>status</code> obtains if a tumour is present in an individual at time of death  </td></tr>
+<tr valign="top"><td><code>symbol</code></td>
+<td>
+symbol to indicate presence of tumour in the text representation </td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A named list, containing a character string for each group</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Frank Schaarschmidt
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(methyl)
+methyl
+poly3table(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, tumour = 1, symbol = "*")
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>MCPAN</em> <a href="00Index.html">Index]</a></div>
+
+</body></html>

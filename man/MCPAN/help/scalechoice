@@ -1,0 +1,44 @@
+scalechoice              package:MCPAN              R Documentation
+
+_O_n_l_y _f_o_r _i_n_t_e_r_n_a_l _u_s_e.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     How to define scale parameters of the Weibull distribution in the
+     poly-k-setting
+
+_U_s_a_g_e:
+
+     scalechoice(shape = 3, pm = 0.2, t = 1)
+
+_A_r_g_u_m_e_n_t_s:
+
+   shape: shape parameter (usually shape=3) 
+
+      pm: a numeric value (0<p<1), probability that an individual dies
+          before time t 
+
+       t: a numeric value, time t 
+
+_V_a_l_u_e:
+
+     a single numeric value, giving the scale parameter needed to
+     fulfill pm(t) for the current definition of the Weibull
+     disstribution.
+
+_N_o_t_e:
+
+     Scale parameter is defined differently than that in Peddada (2005)
+
+_A_u_t_h_o_r(_s):
+
+     Frank Schaarschmidt
+
+_R_e_f_e_r_e_n_c_e_s:
+
+_S_e_e _A_l_s_o:
+
+     pweibull
+
+_E_x_a_m_p_l_e_s:
+

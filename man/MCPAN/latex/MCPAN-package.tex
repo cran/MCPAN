@@ -1,0 +1,119 @@
+\HeaderA{MCPAN-package}{Multiple comparison procedures using normal approximation}{MCPAN.Rdash.package}
+\aliasA{MCPAN}{MCPAN-package}{MCPAN}
+\keyword{package}{MCPAN-package}
+\begin{Description}\relax
+Multiple contrast tests and simultaneous confidence intervals using normal approximation, if individuals
+are randomly assigned to treatments in a oneway layout. If the variable of interest is dichotomous, the binom-methods can be used.
+If the variable of interest is the rate of tumours in long-term rodent carcinogenicity trials (without cause of death information), the poly3-methods can be used.
+The methods implemented in this package are NOT published in peer-reviewed journals so far.
+\end{Description}
+\begin{Details}\relax
+\Tabular{ll}{
+Package: & MCPAN\\
+Type: & Package\\
+Version: & 1.0-4\\
+Date: & 2007-08-15\\
+License: & GPL \\
+}
+\end{Details}
+\begin{Author}\relax
+Frank Schaarschmidt, Daniel Gerhard
+Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
+\end{Author}
+\begin{References}\relax
+For long-term rodent carcinogenicity data: The assumptions of poly-3-adjustment are outlined in:
+
+Bailer, J.A. and Portier, C.J. (1988):
+Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
+Biometrics 44, 417-431.
+
+Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):
+A survival-adjusted quantal response test for comparing tumor incidence rates.
+Applied Statistics 54, 51-61.
+
+For correlation of multiple contrasts of binomial proportions, see:
+Bretz F, Hothorn L.:
+Detecting dose-response using contrasts: asymptotic power and sample size determination for binomial data.
+Statistics in Medicine 2002; 21: 3325-3335.
+
+Simulation results (coverage probability of simultaneous confidence intervals)
+for the binomial proportions and poly-3-adjusted tumour rates can be found in:
+
+Sill, M. (2007):
+....
+Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+\end{References}
+\begin{SeeAlso}\relax
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+
+# # # 1)
+# Adjusted p-values and simultaneous confidence intervals 
+# for 2xk tables of binomial data: 
+# binomtest, binomci
+
+# Difference of proportions
+
+binomRDtest(x=c(2,6,4,13), n=c(34,33,36,34),
+ names=c("Placebo", "50", "75", "150"),
+ type="Dunnett", method="ADD1")
+
+binomRDci(x=c(2,6,4,13), n=c(34,33,36,34),
+ names=c("Placebo", "50", "75", "150"),
+ type="Dunnett", method="ADD1")
+
+# Odds ratios:
+
+binomORci(x=c(2,6,4,13), n=c(34,33,36,34),
+ names=c("Placebo", "50", "75", "150"),
+ type="Dunnett")
+
+# For more details on evaluation,
+# see:
+# ?liarozole
+
+ data(liarozole) 
+
+
+# # # 2)
+# Adjusted p-values and simultaneous confidence intervals 
+# for poly-3-adjusted tumour rates: 
+# poly3test, poly3ci
+
+data(methyl)
+methyl
+
+# poly-3-adjusted sample estimates:
+
+poly3estf(time=methyl$death,
+ status=methyl$tumour,
+ f=methyl$group)
+
+# Simultaneous Add-1-confidence intervals
+# for difference to the control group:
+
+poly3ci(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, method="ADD1",
+ type="Dunnett", alternative="greater")
+
+# Test for trend, based on Changepoint contrasts:
+
+poly3test(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, method="ADD1",
+ type="Changepoint", alternative="greater")
+
+# # # 3) Plot of confidence intervals
+# created by binomci and poly3ci:
+
+MethylCI <- poly3ci(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, method="ADD1",
+ type="Dunnett", alternative="greater")
+
+plot(MethylCI)
+
+
+
+\end{ExampleCode}
+\end{Examples}
+

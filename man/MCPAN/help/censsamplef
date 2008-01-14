@@ -1,0 +1,54 @@
+censsamplef              package:MCPAN              R Documentation
+
+_R_a_n_d_o_m _d_a_t_a _f_o_r _P_o_l_y-_k
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Random data for Poly-k for a one-way layout, with I groups.
+
+_U_s_a_g_e:
+
+     censsamplef(n, scale.m, shape.m, scale.t, shape.t = 3, tmax)
+
+_A_r_g_u_m_e_n_t_s:
+
+       n: a numeric vector, the numbers of individuals of length I 
+
+ scale.m: a numeric vector, scale parameters of the Weibull
+          distribution for mortality 
+
+ shape.m: a numeric vector, shape parameters of the Weibull
+          distribution for mortality 
+
+ scale.t: a numeric vector, scale parameters of the Weibull
+          distribution for tumour induction 
+
+ shape.t: a numeric vector, shape parameters of the Weibull
+          distribution for tumour induction 
+
+    tmax: a single numeric value, maximum time in the trial 
+
+_D_e_t_a_i_l_s:
+
+_V_a_l_u_e:
+
+     A data.frame with columns 
+
+    time: a numeric vector of length 'n', the time of death of an
+          individual
+
+  status: a logical vector of length 'n', the tumour status at time of
+          death (TRUE: tumour present, FALSE: no tumour present)
+
+     T.t: time of tumour induction (unobservable)
+
+     T.m: time of death
+
+    tmax: maximum time of death
+
+       f: a factor of containing an appropriate grouping variable
+
+_A_u_t_h_o_r(_s):
+
+     Frank Schaarschmidt
+

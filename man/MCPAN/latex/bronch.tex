@@ -1,0 +1,39 @@
+\HeaderA{bronch}{Bronchial carcinoma data}{bronch}
+\keyword{datasets}{bronch}
+\begin{Description}\relax
+Data of a long term rodent carcinogenicity study of bronchial carcinoma.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}data(bronch)\end{verbatim}
+\end{Usage}
+\begin{Format}\relax
+A data frame with 200 observations on the following 3 variables.
+\describe{
+\item[\code{group}] a factor with levels \code{0} \code{1} \code{2} \code{3}, labelling the control and the three dose groups
+\item[\code{Y}] a logical vector, indicating whether a tumour was present at time of death (if TRUE), or not (if FALSE) 
+\item[\code{time}] a numeric vector, the time of death, counted in days? from begin of the study
+}
+\end{Format}
+\begin{Details}\relax
+Not yet checked for consistency with the source!
+\end{Details}
+\begin{Source}\relax
+...
+\end{Source}
+\begin{References}\relax
+...
+\end{References}
+\begin{Examples}
+\begin{ExampleCode}
+data(bronch)
+# raw tumour counts:
+
+table(bronch[c("group","Y")])
+
+# groupwise times of death:
+
+boxplot(time ~ group, data=bronch, horizontal=TRUE)
+
+\end{ExampleCode}
+\end{Examples}
+
