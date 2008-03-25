@@ -78,10 +78,23 @@ which might be a matter of controversies. }
 \examples{
 
 data(methyl)
-methylD<-poly3ci(time=methyl$death, status=methyl$tumour, f=methyl$group, type = "Dunnett", method = "ADD1" )
+
+
+methylD<-poly3ci(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, type = "Dunnett", method = "ADD1" )
+
 methylD
+
 plot(methylD, main="Simultaneous CI for Poly-3-adjusted tumour rates")
 
+# unadjusted CI
+
+methylD1<-poly3ci(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, type = "Dunnett", method = "ADD1", dist="N" )
+
+methylD1
+
+plot(methylD1, main="Local CI for Poly-3-adjusted tumour rates")
 
 }
 \keyword{ htest }

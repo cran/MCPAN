@@ -3,12 +3,14 @@ function(x, ...){UseMethod("binomORci")}
 
 
 `binomORci.default` <-
-function(x, n, names=NULL, type="Dunnett",
+function(x, n, names=NULL, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
  require(multcomp)
 
 args<-list(...)
+
+method<-match.arg(method, choices=c("GLM", "Woolf"))
 
 # check x, n
 
@@ -66,16 +68,18 @@ args<-list(...)
 
 # get the point and variance estimates
 
+switch(method,
+GLM={
     est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
     grp<-as.factor(est$names)
     logisticfit <- glm(cbind(x,n-x) ~ 0 + grp, family=binomial(link="logit"))
     eta <- coefficients(logisticfit)
     sigma <- vcov(logisticfit)
 
-    out<-Waldci( estp=eta,
-     varcor=diag(sigma),
+    out<-Waldci( cmat=cmat,
+     estp=eta,
      varp=diag(sigma),
-     cmat=cmat,
+     varcor=diag(sigma),
      alternative = alternative,
      conf.level=conf.level,
      dist=dist)
@@ -105,6 +109,144 @@ args<-list(...)
     out$names <- gnames
     out$method <- "glm"
     out$cmat <- cmat
+},
+Woolf={
+
+# Restrict Bounds to certain values, when x=0 or x=n occurs
+
+restrictboundsOR<-function(x, n, cmat, conf.int)
+{
+
+if(all(x!=0) & all(x!=n) )
+ {return(conf.int)}
+else{
+
+M<-nrow(cmat)
+
+warning("0 occured in the data and the risk ratio might not be defined")
+
+for(i in 1:M)
+{
+
+# 'Uninformative events'
+# all x=0 in the ith contrast:
+
+cNOT0<-sign(cmat[i,])!=0
+
+
+
+if( all( x[cNOT0]==0 ) )
+ {
+  conf.int[i,1]<-0
+  conf.int[i,2]<-Inf
+#  cat("Contrast",i,"All x=0 \n")
+ }
+
+# all x=n in the ith contrast:
+
+if( all( x[cNOT0]==n[cNOT0] ) )
+ {
+  conf.int[i,1]<-0
+  conf.int[i,2]<-Inf
+# cat("Contrast",i,"All x=n \n")
+ }
+
+
+# all numerator x=0 in contrast i
+
+cINDN<-sign(cmat[i,])==1
+
+if(all ( x[cINDN]==0 ) )
+ {
+ conf.int[i,1]<-0
+# cat("Numerator Contrast",i,"All x=0 \n")
+ }
+
+
+# all numerator x=n in contrast i
+
+if(all ( x[cINDN]==n[cINDN] ) )
+ {
+  conf.int[i,2] <- Inf
+ # cat("Numerator Contrast",i,"All x=n \n")
+ }
+
+
+# all denominator x=0
+
+cINDD<-sign(cmat[i,])==(-1)
+
+if(all (x[cINDD]==0 ) )
+ {
+  conf.int[i,2]<-Inf
+ # cat("Denominator Contrast",i,": all x=0 \n")
+ }
+
+# all denominator x=n
+
+if(all (x[cINDD]==n[cINDD] ) )
+ {
+  conf.int[i,1] <- 0 
+ # cat("Denominator Contrast",i,": all x=n \n")
+ }
+
+
+}
+
+return(conf.int)
+}
+
+}
+
+
+    est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
+    
+    XPI <- est$Y+0.5 
+    XQI <- est$n-est$Y+0.5
+
+    estI <- log(XPI/XQI)
+
+    varI <- 1/XPI + 1/XQI
+
+    out<-Waldci( cmat=cmat,
+     estp=estI,
+     varp=varI,
+     varcor=varI,
+     alternative = alternative,
+     conf.level=conf.level,
+     dist=dist)
+
+
+    conf.int <- exp(out$conf.int)
+    estimate <- exp(cmat %*% estI)
+
+    if(!is.null(dimnames(cmat)[[1]]))
+    {
+    cnamesD<-dimnames(cmat)[[1]]
+    cnamesSlist<-strsplit(cnamesD, "-")
+    cnamesOR<-unlist(lapply(cnamesSlist, FUN=function(x){paste(x, collapse="/")}))
+    }
+    else{cnamesOR<-paste("C",1:nrow(cmat),sep="")}
+
+    rownames(estimate)<-cnamesOR
+    rownames(conf.int)<-cnamesOR    
+ 
+    conf.int<-restrictboundsOR(x=x, n=n, cmat=cmat, conf.int=conf.int)
+
+    out$conf.int<-conf.int
+    out$estimate<-estimate
+    colnames(cmat) <- gnames
+    out$x <- x
+    out$n <- n
+    out$p <- est$estimate
+    out$success <- est$success
+    out$names <- gnames
+    out$method <- "Adjusted Woolf"
+    out$cmat <- cmat
+})
+
+
+
 
     class(out) <- "binomORci"
     return(out)
@@ -112,7 +254,7 @@ args<-list(...)
 
 
 `binomORci.formula` <-
-function(formula, data, type="Dunnett",
+function(formula, data, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
 args<-list(...)
@@ -123,6 +265,7 @@ args$x<-est$Y
 args$n<-est$n
 args$names<-est$names
 args$type<-type
+args$method<-method
 args$cmat<-cmat
 args$alternative<-alternative
 args$conf.level<-conf.level
@@ -139,7 +282,7 @@ return(out)
 
 
 `binomORci.table` <-
-function(x, type="Dunnett",
+function(x, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
 args<-list(...)
@@ -150,6 +293,7 @@ args$x<-est$Y
 args$n<-est$n
 args$names<-est$names
 args$type<-type
+args$method<-method
 args$cmat<-cmat
 args$alternative<-alternative
 args$conf.level<-conf.level
@@ -163,7 +307,7 @@ return(out)
 }
 
 `binomORci.matrix` <-
-function(x, type="Dunnett",
+function(x, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
 args<-list(...)
@@ -176,6 +320,7 @@ args$x<-est$Y
 args$n<-est$n
 args$names<-est$names
 args$type<-type
+args$method<-method
 args$cmat<-cmat
 args$alternative<-alternative
 args$conf.level<-conf.level

@@ -17,20 +17,24 @@ are constructed. Estimates are derived from fitting a glm on the logit-link,
 binomORci(x, ...)
 
 \method{binomORci}{default}(x, n, names = NULL,
- type = "Dunnett", cmat = NULL, alternative = "two.sided",
- conf.level = 0.95, dist="MVN", ...)
+ type = "Dunnett", method="GLM", cmat = NULL,
+ alternative = "two.sided", conf.level = 0.95,
+ dist="MVN", ...)
 
 \method{binomORci}{formula}(formula, data,
- type = "Dunnett", cmat = NULL, alternative = "two.sided",
- conf.level = 0.95, dist="MVN", ...)
+ type = "Dunnett", method="GLM", cmat = NULL,
+ alternative = "two.sided", conf.level = 0.95,
+ dist="MVN", ...)
 
 \method{binomORci}{table}(x,
- type = "Dunnett", cmat = NULL, alternative = "two.sided",
- conf.level = 0.95, dist="MVN", ...)
+ type = "Dunnett",method="GLM", cmat = NULL,
+ alternative = "two.sided", conf.level = 0.95,
+ dist="MVN", ...)
 
 \method{binomORci}{matrix}(x,
- type = "Dunnett", cmat = NULL, alternative = "two.sided",
- conf.level = 0.95, dist="MVN", ...)
+ type = "Dunnett", method="GLM", cmat = NULL,
+ alternative = "two.sided", conf.level = 0.95,
+ dist="MVN", ...)
 }
 
 
@@ -51,6 +55,9 @@ binomORci(x, ...)
   \item{data}{a data.frame, containing the variables specified in formula}
   \item{type}{ a character string, giving the name of a contrast method,
  as defined in \code{contrMat(multcomp)}; ignored if \code{cmat} is sepcified }
+  \item{method}{a single character string, specifying the method for confidence interval computation; Options are \code{"GLM"} and \code{"Woolf"}.
+ \code{"GLM"} takes the maximum likelihood estimates and the their standard errors; this yields a conservative confidence intervals with uninformative limits if x=0 and x=n occures.
+ \code{"Woolf"} adds 0.5 to the cell counts, resulting in less conservative bounds. These can be liberal when extreme proportions are compared. }
   \item{cmat}{ a optional contrast matrix }
   \item{alternative}{ a single character string, one of "two.sided", "less", "greater" }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
@@ -67,9 +74,16 @@ Applying the exponential function to these intervals on the logit scale yields
 intervals for ratios (of weighted geometric) of odds. For simple groupwise comparisons,
 one yields intervals for oddsratios.
 For the case of Dunnett-type contrasts, the calculated simultaneous confidence intervals
-are those described in Holford et al. (1989), replacing the estimates in the adjusted
- Woolf-interval by those from the glmfit.
-For the case of general contrasts, the methods are not described explicitly so far.
+are those described in Holford et al. (1989).
+
+Specifying \code{method="GLM"} takes maximum likelihood estimates for the log-odds and their standard errors evaluated at the estimate.
+
+Specifying \code{method="Woolf"} takes adds 0.5 to each cell count and computes point estimates and standard errors for these continuity corrected values.
+For the two-sample comparison this method is refered to as "adjusted Woolf" (Lawson, 2005). In this implementation, the lower bounds yielded by this method
+ are additionally expanded to 0, if all values in the denominator are x=n or all values in the numerator are x=0, and the upper bounds are expanded to Inf, 
+ if all values in the denominator are x=0 or all values in the numerator are x=n.
+
+Note, that for the case of general contrasts, the methods are not described explicitly so far.
 
 }
 \value{
@@ -92,7 +106,7 @@ studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-4
 
 }
 
-\author{ Daniel Gerhard, Frank Schaarschmidt }
+\author{ Frank Schaarschmidt, Daniel Gerhard }
 
 \note{ 
 }
@@ -105,8 +119,12 @@ data(liarozole)
 
 table(liarozole)
 
+# Comparison to the control group "Placebo",
+# which is the fourth group in alpha-numeric
+# order:
+
 ORlia<-binomORci(Improved ~ Treatment,
- data=liarozole, success="y")
+ data=liarozole, success="y", type="Dunnett", base=4)
 ORlia
 summary(ORlia)
 plot(ORlia)
@@ -114,12 +132,32 @@ plot(ORlia)
 # if data are available as table:
 
 tab<-table(liarozole)
-ORlia2<-binomORci(tab, success="y")
+tab
+ORlia2<-binomORci(tab, success="y", type="Dunnett", base=4)
 ORlia2
 
+plot(ORlia2, lines=1, lineslty=3)
 
+
+############################
+
+#  Performance for extreme cases
+
+# method="GLM" (the default)
+
+test1<-binomORci(x=c(0,1,5,20), n=c(20,20,20,20), names=c("A","B","C","D"))
+test1
+plot(test1)
+
+# adjusted Woolf interval
+
+test2<-binomORci(x=c(0,1,5,20), n=c(20,20,20,20), names=c("A","B","C","D"), method="Woolf")
+test2
+plot(test2)
 
 }
+
 \keyword{ htest }
 \concept{ confidence interval }
 \concept{ odds ratio }
+\concept{ simultaneous }

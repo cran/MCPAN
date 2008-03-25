@@ -23,6 +23,15 @@ cat("\n Contrast matrix: \n")
 
 print(object$cmat, digits=digits)
 
+
+if(object$dist=="MVN")
+{
+cat("\n The estimated correlation matrix of the contrasts is: \n")
+
+print(object$corrmat, digits=digits)
+
+}
+
 cat("\n")
 
 print(object, digits=digits)

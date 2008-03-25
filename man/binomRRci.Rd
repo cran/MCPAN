@@ -1,37 +1,37 @@
-\name{binomRDci}
-\alias{binomRDci}
-\alias{binomRDci.default}
-\alias{binomRDci.table}
-\alias{binomRDci.matrix}
-\alias{binomRDci.formula}
+\name{binomRRci}
+\alias{binomRRci}
+\alias{binomRRci.default}
+\alias{binomRRci.table}
+\alias{binomRRci.matrix}
+\alias{binomRRci.formula}
 
-\title{ Simultaneous confidence intervals for contrasts of independent binomial proportions (in a oneway layout) }
+\title{ Simultaneous confidence intervals for ratios of independent binomial proportions }
 \description{
  Simultaneous asymptotic CI for contrasts of binomial proportions,
- assuming that standard normal approximation holds.
- The contrasts can be interpreted as differences of (weighted averages)
- of proportions (risk ratios).
+ assuming that standard normal approximation holds on the log scale.
+ Confidence intervals for ratios of (weighted geometric means) of proportions are calculated
+ based on differences of log-proportions, and normal approximation on the log-scale.
 }
 \usage{
 
-binomRDci(x,...)
+binomRRci(x,...)
 
-\method{binomRDci}{default}(x, n, names=NULL,
- type="Dunnett", cmat=NULL, method="Wald",
+\method{binomRRci}{default}(x, n, names=NULL,
+ type="Dunnett", cmat=NULL,
  alternative="two.sided", conf.level=0.95,
  dist="MVN", ...)
 
-\method{binomRDci}{formula}(formula, data,
- type="Dunnett", cmat=NULL, method="Wald",
+\method{binomRRci}{formula}(formula, data,
+ type="Dunnett", cmat=NULL,
  alternative="two.sided", conf.level=0.95,
  dist="MVN",...)
 
-\method{binomRDci}{table}(x, type="Dunnett",
- cmat=NULL, method="Wald", alternative="two.sided",
+\method{binomRRci}{table}(x, type="Dunnett",
+ cmat=NULL, alternative="two.sided",
  conf.level=0.95, dist="MVN",...)
 
-\method{binomRDci}{matrix}(x, type="Dunnett",
- cmat=NULL, method="Wald", alternative="two.sided",
+\method{binomRRci}{matrix}(x, type="Dunnett",
+ cmat=NULL, alternative="two.sided",
  conf.level=0.95, dist="MVN",...)
 
 }
@@ -50,7 +50,6 @@ binomRDci(x,...)
   \item{type}{ a character string, giving the name of a contrast method,
  as defined in \code{contrMat(multcomp)}; ignored if \code{cmat} is sepcified }
   \item{cmat}{ a optional contrast matrix }
-  \item{method}{ a single character string, specifying the method for confidence interval construction; options are: \code{"Wald"}, \code{"ADD1"}, or \code{"ADD2"} }
   \item{alternative}{ a single character string, one of "two.sided", "less", "greater" }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
   \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
@@ -58,6 +57,13 @@ binomRDci(x,...)
   \item{\dots}{ arguments to be passed to \code{\link{binomest}}, currently only \code{success} labelling the event which should be considered as success}
 }
 \details{
+ The interval for the ratio of two independent proportions, described in section "Crude Methods using first-order variance estimation" in Gart and Nam (1988) are extended
+ to multiple contrasts. Confidence intervals are constructed based on contrasts for differences of lp=log (x+0.5)/(n+0.5), using quantiles of the multivariate normal or normal approximation.
+ Applying the exponential functions to the bounds results in intervals for the risk ratio.
+ In case that 0 occur in both, the numerator and denominator of the ratio, the interval is expanded to [0,Inf], in case that only 0s numerator go to the numerator, the lower bound is expanded to 0,
+ in case that only 0s go to the denominator, the upper bound is expanded to Inf.
+ 
+
  See the examples for different usages.
 }
 \value{
@@ -76,31 +82,15 @@ A object of class "binomRDci", a list containing:
   \item{cmat}{the contrast matrix used}
 }
 \references{ 
- Statistical procedures and characterization of coverage probabilities are described in:
- Sill, M. (2007):
- Approximate simultaneous confidence intervals for multiple comparisons of binomial proportions.
- Master thesis, Institute of Biostatistics, Leibniz University Hannover.
 
-Background references:
- 
- The ideas underlying the "ADD1" and "ADD2" adjustment are described in:
- 
-Agresti, A. and Caffo, B.(2000):
- Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures.
- American Statistician 54, p. 280-288.
-
-And have been generalized for a single contrast of several proportions in:
-
-Price, R.M. and Bonett, D.G. (2004):
- An improved confidence interval for a linear function of binomial proportions.
- Computational Statistics and Data Analysis 45, 449-456.
+Gart, JJ and Nam,J-m (1988): Approximate interval estimation of the ratio of binomial parameters: a review and corrections for skewness. Biometrics 44, 323-338.
 
  }
 
 \note{ Note, that all implemented methods are approximate only. The coverage probability of the 
 intervals might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
-See the simulation results in Sill (2007) for details. }
-\seealso{ \code{\link{summary.binomRDci}}, \code{\link{plot.sci}} }
+}
+\seealso{ \code{\link{summary.binomRDci}} for the risk difference, \code{\link{summary.binomORci}} for the odds ratio, \code{\link{plot.sci}} for plotting}
 \examples{
 
 # In simple cases, counts of successes
@@ -109,16 +99,16 @@ See the simulation results in Sill (2007) for details. }
 ntrials <- c(40,20,20,20)
 xsuccesses <- c(1,2,2,4)
 names(xsuccesses) <- LETTERS[1:4]
-ex1D<-binomRDci(x=xsuccesses, n=ntrials, method="ADD1",
+ex1D<-binomRRci(x=xsuccesses, n=ntrials,
  type="Dunnett")
 ex1D
 
-ex1W<-binomRDci(x=xsuccesses, n=ntrials, method="ADD1",
+ex1W<-binomRRci(x=xsuccesses, n=ntrials,
  type="Williams", alternative="greater")
 ex1W
 
 # results can be plotted:
-plot(ex1D, main="Comparisons to control group A", lines=0, linescol="red", lineslwd=2)
+plot(ex1D, main="Comparisons to control group A")
 
 # summary gives a more detailed print out:
 summary(ex1W)
@@ -131,30 +121,30 @@ data(liarozole)
 
 head(liarozole)
 
-binomRDci(Improved ~ Treatment, data=liarozole,
- type="Tukey")
-
 # here, it might be important to define which level of the
 # variable 'Improved' is to be considered as success
 
-binomRDci(Improved ~ Treatment, data=liarozole,
- type="Dunnett", success="y", base=4)
+binomRRci(Improved ~ Treatment, data=liarozole,
+ type="Dunnett", success="y", base=4, alternative="greater")
 
 # If data are available as a named kx2-contigency table:
 
 tab<-table(liarozole)
 tab
 
-# Comparison to the control group "Placebo",
-# which is the fourth group in alpha-numeric order:
+binomRRci(tab, type="Dunnett", success="y", base=4, alternative="greater")
 
-CIs<-binomRDci(tab, type="Dunnett", success="y", base=4)
 
-plot(CIs, lines=0)
+# Performance for extreme cases:
+
+
+binomRRci(x=c(0,0,20,5),n=c(20,20,20,20),names=c("A","B","C","D"),
+ type="Dunnett", alternative="greater")
+
 
 }
 \keyword{ htest }
 \concept{binomial}
 \concept{proportion}
-\concept{risk difference}
+\concept{risk ratio}
 \concept{simultaneous}

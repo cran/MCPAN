@@ -73,7 +73,7 @@ else
   else
    {
     if(alternative=="greater")
-     {quanti <- qmvnorm(p=1-conf.level)
+     {quanti <- qnorm(p=1-conf.level)
       stderr <- sqrt(varC)
       lCI <- estC+quanti*stderr
       uCI <- rep(Inf, m)
@@ -92,7 +92,9 @@ attr(x=quantile, which="dist")<-dist
 return(list(conf.int=conf.int,
  alternative=alternative,
  conf.level=conf.level,
- quantile=quantile
+ quantile=quantile,
+ corrmat=CorrMat,
+ dist=dist
 ))
 
   }
