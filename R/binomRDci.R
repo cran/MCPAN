@@ -68,8 +68,8 @@ args<-list(...)
     est <- binomest.default(x=x, n=n, names=gnames, method = method, success=args$success)
 
     out <- Waldci(estp = est$estp,
-     varcor=est$varp,
-     varp = est$varcor,
+     varcor=est$varcor,
+     varp = est$varp,
      cmat = cmat, 
      alternative = alternative,
      conf.level=conf.level,

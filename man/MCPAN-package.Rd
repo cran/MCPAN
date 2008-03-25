@@ -3,20 +3,24 @@
 \alias{MCPAN}
 \docType{package}
 \title{
-Multiple comparison procedures using normal approximation
+Multiple comparison procedures based on normal approximation.
 }
 \description{
 Multiple contrast tests and simultaneous confidence intervals using normal approximation, if individuals
-are randomly assigned to treatments in a oneway layout. If the variable of interest is dichotomous, the binom-methods can be used.
-If the variable of interest is the rate of tumours in long-term rodent carcinogenicity trials (without cause of death information), the poly3-methods can be used.
-The methods implemented in this package are NOT published in peer-reviewed journals so far. 
+are randomly assigned to treatments in a oneway layout. For dichotomous variables,
+approximate confidence intervals for the risk difference, risk ratio and odds ratio are available.
+If the variable of interest is the rate of tumours in long-term rodent carcinogenicity trials (without cause of death information), 
+confidence intervals for poly-k-adjusted tumour rates are available.
+For abundance data of multiple species, approximate simultaneous confidence intervals for differences of Simpson and Shannon-indices are implemented.
+
+Please note, that the methods implemented in this package are NOT validated yet and NOT published so far. 
 }
 \details{
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-0\cr
-Date: \tab 2007-01-14\cr
+Version: \tab 1.1-1\cr
+Date: \tab 2008-02-18\cr
 License: \tab GPL \cr
 }
 
