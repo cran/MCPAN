@@ -86,7 +86,7 @@ args<-list(...)
     out$cmat <- cmat
 
 
-    class(out) <- "binomRDci"
+    class(out) <- c("binomRDci", "sci")
     return(out)
 }
 

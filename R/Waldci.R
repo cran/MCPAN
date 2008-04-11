@@ -89,13 +89,16 @@ colnames(conf.int)<-c("lower","upper")
 quantile<-quanti
 attr(x=quantile, which="dist")<-dist
 
-return(list(conf.int=conf.int,
+out<-list(conf.int=conf.int,
  alternative=alternative,
  conf.level=conf.level,
  quantile=quantile,
  corrmat=CorrMat,
- dist=dist
-))
+ dist=dist)
+
+class(out)<-"sci"
+
+return(out)
 
   }
 

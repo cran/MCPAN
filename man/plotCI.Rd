@@ -2,6 +2,7 @@
 
 \alias{plotCI}
 \alias{plotCI.default}
+\alias{plotCI.sci}
 \alias{plotCI.sci.ratio}
 \alias{plotCI.confint.glht}
 
@@ -11,24 +12,34 @@
 }
 \usage{
 \method{plotCI}{default}(x, ...)
+\method{plotCI}{sci}(x, ...)
 \method{plotCI}{sci.ratio}(x, ...)
 \method{plotCI}{confint.glht}(x, ...)
 }
 
 \arguments{
-  \item{x}{ An object of class "sci.ratio" or "conf.int.glht" or a list with elements \code{estimate}, containing a numeric vector,\code{conf.int}, containing a matrix with two columns, giving the lower and upper bounds, and a string \code{alternative}, one of "two.sided", "less", "greater"  }
+  \item{x}{ An object of class "sci", "sci.ratio" or "conf.int.glht" or a list with elements \code{estimate}, containing a numeric vector,\code{conf.int}, containing a matrix with two columns, giving the lower and upper bounds, and a string \code{alternative}, one of "two.sided", "less", "greater"  }
   \item{\dots}{ additional arguments to be passed to \code{\link{plotCII}} }
 }
 \details{
- Test version.
+ Plots the estimates, upper and lower limits using \code{points} and \code{segments}. The names of \code{estimate} are passed as labels of the confidence intervals.
+ If infinite bounds occur, the plot region is limited by the most extreme non infinite bound or estimate.
 }
 \value{
   A plot.
 }
 
 
-\seealso{ The function used internally is \code{\link{plotCII}}}
+\seealso{ Internally, the function \code{\link{plotCII}} is used.}
 \examples{
+
+x=c(8,9,9,18,39,44)
+n=c(2000,2000,2000,2000,2000,2000)
+
+x<-binomORci(x=x, n=n, names=c("0","120","240","480","600","720"))
+
+plotCI(x, lines=1)
+
 
 }
 

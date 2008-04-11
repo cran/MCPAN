@@ -17,6 +17,11 @@ if(is.null(tmax))
 if(is.null(k))
  {k<-3}
 
+if(length(k)!=1)
+ {k<-k[1]
+  warning("Note: Only the first value of k has been used in the calculations!")
+ }
+
 
 timelist <- split(x=time, f=f, drop=TRUE)
 statuslist <- split(x=status, f=f, drop=TRUE)

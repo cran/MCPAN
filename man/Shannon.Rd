@@ -13,10 +13,7 @@ Shannon(p)
   \item{p}{A numeric vector of proportions. }
 }
 
-\examples{
 
-
-}
 
 \keyword{ htest }
 \concept{ biodiversity }

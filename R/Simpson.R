@@ -109,7 +109,7 @@ out$methodname <- "Confidence intervals for differences of Simpsons Indices"
 out$sample.estimates <- esti
 
 
-class(out)<-"Simpsonci"
+class(out)<-c("Simpsonci", "sci")
 return(out)
 
 }

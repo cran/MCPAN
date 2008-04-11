@@ -248,7 +248,7 @@ return(conf.int)
 
 
 
-    class(out) <- "binomORci"
+    class(out) <- c("binomORci", "sci")
     return(out)
 }
 
