@@ -22,4 +22,19 @@ the used contrast matrix, and the confidence intervals.
 
 }
 
+\examples{
+
+data(HCD)
+
+HCDcounts<-HCD[,-1]
+HCDf<-HCD[,1]
+
+SimpsonS<-Simpsonci(X=HCDcounts, f=HCDf, type = "Sequen",
+ alternative = "greater", conf.level = 0.95, dist = "MVN")
+
+summary(SimpsonS)
+
+}
+
+
 \keyword{ print }

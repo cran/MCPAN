@@ -179,7 +179,7 @@ if(any(x<4) & any(n-x<4))
     out$cmat <- cmat
     out$method <-"Crude normal approximation for the risk ratio"
 
-    class(out) <- "binomRRci"
+    class(out) <- c("binomRRci", "sci")
     return(out)
 }
 

@@ -15,6 +15,8 @@ k<-length(estimate)
 num <- 1:k
 
 if(is.null(names(estimate)))
+
+
  {compn <- paste("C", num, sep="")}
 else{
   compn <- names(estimate)}
@@ -296,7 +298,11 @@ par(old.par)
 
 #############################
 
+
 plotCI<-function(x, ...){UseMethod("plotCI")}
+
+
+#############################
 
 plotCI.default<-function(x,...)
 {
@@ -311,6 +317,34 @@ args$alternative<-x$alternative
 do.call("plotCII", args)
 
 }
+
+####
+
+
+plotCI.sci<-function(x,...)
+{
+args<-list(...)
+CI<-x$conf.int
+cnames<-rownames(CI)
+
+estimate<-as.numeric(x$estimate)
+lower<-as.numeric(x$conf.int[,1])
+upper<-as.numeric(x$conf.int[,2])
+
+names(estimate)<-names(lower)<-names(upper)<-cnames
+
+args$estimate<-estimate
+args$lower<-lower
+args$upper<-upper
+args$alternative<-x$alternative
+
+do.call(plotCII, args=args)
+
+}
+
+
+
+
 
 ###########################################
 
@@ -382,7 +416,7 @@ do.call("plotCII", args=args)
 }
 
 
-##
+#########################
 
 
 plot.sci<-function(x,...)

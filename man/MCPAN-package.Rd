@@ -19,8 +19,8 @@ Please note, that the methods implemented in this package are NOT validated yet 
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-1\cr
-Date: \tab 2008-02-18\cr
+Version: \tab 1.1-4\cr
+Date: \tab 2008-04-11\cr
 License: \tab GPL \cr
 }
 

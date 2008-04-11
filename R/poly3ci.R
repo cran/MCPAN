@@ -47,7 +47,7 @@ out$k<-k
 
 out$sample.estimate<-est
 
-class(out)<-"poly3ci"
+class(out)<-c("poly3ci", "sci")
 
 return(out)
 

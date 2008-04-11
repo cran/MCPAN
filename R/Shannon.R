@@ -158,7 +158,7 @@ out$cmat <-cmat
 out$methodname <- "Confidence intervals for differences of Shannon Indices"
 out$sample.estimates <- esti
 
-class(out)<-"Shannonci"
+class(out)<-c("Shannonci", "sci")
 return(out)
 
 }
