@@ -71,7 +71,7 @@ method<-match.arg(method, choices=c("GLM", "Woolf"))
 switch(method,
 GLM={
     est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
-    grp<-as.factor(est$names)
+    grp<-factor(est$names, levels=est$names)
     logisticfit <- glm(cbind(x,n-x) ~ 0 + grp, family=binomial(link="logit"))
     eta <- coefficients(logisticfit)
     sigma <- vcov(logisticfit)
