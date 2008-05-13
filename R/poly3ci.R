@@ -24,7 +24,7 @@ ngroups <- length(n)
        else{cmat <- contrMat(n = n, type = type)}
     }
     else {
-        if (!is.matrix(cmat) || ncol(cmat) != k)
+        if (!is.matrix(cmat) || ncol(cmat) != ngroups)
          {stop("cmat must be a matrix with number of columns = number of groups")}
     }
 
