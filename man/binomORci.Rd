@@ -108,8 +108,7 @@ studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-4
 
 \author{ Frank Schaarschmidt, Daniel Gerhard }
 
-\note{ 
-}
+
 \seealso{ Intervals for the risk difference \code{\link{binomRDci}},
  summary for odds ratio confidence intervals \code{\link{summary.binomORci}}
  plot for confidence intervals \code{\link{plot.sci}}

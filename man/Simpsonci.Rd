@@ -9,7 +9,7 @@
 Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", base=1)
 }
 \arguments{
-  \item{X}{ an n times p matrix with integer entries, where n is the number of samples and p is the number of species  }
+  \item{X}{ a data.frame of dimensions n times p with integer entries, where n is the number of samples and p is the number of species  }
   \item{f}{ a factor variable of length n, grouping the observations in \code{X}  }
   \item{cmat}{ an contrast matrix; the number of columns should match the number of levels in \code{f}}
   \item{type}{ a single character string, currently one of "Dunnett","Tukey","Sequen" }

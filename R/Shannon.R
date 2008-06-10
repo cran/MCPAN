@@ -46,14 +46,15 @@ return(out)
 function(X, f)
 {
 
-if(!is.matrix(X) & !is.data.frame(X))
- {stop("X must be either a matrix or a data.frame")}
-
+X<-as.data.frame(X)
 
 J<-length(f)
 
 if(nrow(X)!=J)
- {stop("the number of columns in X must be equal to the length of f")}
+ {stop("The number of columns in X must be equal to the length of f!")}
+
+if(any(floor(X)!=X))
+ {warning("The elements of X should be integers!")}
 
 X<-as.data.frame(X)
 

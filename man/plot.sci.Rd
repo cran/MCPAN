@@ -35,9 +35,5 @@ Extracts some values and calls \code{\link{plotCI}}.
 A plot.
 }
 
-\examples{
-
-}
-
 \keyword{ hplot }
 \concept{confidence interval}

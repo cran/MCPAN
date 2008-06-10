@@ -16,9 +16,7 @@ Waldtest(estp, varp, cmat, alternative = "greater", dist="MVN")
  \item{dist}{a character string, where \code{"MVN"} invokes the computation of p-values using the multivariate normal distribution,
  and \code{"N"} invokes use p-value computation using the univariate normal distribution}
 }
-\details{
 
-}
 \value{
 A list containing:
 \item{teststat}{a numeric vector of teststatistics of length M}

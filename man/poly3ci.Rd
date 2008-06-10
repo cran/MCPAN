@@ -32,9 +32,7 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
 \code{"N"} invokes use of quantiles of the univariate normal distribution}
 \item{k}{the exponent to calculate survival adjusted proportions, default is k=3}
 }
-\details{
 
-}
 \value{
 A object of class "poly3ci", a list containing:
   \item{conf.int }{a matrix with 2 columns: lower and upper confidence bounds, and M rows}
@@ -74,7 +72,6 @@ Assumption for poly-3-adjustment:
 Please note further that appropriateness of the point estimates, and consequently of tests and confidence intervals is based on the assumptions in Bailer and Portier (1988),
 which might be a matter of controversies. }
 
-\seealso{ }
 \examples{
 
 data(methyl)

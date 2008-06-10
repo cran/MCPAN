@@ -16,6 +16,14 @@ Simpson(estp)*n/(n-1)
 function(X, f)
 {
 
+if(any(floor(X)!=X))
+ {warning("The elements of X should be integers!")}
+
+J<-length(f)
+
+if(nrow(X)!=J)
+ {stop("The number of columns in X must be equal to the length of f!")}
+
 varestSimpson<-function(x)
 {
 n<-sum(x)
@@ -26,8 +34,7 @@ S3<-sum(estp^3)
 2*(S2 + 2*(n-2)*S3 + (3-2*n)*S2^2)/(n*(n-1))
 }
 
-if(!is.matrix(X) & !is.data.frame(X))
- {stop("X must be either a matrix or a data.frame")}
+X<-as.data.frame(X)
 
 names<-colnames(X)
 
