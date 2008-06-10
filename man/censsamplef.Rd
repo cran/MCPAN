@@ -16,10 +16,7 @@ censsamplef(n, scale.m, shape.m, scale.t, shape.t = 3, tmax)
   \item{shape.t}{ a numeric vector, shape parameters of the Weibull distribution for tumour induction }
   \item{tmax}{ a single numeric value, maximum time in the trial }
 }
-\details{
 
-
-  }
 \value{A data.frame with columns
    \item{time}{a numeric vector of length \code{n}, the time of death of an individual}
    \item{status}{a logical vector of length \code{n}, the tumour status at time of death (TRUE: tumour present, FALSE: no tumour present)}

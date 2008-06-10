@@ -13,9 +13,7 @@ estShannon(x, Nspec = NULL)
   \item{x}{ a integer(numeric) vector of species counts }
   \item{Nspec}{ a single integer value, fixing the number of species to a certain value \code{Nspec} }
 }
-\details{
- 
-}
+
 \value{
 A list, containing the elements:
   \item{estimate }{ a single numeric value, the estimate with bias correction according to Fritsch and Hsu (1999)}
@@ -28,9 +26,7 @@ of Entropies with Application to Dinosaur Biodiversity. Biometrics 55, 1300-1305
 
 
 \seealso{ \code{\link{estSimpsonf}} for estimating Shannon indices pooled over several samples, grouped by a factor  }
-\examples{
 
-}
 
 \keyword{ htest }
 \concept{ biodiversity }

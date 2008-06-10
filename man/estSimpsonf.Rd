@@ -10,7 +10,7 @@
 estSimpsonf(X, f)
 }
 \arguments{
-  \item{X}{ an n times p matrix with integer entries, where n is the number of samples and p is the number of species }
+  \item{X}{ a data.frame of dimension n times p with integer entries, where n is the number of samples and p is the number of species }
   \item{f}{ a factor variable of length n, grouping the observations in \code{X} }
 }
 \details{

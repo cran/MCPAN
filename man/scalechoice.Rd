@@ -15,12 +15,11 @@ scalechoice(shape = 3, pm = 0.2, t = 1)
 }
 \value{
   a single numeric value, giving the scale parameter needed to fulfill pm(t) for the current definition of the Weibull disstribution.}
-\references{ }
+
 
 \note{
 Scale parameter is defined differently than that in Peddada (2005)
  }
-\seealso{ pweibull }
-\examples{
-}
+\seealso{ \code{?pweibull} }
+
 \keyword{ misc }

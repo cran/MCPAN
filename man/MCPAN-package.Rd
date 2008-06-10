@@ -20,7 +20,7 @@ Please note, that the methods implemented in this package are NOT validated yet 
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
 Version: \tab 1.1-4\cr
-Date: \tab 2008-05-13\cr
+Date: \tab 2008-06-10\cr
 License: \tab GPL \cr
 }
 
@@ -77,9 +77,6 @@ Simulation results (coverage probability of simultaneous confidence intervals)
 
 \keyword{ package }
 
-\seealso{
-
-}
 
 \examples{
 

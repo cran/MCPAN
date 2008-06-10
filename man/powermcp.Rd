@@ -31,8 +31,6 @@ A single numeric value, the approximative power.
 }
 
 
-\examples{
-}
 \keyword{ htest }
 \concept{ power }
 \concept{ muliple contrast tests}

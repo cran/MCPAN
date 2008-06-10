@@ -12,9 +12,7 @@ corrMatgen(CM, varp)
   \item{CM}{ a matrix of contrast coefficients, dimension MxI, where M=number of contrasts, and I=number of groups in a oneway layout }
   \item{varp}{ a numeric vector of groupwise variance estimates (length = I) }
 }
-\details{
- 
-}
+
 \value{
 A matrix of dimension MxM. 
 
