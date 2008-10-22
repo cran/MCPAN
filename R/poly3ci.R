@@ -1,9 +1,11 @@
 `poly3ci` <-
-function(time, status, f, type="Dunnett", cmat=NULL, method="BP", alternative="two.sided", conf.level=0.95, dist="MVN", k=3)
+function(time, status, f, type="Dunnett", cmat=NULL, method="BP", alternative="two.sided", conf.level=0.95, dist="MVN", k=3, ...)
 
 {
 
 require(multcomp)
+
+paargs<-list(...)
 
 type <- match.arg(arg=type, choices=c("Dunnett","Tukey","Sequen","AVE","Williams","McDermott", "Changepoint"))
 
@@ -17,8 +19,8 @@ ngroups <- length(n)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(paargs$base)){base<-1}
+        else{base<-paargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}

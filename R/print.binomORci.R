@@ -4,12 +4,12 @@ function(x,...)
 
 # A table of confidence intervals
 
-args<-list(...)
+aargs<-list(...)
 
-if(is.null(args$digits))
+if(is.null(aargs$digits))
  {digits<-4}
 else
- {digits<-args$digits}
+ {digits<-aargs$digits}
 
 dist<-attr(x$quantile, which="dist")
 

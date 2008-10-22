@@ -1,7 +1,9 @@
 `poly3test` <-
-function(time, status, f, type="Dunnett", cmat=NULL, method="BP", alternative="two.sided", dist="MVN", k=3)
+function(time, status, f, type="Dunnett", cmat=NULL, method="BP", alternative="two.sided", dist="MVN", k=3, ...)
 
 {
+
+aargs<-list(...)
 
 require(multcomp)
 
@@ -18,8 +20,8 @@ ngroups <- length(n)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}

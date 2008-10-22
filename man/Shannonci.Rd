@@ -6,7 +6,8 @@
 
 }
 \usage{
-Shannonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", base=1)
+Shannonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided",
+ conf.level = 0.95, dist = "MVN", \dots)
 }
 
 \arguments{
@@ -17,7 +18,7 @@ Shannonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.l
   \item{alternative}{ a single character string, one of "two.sided","less" (upper bounds),"greater" (lower bounds)}
   \item{conf.level}{ the confidence level of the simultaneous (or local) confidence intervals }
   \item{dist}{ a single character string, defining the type of quantiles to be used for interval calculation; "MVN" invokes simultaneous intervals, "N" invokes unadjusted confidence intervals with coverage probability conf.level for each of them  }
-  \item{base}{a single integer value, specifying which group to be taken as the control in case that \code{type="Dunnett"}, ignored otherwise}
+  \item{\dots}{ further arguments to be passed; currently only \code{base} is used, a single integer value, specifying which group to be taken as the control in case that \code{type="Dunnett"}, ignored otherwise}
 }
 \details{
  This function implements confidence intervals described by Fritsch and Hsu (1999) for the difference of Shannon indices between several groups.
@@ -100,7 +101,8 @@ cmatTREND<-rbind(
 "U-L"=c(-1,0,1)
 )
 
-TrendCI<-Shannonci(X=HCDcounts, f=HCDf, cmat=cmatTREND, alternative = "greater", conf.level = 0.95, dist = "MVN")
+TrendCI<-Shannonci(X=HCDcounts, f=HCDf, cmat=cmatTREND,
+ alternative = "greater", conf.level = 0.95, dist = "MVN")
 TrendCI
 
 plot(TrendCI)

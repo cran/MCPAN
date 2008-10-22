@@ -4,19 +4,19 @@ mosaicplot.Shannonci<-function(x, decreasing=NULL, ...)
 {
 tab<-x$sample.estimate$table
 
-args<-list(...)
+aargs<-list(...)
 
-if(is.null(args$las))
- {args$las<-1}
+if(is.null(aargs$las))
+ {aargs$las<-1}
 
-if(is.null(args$main))
- {args$main<-""}
+if(is.null(aargs$main))
+ {aargs$main<-""}
 
 
 if(is.null(decreasing))
 {
-args$x<-tab
-do.call("mosaicplot", args)
+aargs$x<-tab
+do.call("mosaicplot", aargs)
 }
 else{
 
@@ -27,8 +27,8 @@ if(decreasing)
 {
 cs<-apply(tab, 2, sum)
 CO<-order(cs, decreasing=TRUE)
-args$x<-tab[,CO]
-do.call("mosaicplot", args)
+aargs$x<-tab[,CO]
+do.call("mosaicplot", aargs)
 }
 
 
@@ -36,8 +36,8 @@ if(!decreasing)
 {
 cs<-apply(tab, 2, sum)
 CO<-order(cs, decreasing=FALSE)
-args$x<-tab[,CO]
-do.call("mosaicplot", args)
+aargs$x<-tab[,CO]
+do.call("mosaicplot", aargs)
 }
 }
 
@@ -49,19 +49,19 @@ mosaicplot.Simpsonci<-function(x, decreasing=NULL, ...)
 {
 tab<-x$sample.estimate$table
 
-args<-list(...)
+aargs<-list(...)
 
-if(is.null(args$las))
- {args$las<-1}
+if(is.null(aargs$las))
+ {aargs$las<-1}
 
-if(is.null(args$main))
- {args$main<-""}
+if(is.null(aargs$main))
+ {aargs$main<-""}
 
 
 if(is.null(decreasing))
 {
-args$x<-tab
-do.call("mosaicplot", args)
+aargs$x<-tab
+do.call("mosaicplot", aargs)
 }
 else{
 
@@ -72,8 +72,8 @@ if(decreasing)
 {
 cs<-apply(tab, 2, sum)
 CO<-order(cs, decreasing=TRUE)
-args$x<-tab[,CO]
-do.call("mosaicplot", args)
+aargs$x<-tab[,CO]
+do.call("mosaicplot", aargs)
 }
 
 
@@ -81,8 +81,8 @@ if(!decreasing)
 {
 cs<-apply(tab, 2, sum)
 CO<-order(cs, decreasing=FALSE)
-args$x<-tab[,CO]
-do.call("mosaicplot", args)
+aargs$x<-tab[,CO]
+do.call("mosaicplot", aargs)
 }
 }
 

@@ -1,11 +1,11 @@
 "summary.binomRRci"<-function(object,...)
 {
 
-args<-list(...)
-if(is.null(args$digits))
+aaargs<-list(...)
+if(is.null(aaargs$digits))
  {digits<-4}
 else
- {digits<-args$digits}
+ {digits<-aaargs$digits}
 
 
 cat("Summary statistics: \n")

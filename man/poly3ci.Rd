@@ -11,7 +11,7 @@ Simultaneous asymptotic CI for contrasts of tumour rates, assuming that
 \usage{
 poly3ci(time, status, f, type = "Dunnett",
  cmat = NULL, method = "BP", alternative = "two.sided",
- conf.level = 0.95, dist="MVN", k=3)
+ conf.level = 0.95, dist="MVN", k=3, \dots)
 }
 \arguments{
   \item{time}{ a numeric vector of times of death of the individuals}
@@ -31,6 +31,8 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
  \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
 \code{"N"} invokes use of quantiles of the univariate normal distribution}
 \item{k}{the exponent to calculate survival adjusted proportions, default is k=3}
+\item{\dots}{further arguments to be passed; currently only base, to be passed to \code{contrMat} to choose the control group with \code{type="Dunnett"}}
+
 }
 
 \value{
@@ -48,6 +50,16 @@ A object of class "poly3ci", a list containing:
   \item{sample.est}{a list containing sample estimates}
 }
 \references{ 
+
+The implemented methodology is described in:
+
+Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):
+ Approximate Simultaneous confidence intervals for multiple contrasts of binomial proportions.
+ Biometrical Journal 50, 782-792.
+
+
+Background references are:
+
 Assumption for poly-3-adjustment:
  Bailer, J.A. and Portier, C.J. (1988):
  Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
@@ -74,15 +86,52 @@ which might be a matter of controversies. }
 
 \examples{
 
+#############################################################
+
+### Methyleugenol example in Schaarschmidt et al. (2008) ####
+
+#############################################################
+
+# load the data:
+
 data(methyl)
 
+# The results in Table 5 (Schaarschmidt et al. 2008) can be
+# reproduced by calling:
+
+
+methylW<-poly3ci(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, type = "Williams", method = "ADD1", alternative="greater" )
+
+methylW
+
+
+methylWT<-poly3test(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, type = "Williams", method = "ADD1", alternative="greater" )
+
+methylWT
+
+
+plot(methylW, main="Simultaneous CI for Poly-3-adjusted tumour rates")
+
+# The results in Table 6 can be reproduced by calling:
 
 methylD<-poly3ci(time=methyl$death, status=methyl$tumour,
- f=methyl$group, type = "Dunnett", method = "ADD1" )
+ f=methyl$group, type = "Dunnett", method = "ADD1", alternative="greater" )
 
 methylD
 
+methylDT<-poly3test(time=methyl$death, status=methyl$tumour,
+ f=methyl$group, type = "Dunnett", method = "ADD1", alternative="greater" )
+
+methylDT
+
+
 plot(methylD, main="Simultaneous CI for Poly-3-adjusted tumour rates")
+
+
+############################################################
+
 
 # unadjusted CI
 

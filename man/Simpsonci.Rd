@@ -6,7 +6,7 @@
  Calculates simultaneous and local confidence intervals for differences of Simpson indices.
 }
 \usage{
-Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", base=1)
+Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", \dots)
 }
 \arguments{
   \item{X}{ a data.frame of dimensions n times p with integer entries, where n is the number of samples and p is the number of species  }
@@ -16,7 +16,7 @@ Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.l
   \item{alternative}{ a single character string, one of "two.sided","less" (upper bounds),"greater" (lower bounds) }
   \item{conf.level}{ the confidence level of the simultaneous (or local) confidence intervals }
   \item{dist}{ a single character string, defining the type of quantiles to be used for interval calculation; "MVN" invokes simultaneous intervals, "N" invokes unadjusted confidence intervals with coverage probability conf.level for each of them  }
-  \item{base}{a single integer value, specifying which group to be taken as the control in case that \code{type="Dunnett"}, ignored otherwise}
+  \item{\dots}{ further arguments to be passed; currently only \code{base} is used,a single integer value, specifying which group to be taken as the control in case that \code{type="Dunnett"}, ignored otherwise}
 
 }
 \details{

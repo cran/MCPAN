@@ -9,7 +9,7 @@ old.par <- par(no.readonly=TRUE)
 }
 # estimate should be a named vector
 
-args <- list(...)
+aargs <- list(...)
 
 k<-length(estimate)
 num <- 1:k
@@ -122,10 +122,10 @@ code[winfl]<-0
 
 # Defien the defaults for main, sub, ylab, xlab:
 
-if (is.null(args$main)) {args$main<-""} 
-if (is.null(args$sub)) {args$sub<-""}
-if (is.null(args$ylab)) {args$ylab<-""} 
-if (is.null(args$xlab)) {args$xlab<-""}
+if (is.null(aargs$main)) {aargs$main<-""} 
+if (is.null(aargs$sub)) {aargs$sub<-""}
+if (is.null(aargs$ylab)) {aargs$ylab<-""} 
+if (is.null(aargs$xlab)) {aargs$xlab<-""}
 
 
 # plot function for vertical CI:
@@ -145,18 +145,18 @@ if(HL)
         mymai[1] <- xwidth
  par(mai=mymai, new=TRUE)
 }
-args$x<-num
-args$y<-estimate
-args$axes<-FALSE
+aargs$x<-num
+aargs$y<-estimate
+aargs$axes<-FALSE
 
-if(is.null(args$ylim))
-{args$ylim<-c(llplot, uuplot)}
+if(is.null(aargs$ylim))
+{aargs$ylim<-c(llplot, uuplot)}
 
-args$type="p"
-args$pch=16
-args$cex=CIcex
+aargs$type="p"
+aargs$pch=16
+aargs$cex=CIcex
 
-do.call("plot", args)
+do.call("plot", aargs)
 
 axis(side = 1, at = num, labels=compn, las=2, ... )
 axis(side=2, las=2, ...)
@@ -227,18 +227,18 @@ plot.new()
 
 rnum<-rev(num)
 
-args$y<-rnum
-args$x<-estimate
-args$axes<-FALSE
+aargs$y<-rnum
+aargs$x<-estimate
+aargs$axes<-FALSE
 
-if(is.null(args$xlim))
-{args$xlim<-c(llplot, uuplot)}
+if(is.null(aargs$xlim))
+{aargs$xlim<-c(llplot, uuplot)}
 
-args$type<-"p"
-args$pch<-16
-args$cex<-CIcex
+aargs$type<-"p"
+aargs$pch<-16
+aargs$cex<-CIcex
 
-do.call("plot", args)
+do.call("plot", aargs)
 
 axis(side = 2, at = rnum, labels=compn, las=2, ...)
 axis(side = 1, ...)
@@ -307,14 +307,14 @@ plotCI<-function(x, ...){UseMethod("plotCI")}
 plotCI.default<-function(x,...)
 {
 
-args<-list(...)
+aargs<-list(...)
 
-args$estimate<-x$estimate
-args$lower<-x$conf.int[,1]
-args$upper<-x$conf.int[,2]
-args$alternative<-x$alternative
+aargs$estimate<-x$estimate
+aargs$lower<-x$conf.int[,1]
+aargs$upper<-x$conf.int[,2]
+aargs$alternative<-x$alternative
 
-do.call("plotCII", args)
+do.call("plotCII", aargs)
 
 }
 
@@ -323,7 +323,7 @@ do.call("plotCII", args)
 
 plotCI.sci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -333,12 +333,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
@@ -350,19 +350,19 @@ do.call(plotCII, args=args)
 
 plotCI.confint.glht<-function(x, ...)
 {
-args<-list(...)
+aargs<-list(...)
 
 CI<-x$confint
 names<-rownames(CI)
 estimate<-CI[,1]
 names(estimate)<-names
 
-args$estimate<-estimate
-args$lower<-CI[,2]
-args$upper<-CI[,3]
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-CI[,2]
+aargs$upper<-CI[,3]
+aargs$alternative<-x$alternative
 
-do.call("plotCII", args=args)
+do.call("plotCII", args=aargs)
 
 }
 
@@ -384,11 +384,11 @@ do.call("plotCII", args=args)
 
 plotCI.sci.ratio<-function(x, ...)
 {
-args<-list(...)
+aargs<-list(...)
 
 estimate<-as.numeric(x$estimate)
 names(estimate)<-x$compnames
-args$estimate<-estimate
+aargs$estimate<-estimate
 
 CI<-x$conf.int
 
@@ -397,21 +397,21 @@ alternative<-x$alternative
 switch(alternative,
 
 "two.sided"={
-args$lower<-CI[,1]
-args$upper<-CI[,2]
+aargs$lower<-CI[,1]
+aargs$upper<-CI[,2]
 },
 
 "less"={
-args$upper<-CI[,1]
+aargs$upper<-CI[,1]
 },
 
 "greater"={
-args$lower<-CI[,1]
+aargs$lower<-CI[,1]
 })
 
-args$alternative<-alternative
+aargs$alternative<-alternative
 
-do.call("plotCII", args=args)
+do.call("plotCII", args=aargs)
 
 }
 
@@ -421,7 +421,7 @@ do.call("plotCII", args=args)
 
 plot.sci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -431,19 +431,19 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
 
 plot.binomORci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -453,19 +453,19 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
 
 plot.binomRRci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -475,12 +475,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
@@ -488,7 +488,7 @@ do.call(plotCII, args=args)
 
 plot.binomRDci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -498,12 +498,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
@@ -512,7 +512,7 @@ do.call(plotCII, args=args)
 
 plot.poly3ci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -522,12 +522,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
@@ -536,7 +536,7 @@ do.call(plotCII, args=args)
 
 plot.Shannonci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -546,12 +546,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
@@ -559,7 +559,7 @@ do.call(plotCII, args=args)
 
 plot.Simpsonci<-function(x,...)
 {
-args<-list(...)
+aargs<-list(...)
 CI<-x$conf.int
 cnames<-rownames(CI)
 
@@ -569,12 +569,12 @@ upper<-as.numeric(x$conf.int[,2])
 
 names(estimate)<-names(lower)<-names(upper)<-cnames
 
-args$estimate<-estimate
-args$lower<-lower
-args$upper<-upper
-args$alternative<-x$alternative
+aargs$estimate<-estimate
+aargs$lower<-lower
+aargs$upper<-upper
+aargs$alternative<-x$alternative
 
-do.call(plotCII, args=args)
+do.call(plotCII, args=aargs)
 
 }
 
