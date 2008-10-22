@@ -8,7 +8,7 @@ function(x, n, names=NULL, type="Dunnett", method="GLM",
 {
  require(multcomp)
 
-args<-list(...)
+aargs<-list(...)
 
 method<-match.arg(method, choices=c("GLM", "Woolf"))
 
@@ -54,8 +54,8 @@ method<-match.arg(method, choices=c("GLM", "Woolf"))
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -70,7 +70,7 @@ method<-match.arg(method, choices=c("GLM", "Woolf"))
 
 switch(method,
 GLM={
-    est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
+    est <- binomest.default(x=x, n=n, names=gnames, success=aargs$success)
     grp<-factor(est$names, levels=est$names)
     logisticfit <- glm(cbind(x,n-x) ~ 0 + grp, family=binomial(link="logit"))
     eta <- coefficients(logisticfit)
@@ -199,7 +199,7 @@ return(conf.int)
 }
 
 
-    est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
+    est <- binomest.default(x=x, n=n, names=gnames, success=aargs$success)
     
     XPI <- est$Y+0.5 
     XQI <- est$n-est$Y+0.5
@@ -257,22 +257,22 @@ return(conf.int)
 function(formula, data, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
-est<-binomest.formula(formula=formula, data=data, success=args$success)
+est<-binomest.formula(formula=formula, data=data, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$method<-method
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$method<-method
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomORci.default", args)
+out<-do.call("binomORci.default", args=aargs)
 
 return(out)
 
@@ -285,22 +285,22 @@ return(out)
 function(x, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
-est<-binomest.table(x=x, success=args$success)
+est<-binomest.table(x=x, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$method<-method
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$method<-method
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomORci.default", args)
+out<-do.call("binomORci.default", args=aargs)
 
 return(out)
 
@@ -310,24 +310,24 @@ return(out)
 function(x, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
 tab<-as.table(x)
 
-est<-binomest.table(x=tab, success=args$success)
+est<-binomest.table(x=tab, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$method<-method
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$method<-method
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomORci.default", args)
+out<-do.call("binomORci.default", args=aargs)
 
 return(out)
 

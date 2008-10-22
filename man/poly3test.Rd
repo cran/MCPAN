@@ -9,7 +9,7 @@ Based on approximation of the true distribution of the M test statistics by an M
 \usage{
 poly3test(time, status, f, type = "Dunnett",
  cmat = NULL, method = "BP", alternative = "two.sided",
-dist="MVN", k=3)
+dist="MVN", k=3, \dots)
 }
 \arguments{
   \item{time}{  a numeric vector of times of death of the individuals}
@@ -29,6 +29,7 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
  and \code{"N"} invokes use p-value computation using the univariate normal distribution}
 
 \item{k}{a single numeric value, the exponent to calculate survival adjusted proportions according to Bailer and Portier (1988), defaults to 3}
+\item{\dots}{further arguments to be passed; currently only \code{base}, to choose the control group with \code{type="Dunnett"}}
 
 }
 \details{

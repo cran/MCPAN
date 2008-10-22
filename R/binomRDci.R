@@ -6,7 +6,7 @@
 {
  require(multcomp)
 
-args<-list(...)
+aargs<-list(...)
 
 # check x, n
 
@@ -52,8 +52,8 @@ args<-list(...)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -65,7 +65,7 @@ args<-list(...)
 
 # get the point and variance estimates
 
-    est <- binomest.default(x=x, n=n, names=gnames, method = method, success=args$success)
+    est <- binomest.default(x=x, n=n, names=gnames, method = method, success=aargs$success)
 
     out <- Waldci(estp = est$estp,
      varcor=est$varcor,
@@ -98,9 +98,9 @@ args<-list(...)
 {
  require(multcomp)
 
- args<-list(...)
+ aargs<-list(...)
 
- est<-binomest.table(x, method=method, success=args$success)
+ est<-binomest.table(x, method=method, success=aargs$success)
 
  n<-est$n
  k<-length(n)
@@ -114,8 +114,8 @@ args<-list(...)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -168,12 +168,12 @@ args<-list(...)
 {
  require(multcomp)
 
- args<-list(...)
- args$formula<-formula
- args$data<-data
- args$method<-method
+ aargs<-list(...)
+ aargs$formula<-formula
+ aargs$data<-data
+ aargs$method<-method
 
- est<-do.call("binomest.formula", args)
+ est<-do.call("binomest.formula", args=aargs)
 
  out<-binomRDci.default(x=est$Y, n=est$n, names=est$names,
  type=type, cmat=cmat,

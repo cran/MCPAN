@@ -20,7 +20,7 @@ Please note, that the methods implemented in this package are NOT validated yet 
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
 Version: \tab 1.1-4\cr
-Date: \tab 2008-06-10\cr
+Date: \tab 2008-10-16\cr
 License: \tab GPL \cr
 }
 
@@ -33,6 +33,30 @@ Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
 
 \references{
 
+Reference for muliple differences of proportions:
+
+Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):
+ Approximate Simultaneous Confidence Intervals for Multiple Contrasts of Binomial Proportions.
+ Biometrical Journal 50, 782-792.
+
+See \code{\link{binomRDci}} for the code that reproduces the examples in this reference.
+
+Reference for multiple differences of poly-k-rates:
+
+Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):
+ Poly-k-trend tests for survival adjusted analysis of tumor rates formulated as approximate multiple contrast test.
+ Journal of Biopharmaceutical Statistics 18, 934-948.
+
+See \code{\link{poly3ci}} for the code that reproduces the example in this reference.
+
+Simultaneous confidence intervals for Dunnett-type comparisons to control using odds ratios:
+
+Holford, TR, Walter, SD and Dunnett, CW (1989): Simultaneous interval estimates of the odds ratio in
+studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-434.
+
+
+Background references:
+
 The Add-2 Confidence interval for the difference of two binomial proportions:
 
 Agresti, A. and Caffo, B.(2000):
@@ -44,12 +68,6 @@ and its generalization to a single contrast of several proportions in:
 Price, R.M. and Bonett, D.G. (2004):
  An improved confidence interval for a linear function of binomial proportions.
  Computational Statistics and Data Analysis 45, 449-456.
-
-Simultaneous confidence intervals for Dunnett-type comparisons to control using odds ratios:
-
-Holford, TR, Walter, SD and Dunnett, CW (1989): Simultaneous interval estimates of the odds ratio in
-studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-434.
-
 
 For long-term rodent carcinogenicity data: The assumptions of poly-3-adjustment are outlined in:
 
@@ -84,7 +102,7 @@ Simulation results (coverage probability of simultaneous confidence intervals)
 # # # 1)
 # Adjusted p-values and simultaneous confidence intervals 
 # for 2xk tables of binomial data: 
-# binomtest, binomci
+# binomRDtest, binomRDci
 
 # Difference of proportions
 
@@ -107,7 +125,6 @@ binomORci(x=c(2,6,4,13), n=c(34,33,36,34),
 # ?liarozole
 
  data(liarozole) 
-
 
 
 # # # 2)
@@ -139,7 +156,7 @@ poly3test(time=methyl$death, status=methyl$tumour,
 
 
 # # # 3) Plot of confidence intervals
-# created by binomci and poly3ci:
+# created by binomRDci and poly3ci:
 
 MethylCI <- poly3ci(time=methyl$death, status=methyl$tumour,
  f=methyl$group, method="ADD1",

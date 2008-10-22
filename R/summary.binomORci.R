@@ -2,11 +2,11 @@
 function(object,...)
 {
 
-args<-list(...)
-if(is.null(args$digits))
+aargs<-list(...)
+if(is.null(aargs$digits))
  {digits<-4}
 else
- {digits<-args$digits}
+ {digits<-aargs$digits}
 
 success<-object$success
 

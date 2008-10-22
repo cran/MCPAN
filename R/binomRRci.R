@@ -29,7 +29,7 @@ function(x, n, names=NULL, type="Dunnett",
 {
  require(multcomp)
 
-args<-list(...)
+aargs<-list(...)
 
 # check x, n
 
@@ -113,8 +113,8 @@ return(conf.int)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -127,7 +127,7 @@ return(conf.int)
 
 # get the point and variance estimates
 
-    est <- binomest.default(x=x, n=n, names=gnames, success=args$success)
+    est <- binomest.default(x=x, n=n, names=gnames, success=aargs$success)
 
   #  print(est)
 
@@ -188,21 +188,21 @@ if(any(x<4) & any(n-x<4))
 function(formula, data, type="Dunnett",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
-est<-binomest.formula(formula=formula, data=data, success=args$success)
+est<-binomest.formula(formula=formula, data=data, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomRRci.default", args)
+out<-do.call("binomRRci.default", aargs)
 
 return(out)
 
@@ -215,21 +215,21 @@ return(out)
 function(x, type="Dunnett",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
-est<-binomest.table(x=x, success=args$success)
+est<-binomest.table(x=x, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomRRci.default", args)
+out<-do.call("binomRRci.default", aargs)
 
 return(out)
 
@@ -239,23 +239,23 @@ return(out)
 function(x, type="Dunnett",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
-args<-list(...)
+aargs<-list(...)
 
 tab<-as.table(x)
 
-est<-binomest.table(x=tab, success=args$success)
+est<-binomest.table(x=tab, success=aargs$success)
 
-args$x<-est$Y
-args$n<-est$n
-args$names<-est$names
-args$type<-type
-args$cmat<-cmat
-args$alternative<-alternative
-args$conf.level<-conf.level
-args$success<-est$success
-args$dist<-dist
+aargs$x<-est$Y
+aargs$n<-est$n
+aargs$names<-est$names
+aargs$type<-type
+aargs$cmat<-cmat
+aargs$alternative<-alternative
+aargs$conf.level<-conf.level
+aargs$success<-est$success
+aargs$dist<-dist
 
-out<-do.call("binomRRci.default", args)
+out<-do.call("binomRRci.default", aargs)
 
 return(out)
 

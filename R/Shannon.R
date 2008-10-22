@@ -107,8 +107,10 @@ return(out)
 }
 
 `Shannonci` <-
-function(X, f, cmat=NULL, type="Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", base=1)
+function(X, f, cmat=NULL, type="Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", ...)
 {
+
+aargs<-list(...)
 
 type<-match.arg(type, choices=c("Dunnett","Tukey","Sequen"))
 alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
@@ -138,7 +140,10 @@ esti<-estShannonf(X=X, f=as.factor(f))
 n<-apply(X=esti$table, MARGIN=1, FUN=sum)
 
 if(is.null(cmat))
- {cmat<-contrMat(n=n, type=type, base=base)}
+ {
+  if(is.null(aargs$base)){base<-1}
+   else{base<-aargs$base}
+ cmat<-contrMat(n=n, type=type, base=base)}
 else
  {
  if(ncol(cmat)!=k)
@@ -171,12 +176,12 @@ function(x,...)
 
 # A table of confidence intervals
 
-args<-list(...)
+aargs<-list(...)
 
-if(is.null(args$digits))
+if(is.null(aargs$digits))
  {digits<-4}
 else
- {digits<-args$digits}
+ {digits<-aargs$digits}
 
 dist<-attr(x$quantile, which="dist")
 
@@ -203,11 +208,11 @@ invisible(x)
 function(object,...)
 {
 
-args<-list(...)
-if(is.null(args$digits))
+aargs<-list(...)
+if(is.null(aargs$digits))
  {digits<-4}
 else
- {digits<-args$digits}
+ {digits<-aargs$digits}
 
 cat("\n Data: \n")
 

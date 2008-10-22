@@ -5,7 +5,7 @@
  cmat=NULL, method="Wald", alternative="two.sided", dist="MVN", ...)
 {
 
-args<-list(...)
+aargs<-list(...)
 
  require(multcomp)
 
@@ -55,8 +55,8 @@ args<-list(...)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -67,7 +67,7 @@ args<-list(...)
     }
 
 
-    est <- binomest.default(x=x, n=n, names=gnames, method = method, success=args$success)
+    est <- binomest.default(x=x, n=n, names=gnames, method = method, success=aargs$success)
 
     out <- Waldtest(estp = est$estp,
      varp = est$varcor,
@@ -95,10 +95,10 @@ args<-list(...)
 
  require(multcomp)
 
-args<-list(...)
+aargs<-list(...)
 
 
- est<-binomest.table(x, method=method, success=args$success)
+ est<-binomest.table(x, method=method, success=aargs$success)
  n<-est$n
  k<-length(n)
 
@@ -113,8 +113,8 @@ args<-list(...)
 
     if (is.null(cmat)) {
       if(type=="Dunnett") {
-        if(is.null(args$base)){base<-1}
-        else{base<-args$base}
+        if(is.null(aargs$base)){base<-1}
+        else{base<-aargs$base}
         cmat <- contrMat(n=n, type=type, base=base)
        }
        else{cmat <- contrMat(n = n, type = type)}
@@ -155,16 +155,16 @@ args<-list(...)
 
  mat<-as.table(x)
 
- args<-list(...)
+ aargs<-list(...)
 
- args$x<-mat
- args$type<-type
- args$cmat<-cmat
- args$method<-method
- args$alternative<-alternative
- args$dist<-dist 
+ aargs$x<-mat
+ aargs$type<-type
+ aargs$cmat<-cmat
+ aargs$method<-method
+ aargs$alternative<-alternative
+ aargs$dist<-dist 
 
- out<-do.call("binomRDtest.table", args)
+ out<-do.call("binomRDtest.table", args=aargs)
  
  return(out)
 }
@@ -177,23 +177,23 @@ args<-list(...)
 {
  require(multcomp)
 
- testargs<-args<-list(...)
- args$formula<-formula
- args$data<-data
- args$method<-method
+ testaargs<-aargs<-list(...)
+ aargs$formula<-formula
+ aargs$data<-data
+ aargs$method<-method
 
- est<-do.call("binomest.formula", args)
- testargs$x<-est$Y
- testargs$n<-est$n
- testargs$names<-est$names
- testargs$type<-type
- testargs$cmat<-cmat
- testargs$method<-method
- testargs$alternative<-alternative
- testargs$dist<-dist 
- testargs$success<-est$success
+ est<-do.call("binomest.formula", args=aargs)
+ testaargs$x<-est$Y
+ testaargs$n<-est$n
+ testaargs$names<-est$names
+ testaargs$type<-type
+ testaargs$cmat<-cmat
+ testaargs$method<-method
+ testaargs$alternative<-alternative
+ testaargs$dist<-dist 
+ testaargs$success<-est$success
 
- out<-do.call("binomRDtest.default", testargs)
+ out<-do.call("binomRDtest.default", args=testaargs)
  return(out)
 
 }

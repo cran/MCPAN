@@ -76,10 +76,10 @@ A object of class "binomRDci", a list containing:
   \item{cmat}{the contrast matrix used}
 }
 \references{ 
- Statistical procedures and characterization of coverage probabilities are described in:
- Sill, M. (2007):
- Approximate simultaneous confidence intervals for multiple comparisons of binomial proportions.
- Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+
+ Schaarschmidt, F., Sill, M. and Hothorn, L.A. (2008):
+ Approximate simultaneous confidence intervals for multiple contrasts of binomial proportions.
+ Biometrical Journal 50, 782-792.
 
 Background references:
  
@@ -95,6 +95,12 @@ Price, R.M. and Bonett, D.G. (2004):
  An improved confidence interval for a linear function of binomial proportions.
  Computational Statistics and Data Analysis 45, 449-456.
 
+More detailed simulation results are available in:
+
+ Sill, M. (2007):
+ Approximate simultaneous confidence intervals for multiple comparisons of binomial proportions.
+ Master thesis, Institute of Biostatistics, Leibniz University Hannover.
+
  }
 
 \note{ Note, that all implemented methods are approximate only. The coverage probability of the 
@@ -102,6 +108,95 @@ intervals might seriously deviate from the nominal level for small sample sizes 
 See the simulation results in Sill (2007) for details. }
 \seealso{ \code{\link{summary.binomRDci}}, \code{\link{plot.sci}} }
 \examples{
+
+###############################################################
+
+### Example 1 Tables 1,7,8 in Schaarschmidt et al. (2008):  ###
+
+###############################################################
+
+# Number of patients under observation: 
+n <- c(29, 24, 25, 24, 46)
+
+# Number of patients with complete response:
+cr <- c(7, 11, 10, 12, 21)
+
+# (Optional) names for the treatments
+dn <- c("0.3_1.0", "3", "10", "30", "90")
+
+# Assume we aim to infer an increasing trend with increasing dosage,
+# Using the changepoint contrasts (Table 7, Schaarschmidt et al., 2008)
+
+contrMat(n=n, type="Changepoint")
+
+
+# The results in Table 8 can be reproduced by calling:
+
+binomRDci(n=n, x=cr, names=dn, alternative="greater",
+ method="ADD2", type="Changepoint")
+
+binomRDci(n=n, x=cr, names=dn, alternative="greater",
+ method="ADD1", type="Changepoint")
+
+binomRDci(n=n, x=cr, names=dn, alternative="greater", 
+ method="Wald", type="Changepoint")
+
+##############################################################
+
+### Example 2, Tables 2,9,10 in Schaarschmidt et al. 2008  ###
+
+##############################################################
+
+# Data (Table 2)
+
+# animals under risk
+n<-c(30,30,30,30)
+
+# animals showing cancer
+cancer<-c(20,14,27,19)
+
+# short names for the treatments
+trtn<-c("HFaFi","LFaFi","HFaNFi","LFaNFi")
+
+
+# User-defined contrast matrix (Table 9),
+# columns of the contrast matrix 
+
+cmat<-rbind(
+"Fiber - No Fiber"=c( 0.5, 0.5,-0.5,-0.5),
+"Low Fat - High Fat"=c(-0.5, 0.5,-0.5, 0.5),
+"Interaction Fat:Fiber"=c(   1,  -1,   -1,  1))
+
+cmat
+
+# The results in Table 10 can be reproduced by calling:
+
+# simultaneous CI using the add-2 adjustment
+
+sci<-binomRDci(x=cancer, n=n, names=trtn, method="ADD2",
+ cmat=cmat, dist="MVN")
+
+sci
+
+# marginal CI using the basic Wald formula
+
+ci<-binomRDci(x=cancer, n=n, names=trtn, method="Wald",
+ cmat=cmat, dist="N")
+
+ci
+
+
+# check, whether the intended contrasts have been defined:
+
+summary(sci)
+
+# plot the result:
+
+plot(sci, lines=0, lineslty=3)
+
+
+##########################################
+
 
 # In simple cases, counts of successes
 # and number of trials can be just typed:
@@ -126,6 +221,8 @@ summary(ex1W)
 # if data are represented as dichotomous variable
 # in a data.frame one can make use of table:
 
+
+#################################
 
 data(liarozole)
 
