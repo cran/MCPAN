@@ -40,34 +40,34 @@ binomORci(x, ...)
 
 \arguments{
   \item{x}{ a numeric vector, giving the number of successes in I independent samples,
-  or an object of class \code{"table"}, representing the 2xk-table,
-  or an object of class \code{"matrix"}, representing the 2xk-table}
+  or an object of class \kbd{"table"}, representing the 2xk-table,
+  or an object of class \kbd{"matrix"}, representing the 2xk-table}
 
   \item{n}{  numeric vector, giving the number of trials (i.e. the sample size) in each of the I groups
- (only required if \code{x} is a numeric vector, ignored otherwise)  }
+ (only required if \kbd{x} is a numeric vector, ignored otherwise)  }
 
-  \item{names}{an optional character string, giving the names of the groups/ sample in \code{x}, \code{n};
- if not specified the possible names of x are taken as group names (ignored if \code{x} is a table or matrix)}
+  \item{names}{an optional character string, giving the names of the groups/ sample in \kbd{x}, \kbd{n};
+ if not specified the possible names of x are taken as group names (ignored if \kbd{x} is a table or matrix)}
  
  \item{formula}{a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
   while treatment should be a factor specifying the treatment levels}
 
   \item{data}{a data.frame, containing the variables specified in formula}
   \item{type}{ a character string, giving the name of a contrast method,
- as defined in \code{contrMat(multcomp)}; ignored if \code{cmat} is sepcified }
-  \item{method}{a single character string, specifying the method for confidence interval computation; Options are \code{"GLM"} and \code{"Woolf"}.
- \code{"GLM"} takes the maximum likelihood estimates and the their standard errors; this yields a conservative confidence intervals with uninformative limits if x=0 and x=n occures.
- \code{"Woolf"} adds 0.5 to the cell counts, resulting in less conservative bounds. These can be liberal when extreme proportions are compared. }
+ as defined in \kbd{contrMat(multcomp)}; ignored if \kbd{cmat} is sepcified }
+  \item{method}{a single character string, specifying the method for confidence interval computation; Options are \kbd{"GLM"} and \kbd{"Woolf"}.
+ \kbd{"GLM"} takes the maximum likelihood estimates and the their standard errors; this yields a conservative confidence intervals with uninformative limits if x=0 and x=n occures.
+ \kbd{"Woolf"} adds 0.5 to the cell counts, resulting in less conservative bounds. These can be liberal when extreme proportions are compared. }
   \item{cmat}{ a optional contrast matrix }
   \item{alternative}{ a single character string, one of "two.sided", "less", "greater" }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
-  \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
-  \code{"N"} invokes use of quantiles of the univariate normal distribution}
-  \item{\dots}{ arguments to be passed to \code{\link{binomest}}, currently only \code{success} labelling the event which should be considered as success}
+  \item{dist}{a character string, \kbd{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
+  \kbd{"N"} invokes use of quantiles of the univariate normal distribution}
+  \item{\dots}{ arguments to be passed to \link{binomest}, currently only \kbd{success} labelling the event which should be considered as success}
 
 }
 \details{
-This function calls \code{\link{glm}} and fits a one-way-model with family binomial on the logit-link.
+This function calls \link{glm} and fits a one-way-model with family binomial on the logit-link.
 Then, the point estimates and variances estimates from the fit are taken to construct simultaneous confidence
 intervals for differences (of weighted arithmetic means) of log-odds.
 Applying the exponential function to these intervals on the logit scale yields
@@ -76,9 +76,9 @@ one yields intervals for oddsratios.
 For the case of Dunnett-type contrasts, the calculated simultaneous confidence intervals
 are those described in Holford et al. (1989).
 
-Specifying \code{method="GLM"} takes maximum likelihood estimates for the log-odds and their standard errors evaluated at the estimate.
+Specifying \kbd{method="GLM"} takes maximum likelihood estimates for the log-odds and their standard errors evaluated at the estimate.
 
-Specifying \code{method="Woolf"} takes adds 0.5 to each cell count and computes point estimates and standard errors for these continuity corrected values.
+Specifying \kbd{method="Woolf"} takes adds 0.5 to each cell count and computes point estimates and standard errors for these continuity corrected values.
 For the two-sample comparison this method is refered to as "adjusted Woolf" (Lawson, 2005). In this implementation, the lower bounds yielded by this method
  are additionally expanded to 0, if all values in the denominator are x=n or all values in the numerator are x=0, and the upper bounds are expanded to Inf, 
  if all values in the denominator are x=0 or all values in the numerator are x=n.
@@ -109,9 +109,9 @@ studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-4
 \author{ Frank Schaarschmidt, Daniel Gerhard }
 
 
-\seealso{ Intervals for the risk difference \code{\link{binomRDci}},
- summary for odds ratio confidence intervals \code{\link{summary.binomORci}}
- plot for confidence intervals \code{\link{plot.sci}}
+\seealso{ Intervals for the risk difference \link{binomRDci},
+ summary for odds ratio confidence intervals \link{summary.binomORci}
+ plot for confidence intervals \link{plot.sci}
  }
 \examples{
 data(liarozole)

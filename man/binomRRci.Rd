@@ -37,24 +37,24 @@ binomRRci(x,...)
 }
 \arguments{
   \item{x}{ a numeric vector, giving the number of successes in I independent samples,
-  or an object of class \code{"table"}, representing the 2xk-table,
-  or an object of class \code{"matrix"}, representing the 2xk-table
+  or an object of class \kbd{"table"}, representing the 2xk-table,
+  or an object of class \kbd{"matrix"}, representing the 2xk-table
 }
   \item{n}{ a numeric vector, giving the number of trials (i.e. the sample size) in each of the I groups
- (only required if \code{x} is a numeric vector, ignored otherwise) }
-  \item{names}{an optional character string, giving the names of the groups/ sample in \code{x}, \code{n};
- if not specified the possible names of x are taken as group names (ignored if \code{x} is a table or matrix)}
+ (only required if \kbd{x} is a numeric vector, ignored otherwise) }
+  \item{names}{an optional character string, giving the names of the groups/ sample in \kbd{x}, \kbd{n};
+ if not specified the possible names of x are taken as group names (ignored if \kbd{x} is a table or matrix)}
    \item{formula}{a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
   while treatment should be a factor specifying the treatment levels}
   \item{data}{a data.frame, containing the variables specified in formula}
   \item{type}{ a character string, giving the name of a contrast method,
- as defined in \code{contrMat(multcomp)}; ignored if \code{cmat} is sepcified }
+ as defined in \kbd{contrMat(multcomp)}; ignored if \kbd{cmat} is specified }
   \item{cmat}{ a optional contrast matrix }
   \item{alternative}{ a single character string, one of "two.sided", "less", "greater" }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
-  \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
- \code{"N"} invokes use of quantiles of the univariate normal distribution}
-  \item{\dots}{ arguments to be passed to \code{\link{binomest}}, currently only \code{success} labelling the event which should be considered as success}
+  \item{dist}{a character string, \kbd{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
+ \kbd{"N"} invokes use of quantiles of the univariate normal distribution}
+  \item{\dots}{ arguments to be passed to \link{binomest}, currently only \kbd{success} labelling the event which should be considered as success}
 }
 \details{
  The interval for the ratio of two independent proportions, described in section "Crude Methods using first-order variance estimation" in Gart and Nam (1988) are extended
@@ -90,7 +90,7 @@ Gart, JJ and Nam,J-m (1988): Approximate interval estimation of the ratio of bin
 \note{ Note, that all implemented methods are approximate only. The coverage probability of the 
 intervals might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
 }
-\seealso{ \code{\link{summary.binomRDci}} for the risk difference, \code{\link{summary.binomORci}} for the odds ratio, \code{\link{plot.sci}} for plotting}
+\seealso{ \link{summary.binomRDci} for the risk difference, \link{summary.binomORci} for the odds ratio, \link{plot.sci} for plotting}
 \examples{
 
 # In simple cases, counts of successes
@@ -144,7 +144,4 @@ binomRRci(x=c(0,0,20,5),n=c(20,20,20,20),names=c("A","B","C","D"),
 
 }
 \keyword{ htest }
-\concept{binomial}
-\concept{proportion}
-\concept{risk ratio}
-\concept{simultaneous}
+

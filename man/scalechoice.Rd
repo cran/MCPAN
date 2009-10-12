@@ -20,6 +20,6 @@ scalechoice(shape = 3, pm = 0.2, t = 1)
 \note{
 Scale parameter is defined differently than that in Peddada (2005)
  }
-\seealso{ \code{?pweibull} }
+\seealso{ \kbd{?pweibull} }
 
 \keyword{ misc }

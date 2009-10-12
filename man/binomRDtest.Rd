@@ -32,11 +32,11 @@ binomRDtest(x, ...)
 }
 \arguments{
   \item{x}{ a numeric vector, giving the number of successes in I independent samples,
-  or an object of class \code{"table"}, representing the 2xk-table,
-  or an object of class \code{"matrix"}, representing the 2xk-table
+  or an object of class \kbd{"table"}, representing the 2xk-table,
+  or an object of class \kbd{"matrix"}, representing the 2xk-table
  }
   \item{n}{ a numerioc vector, giving the number of trials (i.e. the sample size) in each of the I groups }
-  \item{names}{an optional character vector, giving the names of the groups in \code{x}, \code{n}; if not specified, possibly availbale names of x are taken as group names}
+  \item{names}{an optional character vector, giving the names of the groups in \kbd{x}, \kbd{n}; if not specified, possibly availbale names of x are taken as group names}
   \item{formula}{a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
   while treatment should be a factor specifying the treatment levels}
   \item{data}{a data.frame, containing the variables specified in formula}
@@ -48,9 +48,9 @@ with options: "Wald" (Maximum likelihood estimators),
 "ADD2" (add2-adjustment on proportion estimates following Agresti Caffo (2000))
  }
   \item{alternative}{ a character string specifying the direction of the alternative hypothesis}
- \item{dist}{a character string, where \code{"MVN"} invokes the computation of p-values using the multivariate normal distribution,
- and \code{"N"} invokes use p-value computation using the univariate normal distribution}
-\item{\dots}{ arguments to be passed to \code{\link{binomest}}, currently only \code{success} labelling the event which should be considered as success}
+ \item{dist}{a character string, where \kbd{"MVN"} invokes the computation of p-values using the multivariate normal distribution,
+ and \kbd{"N"} invokes use p-value computation using the univariate normal distribution}
+\item{\dots}{ arguments to be passed to \link{binomest}, currently only \kbd{success} labelling the event which should be considered as success}
 
 }
 \details{ 
@@ -81,7 +81,7 @@ For usage, see the examples.
 Note, that all implemented methods are approximate only. The size of the 
 test might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
 See the simulation results in Sill (2007) for details.  }
-\seealso{ \code{\link{summary.binomRDtest}} }
+\seealso{ \link{summary.binomRDtest} }
 \examples{
 
 ntrials <- c(40,20,20,20)

@@ -12,13 +12,13 @@ Shannonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided",
 
 \arguments{
   \item{X}{ a data.frame of dimensions n times p with integer entries, where n is the number of samples and p is the number of species }
-  \item{f}{ a factor variable of length n, grouping the observations in \code{X} }
-  \item{cmat}{ an contrast matrix; the number of columns should match the number of levels in \code{f} }
+  \item{f}{ a factor variable of length n, grouping the observations in \kbd{X} }
+  \item{cmat}{ an contrast matrix; the number of columns should match the number of levels in \kbd{f} }
   \item{type}{ a single character string, currently one of "Dunnett","Tukey","Sequen" }
   \item{alternative}{ a single character string, one of "two.sided","less" (upper bounds),"greater" (lower bounds)}
   \item{conf.level}{ the confidence level of the simultaneous (or local) confidence intervals }
   \item{dist}{ a single character string, defining the type of quantiles to be used for interval calculation; "MVN" invokes simultaneous intervals, "N" invokes unadjusted confidence intervals with coverage probability conf.level for each of them  }
-  \item{\dots}{ further arguments to be passed; currently only \code{base} is used, a single integer value, specifying which group to be taken as the control in case that \code{type="Dunnett"}, ignored otherwise}
+  \item{\dots}{ further arguments to be passed; currently only \kbd{base} is used, a single integer value, specifying which group to be taken as the control in case that \kbd{type="Dunnett"}, ignored otherwise}
 }
 \details{
  This function implements confidence intervals described by Fritsch and Hsu (1999) for the difference of Shannon indices between several groups.
@@ -35,7 +35,7 @@ A list containing the elements:
   \item{estimate }{a matrix,containing the point estimates of the contrasts in its column}
   \item{cmat}{ the contrast matrix used}
   \item{methodname}{a character string, for printing}
-  \item{sample.estimate}{A list of sample estimates as returned by \code{\link{estShannonf}} }
+  \item{sample.estimate}{A list of sample estimates as returned by \link{estShannonf} }
   and some of the input arguments
 
 }
@@ -45,7 +45,7 @@ of Entropies with Application to Dinosaur Biodiversity. Biometrics 55, 1300-1305
 
 \author{ Frank Schaarschmidt }
 
-\seealso{ \code{\link{Simpsonci}} for simultaneous and local intervals of differences of the Simpson index }
+\seealso{ \link{Simpsonci} for simultaneous and local intervals of differences of the Simpson index }
 
 \examples{
 

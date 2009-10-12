@@ -12,13 +12,13 @@
 \format{
   A data frame with 137 observations on the following 2 variables.
   \describe{
-    \item{\code{Improved}}{a factor with levels \code{n},  \code{y}, for "no" and "yes"}
-    \item{\code{Treatment}}{a factor with levels \code{Dose150},  \code{Dose50},  \code{Dose75},  \code{Placebo}}
+    \item{Improved}{a factor with levels \kbd{n}, \kbd{y}, for "no" and "yes"}
+    \item{Treatment}{a factor with levels \kbd{Dose150}, \kbd{Dose50}, \kbd{Dose75}, \kbd{Placebo}}
   }
 }
 \details{
    For illustrative purpose only. Number of successes recalculated from proportions
- presented in the publication, while the number of patients in group \code{Dose50} was not exactly clear.
+ presented in the publication, while the number of patients in group \kbd{Dose50} was not exactly clear.
 }
 \source{
   Berth-Jones J, Todd G, Hutchinson PE, Thestrup-Pedersen K, Vanhoutte FP:

@@ -12,13 +12,13 @@ Create a mosaicplot from objects of class Shannonci or Simpsonci
 }
 
 \arguments{
-  \item{x}{ an object of class \code{"Simpsonci"} or \code{"Shannonci"} as can be obtained from calling \code{\link{Simpsonci}} or \code{\link{Shannonci}} }
-  \item{decreasing}{ a single logical value, indicating whether the species should be plotted in the current order (if \code{decreasing=NULL}),
- in decreasing order (if \code{decreasing=TRUE}), or in increasing order (if \code{decreasing=FALSE}) }
-  \item{\dots}{ further arguments to be passed to \code{mosaicplot}, see \code{?mosaicplot} and \code{?par} for details }
+  \item{x}{ an object of class \kbd{"Simpsonci"} or \kbd{"Shannonci"} as can be obtained from calling \link{Simpsonci} or \link{Shannonci} }
+  \item{decreasing}{ a single logical value, indicating whether the species should be plotted in the current order (if \kbd{decreasing=NULL}),
+ in decreasing order (if \kbd{decreasing=TRUE}), or in increasing order (if \kbd{decreasing=FALSE}) }
+  \item{\dots}{ further arguments to be passed to \kbd{mosaicplot}, see \kbd{?mosaicplot} and \kbd{?par} for details }
 }
 \details{
- This function uses the counts in \code{[["sample.estimate"]][["table"]]} to produce a mosaicplot.
+ This function uses the counts in \kbd{[["sample.estimate"]][["table"]]} to produce a mosaicplot.
 }
 \value{
 A plot.

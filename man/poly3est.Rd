@@ -23,7 +23,7 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
 \item{k}{a single numeric value, the exponent to calculate survival adjusted proportions according to Bailer and Portier (1988), defaults to 3}
 }
 \details{
- Only for internal use of \code{\link{poly3test}} and \code{\link{poly3ci}}.
+ Only for internal use of \link{poly3test} and \link{poly3ci}.
 }
 \value{
  A list containing:

@@ -18,8 +18,8 @@ censsamplef(n, scale.m, shape.m, scale.t, shape.t = 3, tmax)
 }
 
 \value{A data.frame with columns
-   \item{time}{a numeric vector of length \code{n}, the time of death of an individual}
-   \item{status}{a logical vector of length \code{n}, the tumour status at time of death (TRUE: tumour present, FALSE: no tumour present)}
+   \item{time}{a numeric vector of length \kbd{n}, the time of death of an individual}
+   \item{status}{a logical vector of length \kbd{n}, the tumour status at time of death (TRUE: tumour present, FALSE: no tumour present)}
    \item{T.t}{time of tumour induction (unobservable)}
    \item{T.m}{time of death}
    \item{tmax}{maximum time of death}

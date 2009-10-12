@@ -18,11 +18,11 @@
 }
 
 \arguments{
-  \item{x}{ An object of class "sci", "sci.ratio" or "conf.int.glht" or a list with elements \code{estimate}, containing a numeric vector,\code{conf.int}, containing a matrix with two columns, giving the lower and upper bounds, and a string \code{alternative}, one of "two.sided", "less", "greater"  }
-  \item{\dots}{ additional arguments to be passed to \code{\link{plotCII}} }
+  \item{x}{ An object of class "sci", "sci.ratio" or "conf.int.glht" or a list with elements \kbd{estimate}, containing a numeric vector,\kbd{conf.int}, containing a matrix with two columns, giving the lower and upper bounds, and a string \kbd{alternative}, one of "two.sided", "less", "greater"  }
+  \item{\dots}{ additional arguments to be passed to \link{plotCII} }
 }
 \details{
- Plots the estimates, upper and lower limits using \code{points} and \code{segments}. The names of \code{estimate} are passed as labels of the confidence intervals.
+ Plots the estimates, upper and lower limits using \kbd{points} and \kbd{segments}. The names of \kbd{estimate} are passed as labels of the confidence intervals.
  If infinite bounds occur, the plot region is limited by the most extreme non infinite bound or estimate.
 }
 \value{
@@ -30,7 +30,7 @@
 }
 
 
-\seealso{ Internally, the function \code{\link{plotCII}} is used.}
+\seealso{ Internally, the function \link{plotCII} is used.}
 \examples{
 
 x=c(8,9,9,18,39,44)

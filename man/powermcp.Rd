@@ -12,7 +12,7 @@ powermcp(TExpH1, alpha = 0.05, corrmatH1, alternative = "two.sided")
 \arguments{
   \item{TExpH1}{numeric vector: the expectation of the test statistics under the alternative }
   \item{alpha}{ a single numeric value: alpha-level, defaults to 0.05 }
-  \item{corrmatH1}{ a numeric matrix, the correlation matrix of the teststatistics under the alternative, must have same dimensions as length of \code{TExpH1}  }
+  \item{corrmatH1}{ a numeric matrix, the correlation matrix of the teststatistics under the alternative, must have same dimensions as length of \kbd{TExpH1}  }
   \item{alternative}{  a single character string, specifying the alternative, one of "two.sided", "less", or "greater"  }
 }
 \details{  

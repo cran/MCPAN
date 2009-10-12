@@ -37,25 +37,25 @@ binomRDci(x,...)
 }
 \arguments{
   \item{x}{ a numeric vector, giving the number of successes in I independent samples,
-  or an object of class \code{"table"}, representing the 2xk-table,
-  or an object of class \code{"matrix"}, representing the 2xk-table
+  or an object of class \kbd{"table"}, representing the 2xk-table,
+  or an object of class \kbd{"matrix"}, representing the 2xk-table
 }
   \item{n}{ a numeric vector, giving the number of trials (i.e. the sample size) in each of the I groups
- (only required if \code{x} is a numeric vector, ignored otherwise) }
-  \item{names}{an optional character string, giving the names of the groups/ sample in \code{x}, \code{n};
- if not specified the possible names of x are taken as group names (ignored if \code{x} is a table or matrix)}
+ (only required if \kbd{x} is a numeric vector, ignored otherwise) }
+  \item{names}{an optional character string, giving the names of the groups/ sample in \kbd{x}, \kbd{n};
+ if not specified the possible names of x are taken as group names (ignored if \kbd{x} is a table or matrix)}
    \item{formula}{a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
   while treatment should be a factor specifying the treatment levels}
   \item{data}{a data.frame, containing the variables specified in formula}
   \item{type}{ a character string, giving the name of a contrast method,
- as defined in \code{contrMat(multcomp)}; ignored if \code{cmat} is sepcified }
+ as defined in \kbd{contrMat(multcomp)}; ignored if \kbd{cmat} is specified }
   \item{cmat}{ a optional contrast matrix }
-  \item{method}{ a single character string, specifying the method for confidence interval construction; options are: \code{"Wald"}, \code{"ADD1"}, or \code{"ADD2"} }
+  \item{method}{ a single character string, specifying the method for confidence interval construction; options are: \kbd{"Wald"}, \kbd{"ADD1"}, or \kbd{"ADD2"} }
   \item{alternative}{ a single character string, one of "two.sided", "less", "greater" }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
-  \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
- \code{"N"} invokes use of quantiles of the univariate normal distribution}
-  \item{\dots}{ arguments to be passed to \code{\link{binomest}}, currently only \code{success} labelling the event which should be considered as success}
+  \item{dist}{a character string, \kbd{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
+ \kbd{"N"} invokes use of quantiles of the univariate normal distribution}
+  \item{\dots}{ arguments to be passed to \link{binomest}, currently only \kbd{success} labelling the event which should be considered as success}
 }
 \details{
  See the examples for different usages.
@@ -106,7 +106,7 @@ More detailed simulation results are available in:
 \note{ Note, that all implemented methods are approximate only. The coverage probability of the 
 intervals might seriously deviate from the nominal level for small sample sizes and extreme success probabilities.
 See the simulation results in Sill (2007) for details. }
-\seealso{ \code{\link{summary.binomRDci}}, \code{\link{plot.sci}} }
+\seealso{ \link{summary.binomRDci}, \link{plot.sci} }
 \examples{
 
 ###############################################################

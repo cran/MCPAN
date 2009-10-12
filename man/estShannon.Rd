@@ -1,7 +1,7 @@
 \name{estShannon}
 \alias{estShannon}
 
-\title{ Estimate the Shannon-Wiener Index }
+\title{ Estimate the Shannon Index }
 \description{
  Calculates estimates of the Shannon-Wiener from count data.
 }
@@ -11,7 +11,7 @@ estShannon(x, Nspec = NULL)
 
 \arguments{
   \item{x}{ a integer(numeric) vector of species counts }
-  \item{Nspec}{ a single integer value, fixing the number of species to a certain value \code{Nspec} }
+  \item{Nspec}{ a single integer value, fixing the number of species to a certain value }
 }
 
 \value{
@@ -25,7 +25,7 @@ A list, containing the elements:
 of Entropies with Application to Dinosaur Biodiversity. Biometrics 55, 1300-1305. }
 
 
-\seealso{ \code{\link{estSimpsonf}} for estimating Shannon indices pooled over several samples, grouped by a factor  }
+\seealso{ \link{estSimpsonf} for estimating Shannon indices pooled over several samples, grouped by a factor  }
 
 
 \keyword{ htest }
