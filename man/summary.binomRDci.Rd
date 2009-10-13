@@ -9,8 +9,8 @@
 \method{summary}{binomRDci}(object, ...)
 }
 \arguments{
-  \item{object}{ an object of class "binomRDci" as created by function \code{\link{binomRDci}} }
-  \item{\dots}{ further arguments to be passed to summary, currently only \code{digits} for rounding is supported }
+  \item{object}{ an object of class "binomRDci" as created by function \link{binomRDci} }
+  \item{\dots}{ further arguments to be passed to summary, currently only \kbd{digits} for rounding is supported }
 }
 
 \value{

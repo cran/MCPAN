@@ -15,7 +15,7 @@ poly3table(time, status, f, tumour = NULL, symbol = "*")
   \item{time}{ a numeric vector, containing the time of death of an individual }
   \item{status}{ a logical (or dichotomous categorical) vector }
   \item{f}{ a factor, specifying treatment groups}
-  \item{tumour}{ the value which \code{status} obtains if a tumour is present in an individual at time of death  }
+  \item{tumour}{ the value which \kbd{status} obtains if a tumour is present in an individual at time of death  }
   \item{symbol}{ symbol to indicate presence of tumour in the text representation }
 }
 

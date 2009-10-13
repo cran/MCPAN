@@ -9,17 +9,17 @@ powerbinom(p, n, alpha = 0.05, type = "Williams", cmat = NULL, method = "Wald", 
 }
 \arguments{
   \item{p}{ a numeric vector, the proportions assumed under the alternative }
-  \item{n}{ an integer vector, the number of observations, must be of same length as \code{p} }
+  \item{n}{ an integer vector, the number of observations, must be of same length as \kbd{p} }
   \item{alpha}{ a single numeric value, the alpha-level of the test  }
-  \item{type}{ if \code{cmat} is not specified, the type of multiple contrast test to be applied on the proportions \code{p}; will be ignored if \code{cmat} is specified}
-  \item{cmat}{ a numeric contrast matrix, number of columns must be the same as length of \code{n}, and \code{p}; if secified, \code{type} will be ignored }
-  \item{method}{ a character string, the method for variance estimation in test / confidence interval construction: one of "Wald", "ADD1", "ADD2"; see \code{\link{binomRDtest}} }
+  \item{type}{ if \kbd{cmat} is not specified, the type of multiple contrast test to be applied on the proportions \kbd{p}; will be ignored if \kbd{cmat} is specified}
+  \item{cmat}{ a numeric contrast matrix, number of columns must be the same as length of \kbd{n}, and \kbd{p}; if secified, \kbd{type} will be ignored }
+  \item{method}{ a character string, the method for variance estimation in test / confidence interval construction: one of "Wald", "ADD1", "ADD2"; see \link{binomRDtest} }
   \item{alternative}{ a character string, specifying the alternative, options are "two.sided", "less", "greater" }
 }
 \details{
- Calls \code{\link{powermcp}}. 
+ Calls \link{powermcp}. 
 
-Power for an Union-Intersection-Test is calculated, i.e. the power that H0 is rejected for at least one of the contrasts specified by \code{cmat} or \code{type}.
+Power for an Union-Intersection-Test is calculated, i.e. the power that H0 is rejected for at least one of the contrasts specified by \kbd{cmat} or \kbd{type}.
 
 For the Wald-method, see the methods in Bretz and Hothorn (2002). The implementation in this function
 differs slightly from the methods described in Bretz and Hothorn. Here, we use an unpooled variance estimator,
@@ -44,7 +44,7 @@ A single numeric value, the power.
 
  }
 
-\seealso{ \code{\link{powermcp}}}
+\seealso{ \link{powermcp}}
 
 \examples{
 

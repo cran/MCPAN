@@ -10,7 +10,7 @@ Produces a more detailed print out of objects of class "binomORci", including su
 \method{summary}{binomORci}(object, ...)
 }
 \arguments{
-  \item{object}{ an object of class "binomORci" as created by function \code{\link{binomORci}} }
+  \item{object}{ an object of class "binomORci" as created by function \link{binomORci} }
   \item{\dots}{ ... }
 }
 

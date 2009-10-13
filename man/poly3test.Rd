@@ -15,7 +15,7 @@ dist="MVN", k=3, \dots)
   \item{time}{  a numeric vector of times of death of the individuals}
   \item{status}{  a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
  where TRUE (1) = tumour present, FALSE (0) = no tumour present  }
-  \item{f}{  a factor of the same length as \code{time} \code{status}, giving the levels of a grouping variable in a one-way layout }
+  \item{f}{  a factor of the same length as \kbd{time}, \kbd{status}, giving the levels of a grouping variable in a one-way layout }
   \item{type}{ a character string specifying the contrast type } 
   \item{cmat}{an optional user defined contrast matrix of dimension MxI}
   \item{method}{ a single charcter string, specifying the method for adjustment,
@@ -25,11 +25,11 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
 "ADD2" (as Bailer Portier, including an add2-adjustment on the raw tumour rates following Agresti Caffo (2000) for binomials)
  }
   \item{alternative}{ a character string specifying the direction of the alternative hypothesis}
- \item{dist}{a character string, where \code{"MVN"} invokes the computation of p-values using the multivariate normal distribution,
- and \code{"N"} invokes use p-value computation using the univariate normal distribution}
+ \item{dist}{a character string, where \kbd{"MVN"} invokes the computation of p-values using the multivariate normal distribution,
+ and \kbd{"N"} invokes use p-value computation using the univariate normal distribution}
 
 \item{k}{a single numeric value, the exponent to calculate survival adjusted proportions according to Bailer and Portier (1988), defaults to 3}
-\item{\dots}{further arguments to be passed; currently only \code{base}, to choose the control group with \code{type="Dunnett"}}
+\item{\dots}{further arguments to be passed; currently only \kbd{base}, to choose the control group with \kbd{type="Dunnett"}}
 
 }
 \details{

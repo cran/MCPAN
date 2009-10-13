@@ -13,9 +13,9 @@
 \format{
   A data frame with 200 observations on the following 3 variables.
   \describe{
-    \item{\code{group}}{a factor with levels \code{0} \code{1} \code{2} \code{3}, labelling the control and the three dose groups}
-    \item{\code{Y}}{a logical vector, indicating whether a tumour was present at time of death (if TRUE), or not (if FALSE) }
-    \item{\code{time}}{a numeric vector, the time of death, counted in days? from begin of the study}
+    \item{group}{a factor with levels 0, 1, 2, 3, labelling the control and the three dose groups}
+    \item{Y}{a logical vector, indicating whether a tumour was present at time of death (if TRUE), or not (if FALSE) }
+    \item{time}{a numeric vector, the time of death, counted in days? from begin of the study}
   }
 }
 \details{

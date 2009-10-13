@@ -23,12 +23,11 @@ binomest(x, ...)
 
 }
 \arguments{
-  \item{x}{ either a numeric vector of the number of successes, then \code{n} must be specified,
- or an object of class "table" as can be obtained by using \code{\link{table}} on a data.frame with to categorical variables }
-  \item{n}{ a numeric vector of the number of trials, only needed, if \code{x} is a numeric vector  }
-  \item{names}{ optional character vector of group names (labels for later output), must have the same length as \code{x} and \code{n} }
-  \item{formula} {a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels,
-  while treatment should be a factor specifying the treatment levels}
+  \item{x}{either a numeric vector of the number of successes, then \kbd{n} must be specified,
+ or an object of class "table" as can be obtained by using \link{table} on a data.frame with to categorical variables }
+  \item{n}{a numeric vector of the number of trials, only needed, if \kbd{x} is a numeric vector  }
+  \item{names}{ optional character vector of group names (labels for later output), must have the same length as \kbd{x} and \kbd{n} }
+  \item{formula}{a two-sided formula of the style 'response ~ treatment', where 'response' should be a categorical variable with two levels, while treatment should be a factor specifying the treatment levels}
   \item{data}{a data.frame, containing the variables specified in formula}
   \item{method}{ a character string, specifying the method for variance estimator, with options "Wald","ADD1","ADD2" }
   \item{success}{an optional character string, to indicate the level considered as success if data are given as table, or data.frame, or, serving as label for the event considered as success in later functions}
@@ -41,13 +40,13 @@ binomest(x, ...)
 
   \item{Y}{a numeric vector of the groupwise number of successes}
   \item{n}{a numeric vector of the groupwise number of trials (observations)}
-  \item{estimate}{ a numeric vector of groupwise point estimates, Y/n}
+  \item{estimate}{ a numeric vector of groupwise point estimates for the probability of success, Y/n}
   \item{estp}{a numeric vector of groupwise interval midpoints}
   \item{varp}{a numeric vector of groupwise variance estimators, to be used for CI construction}
   \item{varcor}{ a numeric vector of groupwise variance estimators, to be used for correlation structures and test
  these values are adjusted to be larger than zero also in cases where Y=0 or Y=n}
-  \item{names}{ a character vector of the level names of \code{f}}
-  \item{success}
+  \item{names}{ a character vector of the level names of \kbd{f}}
+  \item{success}{ a character string naming the category which has been defined as success }
 }
 
 \examples{

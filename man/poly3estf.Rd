@@ -12,8 +12,8 @@ poly3estf(time, status, tmax=NULL, f, method = "BP", k=NULL)
   \item{time}{  a numeric vector of times of death of the individuals}
   \item{status}{  a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
  where TRUE (1) = tumour present, FALSE (0) = no tumour present  }
-  \item{tmax}{ a single numeric value, the time of sacrifice in the trial, or the last last time of death, defaults to the maximal value observed in \code{time} }
-  \item{f}{  a factor of the same length as \code{time} \code{status}, giving the levels of a grouping variable in a one-way layout }
+  \item{tmax}{ a single numeric value, the time of sacrifice in the trial, or the last last time of death, defaults to the maximal value observed in \kbd{time} }
+  \item{f}{  a factor of the same length as \kbd{time}, \kbd{status}, giving the levels of a grouping variable in a one-way layout }
   \item{method}{ a single charcter string, specifying the method for adjustment,
 with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
  "BW" (Bieler, Williams: delta method as in Bieler-Williams (1993))
@@ -36,13 +36,13 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
   \item{nadj}{adjusted n (sum of weights)}
   \item{varp}{a numeric vector, groupwise variance estimate (according to method)}
   \item{varcor}{a numeric vector, groupwise variance estimate, if necessary corrected such that estimates of 0 can not occur}
-  \item{names}{a character vector, the levels of the grouping variable \code{f} }
+  \item{names}{a character vector, the levels of the grouping variable \kbd{f} }
   \item{k}{a single numeric value, as input}
 
 }
-\references{ See \code{\link{poly3est}}}
+\references{ See \link{poly3est}}
 
-\note{ See \code{\link{poly3est}}}
+\note{ See \link{poly3est}}
 
 \examples{
 

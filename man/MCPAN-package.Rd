@@ -19,8 +19,8 @@ Please note, that the methods implemented in this package are NOT validated yet 
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-4\cr
-Date: \tab 2008-10-16\cr
+Version: \tab 1.1-9\cr
+Date: \tab 2009-10-12\cr
 License: \tab GPL \cr
 }
 
@@ -35,23 +35,23 @@ Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
 
 Reference for muliple differences of proportions:
 
-Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):
+\emph{Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):}
  Approximate Simultaneous Confidence Intervals for Multiple Contrasts of Binomial Proportions.
  Biometrical Journal 50, 782-792.
 
-See \code{\link{binomRDci}} for the code that reproduces the examples in this reference.
+See \link{binomRDci} for the code that reproduces the examples in this reference.
 
 Reference for multiple differences of poly-k-rates:
 
-Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):
+\emph{Schaarschmidt, F., Sill, M., and Hothorn, L.A. (2008):}
  Poly-k-trend tests for survival adjusted analysis of tumor rates formulated as approximate multiple contrast test.
  Journal of Biopharmaceutical Statistics 18, 934-948.
 
-See \code{\link{poly3ci}} for the code that reproduces the example in this reference.
+See \link{poly3ci} for the code that reproduces the example in this reference.
 
 Simultaneous confidence intervals for Dunnett-type comparisons to control using odds ratios:
 
-Holford, TR, Walter, SD and Dunnett, CW (1989): Simultaneous interval estimates of the odds ratio in
+\emph{Holford, T.R., Walter, S.D. and Dunnett, C.W. (1989):} Simultaneous interval estimates of the odds ratio in
 studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-434.
 
 
@@ -59,37 +59,30 @@ Background references:
 
 The Add-2 Confidence interval for the difference of two binomial proportions:
 
-Agresti, A. and Caffo, B.(2000):
+\emph{Agresti, A. and Caffo, B.(2000):}
  Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures.
  American Statistician 54, p. 280-288.
 
 and its generalization to a single contrast of several proportions in:
 
-Price, R.M. and Bonett, D.G. (2004):
+\emph{Price, R.M. and Bonett, D.G. (2004):}
  An improved confidence interval for a linear function of binomial proportions.
  Computational Statistics and Data Analysis 45, 449-456.
 
 For long-term rodent carcinogenicity data: The assumptions of poly-3-adjustment are outlined in:
 
- Bailer, J.A. and Portier, C.J. (1988):
+\emph{Bailer, J.A. and Portier, C.J. (1988):}
  Effects of treatment-induced mortality and tumor-induced mortality on tests for carcinogenicity in small samples.
  Biometrics 44, 417-431.
 
- Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):
+\emph{Peddada, S.D., Dinse, G.E., and Haseman, J.K. (2005):}
  A survival-adjusted quantal response test for comparing tumor incidence rates.
  Applied Statistics 54, 51-61.
 
 For correlation of multiple contrasts of binomial proportions, see:
- Bretz F, Hothorn L.:
+\emph{Bretz F, Hothorn L.:}
  Detecting dose-response using contrasts: asymptotic power and sample size determination for binomial data.
  Statistics in Medicine 2002; 21: 3325-3335.
-
-Simulation results (coverage probability of simultaneous confidence intervals)
- for the binomial proportions and poly-3-adjusted tumour rates can be found in:
-
- Sill, M. (2007):
- Approximate simultaneous confidence intervals for multiple comparisons of binomial proportions.
- Master thesis, Institute of Biostatistics, Leibniz University Hannover.
 
 }
 

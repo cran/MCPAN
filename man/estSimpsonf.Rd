@@ -11,22 +11,22 @@ estSimpsonf(X, f)
 }
 \arguments{
   \item{X}{ a data.frame of dimension n times p with integer entries, where n is the number of samples and p is the number of species }
-  \item{f}{ a factor variable of length n, grouping the observations in \code{X} }
+  \item{f}{ a factor variable of length n, grouping the observations in \kbd{X} }
 }
 \details{
- The function splits \code{X} according to the levels of the grouping variable \code{f}, builds the sum over each column and calculates the Shannon index ove the resulting counts.
+ The function splits \kbd{X} according to the levels of the grouping variable \kbd{f}, builds the sum over each column and calculates the Shannon index ove the resulting counts.
  
 }
 \value{
  A list containing the items:
   \item{estimate }{ the groupwise point estimates of the Simpson index}
   \item{varest }{the groupwise variance estimates of the Simpson index}
-  \item{table }{a matrix of counts,containing the summed observations for each level of \code{f} in its rows}
+  \item{table }{a matrix of counts,containing the summed observations for each level of \kbd{f} in its rows}
 }
 \references{ Rogers, JA and Hsu, JC (2001): Multiple Comparisons of Biodiversity. Biometrical Journal 43, 617-625. }
 
 
-\seealso{ \code{\link{estShannonf}} }
+\seealso{ \link{estShannonf} }
 \examples{
 
 # Here, the estimates for the Hell Creek Dinosaur 

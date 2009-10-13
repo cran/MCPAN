@@ -10,8 +10,8 @@
 }
 
 \arguments{
-  \item{x}{ An object of class \code{"Simpsonci"}, as produced by calling \code{link{Simpsonci}}}
-  \item{\dots}{ currently only \code{digits} is passed to \code{print} }
+  \item{x}{ An object of class \kbd{"Simpsonci"}, as produced by calling \code{\link{Simpsonci}}}
+  \item{\dots}{ currently only \kbd{digits} is passed to \kbd{print} }
 }
 
 \value{

@@ -18,7 +18,7 @@ poly3ci(time, status, f, type = "Dunnett",
   \item{status}{ a logical (or numeric, consisting of 0,1 only) vector giving the tumour status at time of death of each individual,
  where TRUE (1) = tumour present, FALSE (0) = no tumour present  }
   \item{f}{ a factor, giving the classification variable }
-  \item{type}{ a character string, giving the name of a contrast method, as defined in \code{contrMat(multcomp)} }
+  \item{type}{ a character string, giving the name of a contrast method, as defined in \kbd{contrMat(multcomp)} }
   \item{cmat}{ a optional contrast matrix }
    \item{method}{ a single charcter string, specifying the method for adjustment,
 with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial variables),
@@ -28,10 +28,10 @@ with options: "BP" (Bailer Portier: assuming poly-3-adjusted rates are binomial 
  }
   \item{alternative}{ a single character string }
   \item{conf.level}{ a single numeric value, simultaneous confidence level }
- \item{dist}{a character string, \code{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
-\code{"N"} invokes use of quantiles of the univariate normal distribution}
+ \item{dist}{a character string, \kbd{"MVN"} invokes multiplicity adjustment via the multivariate normal distribution,
+\kbd{"N"} invokes use of quantiles of the univariate normal distribution}
 \item{k}{the exponent to calculate survival adjusted proportions, default is k=3}
-\item{\dots}{further arguments to be passed; currently only base, to be passed to \code{contrMat} to choose the control group with \code{type="Dunnett"}}
+\item{\dots}{further arguments to be passed; currently only base, to be passed to \kbd{contrMat} to choose the control group with \kbd{type="Dunnett"}}
 
 }
 

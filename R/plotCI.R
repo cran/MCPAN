@@ -1,7 +1,7 @@
 "plotCII" <-
 function(estimate, lower=NULL, upper=NULL, alternative=c("two.sided","less","greater"),
  lines=NULL, lineslty=2, lineslwd=1, linescol="black",
- CIvert=FALSE, CIlty = 1, CIlwd=1, CIcex=1, CIcol="black",
+ CIvert=FALSE, CIlty = 1, CIlwd=1, CIcex=1, CIcol="black", CIlength=NULL,
  HL=TRUE, ...)
 {
 if(HL){
@@ -166,10 +166,18 @@ abline(v=num, col="lightgrey", lty=3)
 
 abline(h=lines, lty=lineslty, lwd=lineslwd, col=linescol)
 
-if(length(estimate)<25)
- {arrlength<-0.1}
+if(is.null(CIlength))
+{
+Nest <- length(estimate)
+
+if(Nest<25)
+ {arrlength<-0.08}
 else
  {arrlength<-0.05}
+}
+else{
+arrlength<-CIlength
+}
 
 switch(alternative,
 

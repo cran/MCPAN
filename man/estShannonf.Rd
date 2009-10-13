@@ -11,10 +11,10 @@ estShannonf(X, f)
 
 \arguments{
   \item{X}{ a data.frame of dimension n times p with integer entries, where n is the number of samples and p is the number of species}
-  \item{f}{ a factor variable of length n, grouping the observations in \code{X} }
+  \item{f}{ a factor variable of length n, grouping the observations in \kbd{X} }
 }
 \details{
- The function splits \code{X} according to the levels of the grouping variable \code{f}, builds the sum over each column and calculates the Shannon index ove the resulting counts.
+ The function splits \kbd{X} according to the levels of the grouping variable \kbd{f}, builds the sum over each column and calculates the Shannon index ove the resulting counts.
  
 }
 \value{

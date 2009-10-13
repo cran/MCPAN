@@ -24,11 +24,11 @@ Function for convenient plotting of confidence intervals.
 }
 
 \arguments{
-  \item{x}{ an object of class \code{"binomRDci"},\code{"binomORci"},\code{"binomRRci"},\code{"poly3ci"},\code{"sci"} }
-  \item{\dots}{ further arguments as described in \code{\link{plotCI}} }
+  \item{x}{ an object of class \kbd{"binomRDci"}, \kbd{"binomORci"}, \kbd{"binomRRci"}, \kbd{"poly3ci"}, \kbd{"sci"} }
+  \item{\dots}{ further arguments as described in \link{plotCI} }
 } 
 \details{
-Extracts some values and calls \code{\link{plotCI}}.
+Extracts some values and calls \link{plotCI}.
 
 }
 \value{

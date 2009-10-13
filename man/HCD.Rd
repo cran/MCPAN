@@ -12,15 +12,15 @@
 \format{
   A data frame with 3 observations on the following 9 variables.
   \describe{
-    \item{\code{Level}}{a factor with levels \code{Lower} \code{Middle} \code{Upper}, specifiyng the stratigraphic levels}
-    \item{\code{Cr}}{a numeric vector, counts of the Ceratopsidae }
-    \item{\code{Ha}}{a numeric vector, counts of the Hadrosauridae}
-    \item{\code{Hy}}{a numeric vector, counts of the Hypsilophodontidae}
-    \item{\code{Pa}}{a numeric vector, counts of the Pachycephalosauridae}
-    \item{\code{Ty}}{a numeric vector, counts of the Tyrannosauridae}
-    \item{\code{Or}}{a numeric vector, counts of the Ornithomimidae}
-    \item{\code{Sa}}{a numeric vector, counts of the Sauronithoididae}
-    \item{\code{Dr}}{a numeric vector, counts of the Dromiaeosauridae}
+    \item{Level}{a factor with levels \kbd{Lower}, \kbd{Middle}, \kbd{Upper}, specifiyng the stratigraphic levels}
+    \item{Cr}{a numeric vector, counts of the Ceratopsidae }
+    \item{Ha}{a numeric vector, counts of the Hadrosauridae}
+    \item{Hy}{a numeric vector, counts of the Hypsilophodontidae}
+    \item{Pa}{a numeric vector, counts of the Pachycephalosauridae}
+    \item{Ty}{a numeric vector, counts of the Tyrannosauridae}
+    \item{Or}{a numeric vector, counts of the Ornithomimidae}
+    \item{Sa}{a numeric vector, counts of the Sauronithoididae}
+    \item{Dr}{a numeric vector, counts of the Dromiaeosauridae}
   }
 }
 
