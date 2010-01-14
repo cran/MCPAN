@@ -19,7 +19,7 @@
 
 \arguments{
   \item{x}{ An object of class "sci", "sci.ratio" or "conf.int.glht" or a list with elements \kbd{estimate}, containing a numeric vector,\kbd{conf.int}, containing a matrix with two columns, giving the lower and upper bounds, and a string \kbd{alternative}, one of "two.sided", "less", "greater"  }
-  \item{\dots}{ additional arguments to be passed to \link{plotCII} }
+  \item{\dots}{ additional arguments to be passed to \link{plotCII} and \link{plot}, see \link{plotCII} for details}
 }
 \details{
  Plots the estimates, upper and lower limits using \kbd{points} and \kbd{segments}. The names of \kbd{estimate} are passed as labels of the confidence intervals.
