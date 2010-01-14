@@ -7,19 +7,44 @@ function(estimate, lower=NULL, upper=NULL, alternative=c("two.sided","less","gre
 if(HL){
 old.par <- par(no.readonly=TRUE)
 }
-# estimate should be a named vector
 
 aargs <- list(...)
+
+# check input variables
+
+if(length(estimate)<1 | (!is.numeric(estimate)&!is.integer(estimate)))
+ {stop("Argument estimate should be a numeric vector")}
 
 k<-length(estimate)
 num <- 1:k
 
 if(is.null(names(estimate)))
-
-
  {compn <- paste("C", num, sep="")}
-else{
-  compn <- names(estimate)}
+else{compn <- names(estimate)}
+
+if(!is.null(lower))
+{
+if(!is.numeric(lower)&!is.integer(lower))
+ {stop("Argument lower should be a numeric vector")}
+if(length(lower)!=k)
+ {stop("Argument lower should be a vector of the same length as estimate!")}
+}
+
+if(!is.null(upper))
+{
+if(!is.numeric(upper)&!is.integer(upper))
+ {stop("Argument upper should be a numeric vector")}
+if(length(upper)!=k)
+ {stop("Argument upper should be a vector of the same length as estimate!")}
+}
+
+alternative<-match.arg(alternative)
+
+if(!is.null(lines))
+{
+if(!is.numeric(lines)&!is.integer(lines))
+ {stop("Argument lines should be a numeric vector")}
+}
 
 CIlty<-rep(CIlty, length.out=k)
 CIlwd<-rep(CIlwd, length.out=k)
@@ -29,51 +54,38 @@ mymai <- par("mai")
 
 # define the plot range
 
-llower<-lower
-uupper<-upper
-
-if(any(!is.finite(lower)))
- {
- cat("Infinite lower bound \n")
- allpoints<-c(lower, estimate, upper)
- llower<-min(allpoints[is.finite(allpoints)])
- }
-
-
-if(any(!is.finite(upper)))
- {
- cat("Infinite upper bound \n")
- allpoints<-c(lower, estimate, upper)
- uupper<-max(allpoints[is.finite(allpoints)])
- }
-
-#print(uupper)
-#print(llower)
-
-
-alternative <- match.arg(alternative)
-
+if(is.null(lower) & is.null(upper)){warning("No confidence limits specified: arguments lower and upper are both empty!")}
 
 # define the plot range in 
 # dependence of the alternative:
 
 switch(alternative,
 "two.sided"={
-   lplot <- min(llower, lines)
-   uplot <- max(uupper, lines)
+   allpoints <- c(lower, estimate, upper)
+   if(all(!is.finite(allpoints))){stop("Arguments estimate, lower and upper contain only infinity or missing values!")}
+   allexist<-allpoints[is.finite(allpoints)]
+   lplot <- min(c(allexist, lines))
+   uplot <- max(c(allexist, lines))
    },
 
 "less"=
   {
-  lplot <- min(lines, estimate) 
-  uplot <- max(uupper, lines)
+
+  allpoints<-c(estimate, upper)
+  if(all(!is.finite(allpoints))){stop("Arguments estimate and upper contain only infinity or missing values!")}
+  allexist<-allpoints[is.finite(allpoints)]
+  lplot <- min(c(lines, allexist)) 
+  uplot <- max(c(allexist, lines))
   },
 
 "greater"=
   {
 
-  lplot <- min(lines, llower) 
-  uplot <- max(estimate, lines)
+  allpoints<-c(lower, estimate)
+  if(all(!is.finite(allpoints))){stop("Arguments estimate and lower contain only infinity or missing values!")}
+  allexist<-allpoints[is.finite(allpoints)]
+  lplot <- min(c(lines, allexist)) 
+  uplot <- max(c(lines, allexist))
 
   })
 
@@ -88,45 +100,69 @@ switch(alternative,
 switch(alternative,
 
 "two.sided"={
+
+if(is.null(lower)){lower<-rep(llplot,k); code<-rep(2,k)
+warning("No lower limits specified!")
+}
+else{
+if(is.null(upper)){upper<-rep(uuplot,k); code<-rep(1,k)
+warning("No upper limits specified!")
+}
+else{
+
 code<-rep(3,k)
 
-winfl<-which(!is.finite(lower))
-lower[winfl]<-llplot
-code[winfl]<-2
+infl<-!is.finite(lower)
+lower[infl]<-llplot
+code[infl]<-2
 
-winfu<-which(!is.finite(upper))
-upper[winfu]<-uuplot
-code[winfu]<-1
+infu<-!is.finite(upper)
+upper[infu]<-uuplot
+code[infu]<-1
 
-winfts <- winfl %in% winfu
-code[winfts]<-0
+infts <- infl&infu
+code[infts]<-0
+}}
 },
 
 "less"={
 code<-rep(2,k)
 
-winfu<-which(!is.finite(upper))
-upper[winfu]<-uuplot
-code[winfu]<-0
+if(is.null(upper)){upper<-rep(uuplot,k); code<-rep(0,k)
+warning("No upper limits specified although alternative='less'!")
+}
+
+infu<-!is.finite(upper)
+upper[infu]<-uuplot
+code[infu]<-0
 
 },
 
 "greater"={
 code<-rep(1,k)
 
-winfl<-which(!is.finite(lower))
-lower[winfl]<-llplot
-code[winfl]<-0
+if(is.null(lower)){lower<-rep(llplot,k); code<-rep(0,k)
+warning("No lower limits specified although alternative='greater'!")
+}
+
+infl<-!is.finite(lower)
+lower[infl]<-llplot
+code[infl]<-0
 })
 
 
-# Defien the defaults for main, sub, ylab, xlab:
+# Define the defaults for main, sub, ylab, xlab:
 
 if (is.null(aargs$main)) {aargs$main<-""} 
 if (is.null(aargs$sub)) {aargs$sub<-""}
 if (is.null(aargs$ylab)) {aargs$ylab<-""} 
 if (is.null(aargs$xlab)) {aargs$xlab<-""}
 
+# Box arguments
+
+bargs<-list()
+if(is.null(aargs$bty)){BTY<-"o"}
+else{BTY<-aargs$bty}
 
 # plot function for vertical CI:
 
@@ -149,31 +185,33 @@ aargs$x<-num
 aargs$y<-estimate
 aargs$axes<-FALSE
 
-if(is.null(aargs$ylim))
-{aargs$ylim<-c(llplot, uuplot)}
-
-aargs$type="p"
-aargs$pch=16
-aargs$cex=CIcex
+if(is.null(aargs$ylim)){aargs$ylim<-c(llplot, uuplot)}
+if(is.null(aargs$type)){aargs$type<-"p"}
+if(is.null(aargs$pch)){aargs$pch<-16}
+if(is.null(aargs$cex)){aargs$cex<-CIcex}
 
 do.call("plot", aargs)
 
 axis(side = 1, at = num, labels=compn, las=2, ... )
 axis(side=2, las=2, ...)
-box()
+box(bty=BTY)
 
 abline(v=num, col="lightgrey", lty=3)
 
+if(!is.null(lines))
+{
 abline(h=lines, lty=lineslty, lwd=lineslwd, col=linescol)
+}
 
 if(is.null(CIlength))
 {
-Nest <- length(estimate)
 
-if(Nest<25)
- {arrlength<-0.08}
-else
- {arrlength<-0.05}
+arrlength<-1/(k*2)
+
+#if(k<25)
+# {arrlength<-0.08}
+#else
+# {arrlength<-0.05}
 }
 else{
 arrlength<-CIlength
@@ -239,27 +277,25 @@ aargs$y<-rnum
 aargs$x<-estimate
 aargs$axes<-FALSE
 
-if(is.null(aargs$xlim))
-{aargs$xlim<-c(llplot, uuplot)}
-
-aargs$type<-"p"
-aargs$pch<-16
-aargs$cex<-CIcex
+if(is.null(aargs$xlim)){aargs$xlim<-c(llplot, uuplot)}
+if(is.null(aargs$type)){aargs$type<-"p"}
+if(is.null(aargs$pch)){aargs$pch<-16}
+if(is.null(aargs$cex)){aargs$cex<-CIcex}
 
 do.call("plot", aargs)
 
 axis(side = 2, at = rnum, labels=compn, las=2, ...)
 axis(side = 1, ...)
-box()
+box(bty=BTY)
 
 abline(h=num, col="lightgrey", lty=3)
 
 abline(v=lines, lty=lineslty, lwd=lineslwd, col=linescol)
 
-if(length(estimate)<25)
- {arrlength<-0.1}
-else
- {arrlength<-0.05}
+if(is.null(CIlength))
+{
+arrlength<-1/(k*2)
+}
 
 switch(alternative,
 
@@ -301,7 +337,6 @@ par(old.par)
 
 }
 
-#plotCII(estimate=c(0,1,2,3), lower=c(-Inf, 0,1,2), upper=c(2,3,4,Inf))
 
 
 #############################

@@ -19,7 +19,7 @@ plotCII(estimate, lower = NULL, upper = NULL,
   \item{lower}{ an optional numeric vector, of the same length as estimate }
   \item{upper}{ an optional numeric vector, of the same length as estimate }
   \item{alternative}{ a single character string, one of \code{"two.sided"}, \code{"less"}, \code{"greater"} }
-  \item{lines}{ a numeric (vector) giving the position(s) of line(s) to draw into the plots orthogonal to the confidence intervals }
+  \item{lines}{ an optional numeric (vector) giving the position(s) of line(s) to draw into the plots orthogonal to the confidence intervals }
   \item{lineslty}{ possible a vector of line type of the \code{lines}, see the options for \code{lty} in \code{\link{par}} }
   \item{lineslwd}{ possible a vector of line width of the \code{lines}, see the options for \code{lwd} in \code{\link{par}} }
   \item{linescol}{ possible a vector of line colors of the \code{lines} }
@@ -31,14 +31,9 @@ plotCII(estimate, lower = NULL, upper = NULL,
   \item{CIlength}{ single numeric value, to be passed to the argument \kbd{length} in function \link{arrows}; to specify the lengths of the CI bounds (in inches); defaults to 0.08 and 0.05 for less than 25 and more than 25 CIs, respectively }
   \item{HL}{ a logical, if TRUE (default), plot margins of the are adjusted depending on the length of the names by appropriate calls to \kbd{par}; this might be incompatible with combining the plot with others in the same device. If set to FALSE, 
  its up to the user to choose appropriate plot margins by calling to \kbd{par}.   }
-  \item{\dots}{  further arguments to be passed to \kbd{plot}  }
+  \item{\dots}{ further arguments to be passed to \kbd{plot}  }
 }
-\details{
- Test version.
-}
-\value{
-A plot.
-}
+
 
 \seealso{ \link{plotCI}, for more convenient methods }
 \examples{

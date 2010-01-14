@@ -112,7 +112,7 @@ methylWT<-poly3test(time=methyl$death, status=methyl$tumour,
 methylWT
 
 
-plot(methylW, main="Simultaneous CI for Poly-3-adjusted tumour rates")
+plot(methylW, main="Simultaneous CI for \n Poly-3-adjusted tumour rates")
 
 # The results in Table 6 can be reproduced by calling:
 
@@ -127,7 +127,7 @@ methylDT<-poly3test(time=methyl$death, status=methyl$tumour,
 methylDT
 
 
-plot(methylD, main="Simultaneous CI for Poly-3-adjusted tumour rates")
+plot(methylD, main="Simultaneous CI for Poly-3-adjusted tumour rates", cex.main=0.7)
 
 
 ############################################################
