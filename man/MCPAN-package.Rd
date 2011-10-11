@@ -13,14 +13,14 @@ If the variable of interest is the rate of tumours in long-term rodent carcinoge
 confidence intervals for poly-k-adjusted tumour rates are available.
 For abundance data of multiple species, approximate simultaneous confidence intervals for differences of Simpson and Shannon-indices are implemented.
 
-Please note, that the methods implemented in this package are NOT validated yet and NOT published so far. 
+Please note that not all methods in this package are published.
 }
 \details{
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-9\cr
-Date: \tab 2009-10-12\cr
+Version: \tab 1.1-12\cr
+Date: \tab 2011-10-11\cr
 License: \tab GPL \cr
 }
 
