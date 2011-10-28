@@ -1,4 +1,6 @@
-95c1d650155f5632b97a63485cd0c3c7 *DESCRIPTION
+cbf69c6a6026808b8553cd6d7863842a *DESCRIPTION
+cb0cd88131ff9bf70f98411e0c47b0aa *R/PQln.R
+b91a393f8512c56e3dafd017aa143070 *R/SCSrank.R
 edefe18c7cff41412efd817d91b33aeb *R/Shannon.R
 c448e2cccbf2edafb27fb1dd16354811 *R/Simpson.R
 2534d5b43bfe7d7eca11b004baf596c4 *R/Waldci.R
@@ -11,6 +13,10 @@ c3a32dc650f48a25f3102dcd745c70d3 *R/binomest.R
 d0679ce94b6a57d467682156303221e5 *R/censsample.R
 7488d4eae9c3eff9a11339fff72af820 *R/censsamplef.R
 445022b38f59b8a7dc462c04f3276d69 *R/corrMatgen.R
+33cc4a093e88bab3fa8aaf329d3c9325 *R/lndci.R
+06ab78ff237945660f0f67ba23d09818 *R/lndest.R
+783df9c9ee8e8a752547b278e76aa479 *R/lnrci.R
+c27d1eb1ac1a327b620873f00e671e02 *R/lnrest.R
 3b271c3f366fa16e876d47482fa82ef7 *R/mosaicShannonSimpson.R
 d6db8d8075bf02a5c3b982cecae6bbb6 *R/plotCI.R
 6b3e7df8b0c895efa4d2b135187b4d4c *R/poly3ci.R
@@ -38,7 +44,9 @@ edbc857b2c874ec9c348b5eb6e68ce3f *R/summary.binomRDtest.R
 4313d9ad8f29cf581477f6bd9255193f *data/liarozole.rda
 cc8d46921840d741c6c5479ba0e9510f *data/methyl.rda
 6ca9435e349c5a87a746ea5b5f7d8ee3 *man/HCD.Rd
-f52e66539532470898850c524d8e2884 *man/MCPAN-package.Rd
+a140162f69329aa5f44b70545d5e4687 *man/MCPAN-package.Rd
+59944799e402030a9e97993510c03f72 *man/PQln.Rd
+92ff1b16fa1badb5538e95ae94665ddf *man/SCSrank.Rd
 7a9658e67d46f40bcbafa09c7c9478d9 *man/Shannon.Rd
 0bf6231f6120d3b6165a52b81363afa1 *man/Shannonci.Rd
 2643cf3ed9d2852920a04510642fb499 *man/Simpson.Rd
@@ -59,6 +67,8 @@ c0aeed4e76691401cd03db7dbd535313 *man/estShannon.Rd
 2cd01f49e8901c66a88f12914a358e51 *man/estSimpson.Rd
 3c2db4b93764cc6b28f37cfc1bf5f483 *man/estSimpsonf.Rd
 4a1619cf810805ebfa43850374029f1d *man/liarozole.Rd
+d37853a788948c1a791d448a81b3e55e *man/lndest.Rd
+65b5a9808de107b2746694b2c8a2546d *man/lnrci.Rd
 d29788ac5160ede469d3f89df75505b8 *man/methyl.Rd
 552dabb0b1a083fcf160dc41ceaeb5e5 *man/mosaicplot.Shannonci.Rd
 1d33e8bc08fc630fcee06720d826c975 *man/plot.sci.Rd
