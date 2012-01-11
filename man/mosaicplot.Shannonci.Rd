@@ -1,14 +1,13 @@
-\name{mosaicplot.Shannonci}
-\alias{mosaicplot.Shannonci}
-\alias{mosaicplot.Simpsonci}
+\name{mosaicdiv}
+\alias{mosaicdiv}
 
-\title{ Mosaicplot for Shannonci and Simpsonci}
+
+\title{ Mosaicplot for the data in Shannonci and Simpsonci}
 \description{
 Create a mosaicplot from objects of class Shannonci or Simpsonci
 }
 \usage{
-\method{mosaicplot}{Shannonci}(x, decreasing = NULL, ...)
-\method{mosaicplot}{Simpsonci}(x, decreasing = NULL, ...)
+mosaicdiv(x, decreasing = NULL, ...)
 }
 
 \arguments{
@@ -32,7 +31,7 @@ HCDFam <- HCD[,-1]
 
 SCI<-Simpsonci(X=HCDFam, f=HCD[,1])
 
-mosaicplot(SCI, decreasing=TRUE, col=rainbow(n=8))
+mosaicdiv(SCI, decreasing=TRUE, col=rainbow(n=8))
 
 }
 

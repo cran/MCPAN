@@ -10,8 +10,10 @@ Simultaneous confidence intervals for multiple contrasts of expected values of s
 
 }
 \usage{
-lnrci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"), conf.level = 0.95, method = c("GPQ", "AN"), ...)
-lndci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"), conf.level = 0.95, method = c("GPQ", "AN"), ...)
+lnrci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"),
+ conf.level = 0.95, method = c("GPQ", "AN"), ...)
+lndci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"),
+ conf.level = 0.95, method = c("GPQ", "AN"), ...)
 }
 
 \arguments{
