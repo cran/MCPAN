@@ -1,18 +1,19 @@
 Package: MCPAN
 Type: Package
 Title: Multiple comparisons using normal approximation
-Version: 1.1-13
-Date: 2011-10-28
+Version: 1.1-14
+Date: 2012-01-11
 Author: Frank Schaarschmidt, Daniel Gerhard, Martin Sill
 Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
 Depends: R (>= 2.6.0), mvtnorm, multcomp
 Description: Multiple contrast tests and simultaneous confidence
- intervals based on normal approximation. With implementations for
- binomial proportions in a 2xk setting (risk difference and odds ratio),
- poly-3-adjusted tumour rates, biodiversity indices and expected values
- under lognormal assumption. Approximative power calculation for multiple
- contrast tests of binomial proportions.
+        intervals based on normal approximation. With implementations
+        for binomial proportions in a 2xk setting (risk difference and
+        odds ratio), poly-3-adjusted tumour rates, biodiversity indices
+        (multinomial data) and expected values under lognormal
+        assumption. Approximative power calculation for multiple
+        contrast tests of binomial and Gaussian data.
 License: GPL
-Packaged: 2011-10-31 09:01:40 UTC; Schaarschmidt
+Packaged: 2012-01-11 12:35:20 UTC; Schaarschmidt
 Repository: CRAN
-Date/Publication: 2011-11-02 17:16:47
+Date/Publication: 2012-01-12 09:24:08

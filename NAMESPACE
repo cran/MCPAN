@@ -1,0 +1,47 @@
+
+exportPattern("binomest.", "binomORci.", "binomRDci.", "binomRDtest.", "binomRRci.")
+
+export(binomest, binomORci, binomRDci, binomRDtest, binomRRci,
+censsample,censsamplef,
+corrMatgen,
+lndest,lnrest,lndci, lnrci,PQln,
+plotCI, plotCII,plotCI.default,plotCI.sci, plotCI.confint.glht, plotCI.sci.ratio,
+poly3ci,poly3est, poly3estf, poly3table, poly3test,
+powerbinom, powermcpn, powermcpt,
+Shannon, estShannon, estShannonf, Shannonci,
+Simpson, estSimpson, estSimpsonf, Simpsonci,
+mosaicdiv,
+SCSrank, Waldci, Waldtest
+)
+
+# Import all packages listed as Imports or Depends
+import(
+  graphics,
+  mvtnorm,
+  multcomp
+)
+
+S3method(plot, binomRDci)
+S3method(plot, binomRRci)
+S3method(plot, binomORci)
+S3method(plot, poly3ci)
+S3method(plot, sci)
+S3method(plot, Shannonci)
+S3method(plot, Simpsonci)
+
+S3method(print, binomRDci)
+S3method(print, binomRDtest)
+S3method(print, binomRRci)
+S3method(print, binomORci)
+S3method(print, poly3ci)
+S3method(print, poly3est)
+S3method(print, poly3test)
+S3method(print, Shannonci)
+S3method(print, Simpsonci)
+
+S3method(summary, binomRDci)
+S3method(summary, binomRDtest)
+S3method(summary, binomRRci)
+S3method(summary, binomORci)
+S3method(summary, Shannonci)
+S3method(summary, Simpsonci)
