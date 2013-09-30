@@ -2,12 +2,7 @@
 function(CM,varp)
 
       {
-
-#print("var")      
-#print(varp)
       k <- ncol(CM)
-#print("k")      
-#print(k)
       if( length(varp) != k )
        {stop("number of columns and length of var must be the same")}
 

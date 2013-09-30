@@ -127,9 +127,6 @@ dn <- c("0.3_1.0", "3", "10", "30", "90")
 # Assume we aim to infer an increasing trend with increasing dosage,
 # Using the changepoint contrasts (Table 7, Schaarschmidt et al., 2008)
 
-contrMat(n=n, type="Changepoint")
-
-
 # The results in Table 8 can be reproduced by calling:
 
 binomRDci(n=n, x=cr, names=dn, alternative="greater",

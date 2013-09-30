@@ -2,8 +2,6 @@
 function(estp, varp, cmat, alternative="greater", dist="MVN")
 {
 
-require(mvtnorm)
-
  k <- ncol(cmat)
  m <- nrow(cmat) 
 

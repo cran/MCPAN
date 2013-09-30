@@ -81,4 +81,4 @@ binomest(tab, success="y")
 }
 
 
-\keyword{ misc }
+\keyword{ internal }

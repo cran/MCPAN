@@ -27,7 +27,6 @@ function(x, ...){UseMethod("binomRRci")}
 function(x, n, names=NULL, type="Dunnett",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
- require(multcomp)
 
 aargs<-list(...)
 

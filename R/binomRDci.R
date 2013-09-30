@@ -4,7 +4,6 @@
 'binomRDci.default' <- function(x, n, names=NULL, type="Dunnett",
  cmat=NULL, method="Wald", alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
- require(multcomp)
 
 aargs<-list(...)
 
@@ -96,7 +95,6 @@ aargs<-list(...)
 'binomRDci.table' <- function(x, type="Dunnett",
  cmat=NULL, method="Wald", alternative="two.sided", conf.level=0.95, dist="MVN",...)
 {
- require(multcomp)
 
  aargs<-list(...)
 
@@ -151,7 +149,6 @@ aargs<-list(...)
 'binomRDci.matrix' <- function(x, type="Dunnett",
  cmat=NULL, method="Wald", alternative="two.sided", conf.level=0.95, dist="MVN",...)
 {
- require(multcomp)
 
  mat<-as.table(x)
 
@@ -166,7 +163,6 @@ aargs<-list(...)
 'binomRDci.formula' <- function(formula, data, type="Dunnett",
  cmat=NULL, method="Wald", alternative="two.sided", conf.level=0.95, dist="MVN",...)
 {
- require(multcomp)
 
  aargs<-list(...)
  aargs$formula<-formula

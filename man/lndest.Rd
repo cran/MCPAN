@@ -32,4 +32,4 @@ A list with elements
 Chen, Y-H, Zhou, X-H (2006). Interval estimates for the ratio and the difference of two log-normal means. Statistics in Medicine 25, 4099-4113.
 }
 
-\keyword{ htest }
+\keyword{ internal }

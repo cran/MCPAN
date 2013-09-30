@@ -36,4 +36,3 @@ A plot.
 }
 
 \keyword{ hplot }
-\concept{confidence interval}

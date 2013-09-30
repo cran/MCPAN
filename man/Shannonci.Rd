@@ -2,7 +2,7 @@
 \alias{Shannonci}
 \title{ Confidence intervals for multiple contrasts of Shannon indices }
 \description{
- Calculates simultaneous and local confidence intervals for differences of Shannon indices.
+ Calculates simultaneous and local confidence intervals for differences of Shannon indices under the assumption of multinomial count data.
 
 }
 \usage{
@@ -22,9 +22,9 @@ Shannonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided",
 }
 \details{
  This function implements confidence intervals described by Fritsch and Hsu (1999) for the difference of Shannon indices between several groups.
- Deviating from Fritsch and Hsu, quantiles of the multivariate normal distribution are used which take the sample variance into account. 
+ Deviating from Fritsch and Hsu, quantiles of the multivariate normal distribution based on a plug-in-estamator for the correlation matrix.
 
-Note, that this approach ignores the variability of the individual samples.
+Note, that this approach, by assuming multinomial distribution for the vectors of counts, ignores the variability of the individual samples. If such extra-multinomial variatio is present in the data, the intervals will be too narrow, coverage probability will be substantially lower than specified in 'conf.level'. Consider approaches based on bootstrap instead (e.g., package simboot).
 
 }
 \value{
@@ -40,8 +40,11 @@ A list containing the elements:
 
 }
 
-\references{ Fritsch, KS, and Hsu, JC (1999): Multiple Comparison
-of Entropies with Application to Dinosaur Biodiversity. Biometrics 55, 1300-1305. }
+\references{ 
+\emph{Fritsch, KS, and Hsu, JC (1999):} Multiple Comparison of Entropies with Application to Dinosaur Biodiversity. Biometrics 55, 1300-1305.
+\emph{Scherer, R, Schaarschmidt, F, Prescher, S, and Priesnitz, KU (2013):} Simultaneous confidence intervals for comparing biodiversity
+indices estimated from overdispersed count data. Biometrical Journal 55,246-263.
+}
 
 \author{ Frank Schaarschmidt }
 
@@ -113,6 +116,3 @@ plot(TrendCI)
 
 
 \keyword{ htest }
-\concept{ confidence }
-\concept{ biodiversity }
-\concept{ multiple comparisons }

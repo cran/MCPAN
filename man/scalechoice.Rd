@@ -22,4 +22,4 @@ Scale parameter is defined differently than that in Peddada (2005)
  }
 \seealso{ \kbd{?pweibull} }
 
-\keyword{ misc }
+\keyword{ internal }

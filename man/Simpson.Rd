@@ -12,5 +12,5 @@ Simpson(p)
   \item{p}{ a numeric vector of proportions }
 }
 
-\keyword{ htest }
+\keyword{ internal }
 

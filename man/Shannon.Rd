@@ -15,5 +15,5 @@ Shannon(p)
 
 
 
-\keyword{ htest }
-\concept{ biodiversity }
+\keyword{ internal }
+

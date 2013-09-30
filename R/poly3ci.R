@@ -3,11 +3,7 @@ function(time, status, f, type="Dunnett", cmat=NULL, method="BP", alternative="t
 
 {
 
-require(multcomp)
-
 paargs<-list(...)
-
-type <- match.arg(arg=type, choices=c("Dunnett","Tukey","Sequen","AVE","Williams","McDermott", "Changepoint"))
 
 est <- poly3estf(time=time, status=status, f=f, tmax=max(time), method=method, k=k)
 

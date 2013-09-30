@@ -44,4 +44,4 @@ plotCI(x, lines=1)
 }
 
 \keyword{ hplot }
-\concept{ confidence interval }
+

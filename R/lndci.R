@@ -23,9 +23,11 @@ if(!is.numeric(aargs$B) & !is.integer(aargs$B)){stop("B must be a single integer
 if(length(aargs$B)!=1){stop("B must be a single integer value.")}
 }
 
-ff<-as.factor(f)
+ff <- droplevels(as.factor(f))
 ni <- tapply(ff,ff, length)
 ngroups<-length(ni)
+
+if(any(ni<=3)){warning("At least one group has only 3 or less observations! Methods may be unreliable.")}
 
 if(any(x<=0)){warning("Values of the response variable are less or equal 0!")}
 

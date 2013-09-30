@@ -1,15 +1,21 @@
 \name{powerbinom}
 \alias{powerbinom}
+\alias{powerbinomOR}
 \title{
  Approximate power for multiple contrast tests of binomial proportions.
 }
 \description{
-  Approximative power calculation for multiple contrast tests of binomial proportions (based on risk differences), based on probabilities of the multivariate standard normal distribution.
+  Approximative power calculation for multiple contrast tests of binomial proportions (based on risk differences, or odds ratios), based on probabilities of the multivariate standard normal distribution.
 }
 \usage{
 powerbinom(p, n, alpha = 0.05, type = "Dunnett", cmat = NULL,
  rhs = 0, alternative = c("two.sided", "less", "greater"),
  ptype = c("global", "anypair", "allpair"), method = "Wald", crit = NULL, ...)
+
+powerbinomOR(p, n, alpha = 0.05, type = "Dunnett", cmat = NULL, 
+    rhs = 1, alternative = c("two.sided", "less", "greater"), 
+    ptype = c("global", "anypair", "allpair"), 
+    crit = NULL, ...) 
 }
 
 \arguments{
@@ -28,7 +34,7 @@ a single charcater string naming the type of multiple contrast test to be applie
 optional, a matrix fo contrast coefficients (with number of columns = number of treatmenmt groups and number of rows = number of comparisons); if \code{cmat} is not specified, the type of multiple contrast test to be applied on the proportions \code{p} is chosen according to argument \code{type}
 }
   \item{rhs}{
- a (vector of) numeric value(s) between 0 and 1, specifying the right hand sides of the alternative hypotheses, default is 0, if values greater or less than 0 are specified, power for shifted tests (non-inferiority, superiority) is computed; Note that this makes primarily sense for one-sided hypotheses, in case of \code{rhs!=0}  and \code{alternative="two.sided"}, a warning is given.
+ a (vector of) numeric value(s), specifying the right hand sides of the alternative hypotheses, default is 0 for the risk difference (\kbd{powerbinom}), and 1 for the odds ratio (\kbd{powerbinomOR}), if values greater or less than the default are specified, power for shifted tests (non-inferiority, superiority) is computed; Note that the latter primarily makes sense for one-sided hypotheses. A warning is given when \code{alternative ="two.sided"} with \code{rhs!=0} or \code{rhs!=1} for difference or oddsratios, respectively.
 }
   \item{alternative}{
  a character string, specifying the direction of the alternative hypotheses, options are "two.sided", "less", "greater"; \code{alternative} primarily controls for which directional decisions power is calculated, in case that argument \code{crit} is not specified, \code{alternative} also controls the choice of the critical value.
@@ -54,9 +60,11 @@ Via computing probabilities of non-central multivariate normal distributions \co
 
 The global rejection probability (\code{power="global"}), i.e. the probability that at least one of the elementary null hypotheses is rejected, irrespective, whether this (or any contrast!) is under the corresponding elementary alternative). As a consequence this probability involves elementary type-II-errors for those contrasts which are under their elementary null hypothesis.
 
-The probability to reject at least one of those elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="anypair"}). Technically, this is achieved by omitting those contrasts under the elementary null and compute the rejection probability for a given criticla value from a multivariate normal distribution with reduced dimension. Note that for \code{'two-sided'} alternatives, type III-errors (rejection of the two-sided null in favor of the wrong direction) are included in the power.
+The probability to reject at least one of those elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{ptype="anypair"}). Technically, this is achieved by omitting those contrasts under the elementary null and compute the rejection probability for a given critical value from a multivariate normal distribution with reduced dimension. Note that for \code{'two-sided'} alternatives, type III-errors (rejection of the two-sided null in favor of the wrong direction) are included in the power.
 
-The probability to reject all elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="allpair"}). Also here, for 'two-sided' alternatives type III-error contribute to the computed 'allpair power'. Note further that two-sided allpair power is simulated based on multivariate normal random numbers.
+The probability to reject all elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="allpair"}). Also here, for 'two-sided' alternatives, the type III-error contributes to the computed 'allpair power'. Note further that two-sided allpair power is simulated based on multivariate normal random numbers.
+
+For the case of differences or proportion (powerbinom) the underlying methods are closely related to those described in Bretz and Hothorn (2002). The methods here differ from that of Bretz and Hothorn (2002) by using a variance estimator in the teststatistic based of unpooled sample rpoportions, not a pooled variances estimator under H0. A description is also given in Schaarschmidt, Biesheuvel and Hothorn, 2009. The method implemented for the odds ratio corresponds to the asymptotic intervals given in Holford et al. 1989, the power computation is a straightforward generalization of the methods above, assuming asymptotic normality at the scale of log odds.
 
 }
 \value{A list consisting of the following items:
@@ -71,7 +79,13 @@ The probability to reject all elementary null hypotheses which are indeed under 
 }
 \references{
 \emph{Genz A, Bretz F (1999):} Numerical computation of multivariate t-probabilities with application to power calculation of multiple contrasts. Journal of Statistical Computation and Simulation, 63, 4, 361-378.
+
 \emph{Bretz F, Hothorn LA (2002):} Detecting dose-response using contrasts: asymptotic power and sample size determination for binomial data. Statistics in Medicine, 21, 22, 3325-3335.
+
+\emph{Holford, TR, Walter, SD and Dunnett, CW (1989):} Simultaneous interval estimates of the odds ratio in studies with two or more comparisons. Journal of Clinical Epidemiology 42, 427-434.
+
+\emph{Schaarschmidt F, Biesheuvel E, Hothorn LA (2009):} Asymptotic simultaneous confidence intervals for many-to-one comparisons of binray proportions in randomized clinical trials. Journal of Biopharmaceutical Statistics 19, 292-310.
+
 }
 
 \author{Frank Schaarschmidt
@@ -123,6 +137,18 @@ powerbinom(p=c(0.3, 0.15, 0.15, 0.15),
  n=c(140,140,140,140), type = "Dunnett",
  alternative = "less", rhs=-0.05, ptype="allpair")
 
+
+# probability to show for at least one group (2,3,4)
+# a significant reduction versus control (1)
+
+powerbinom(p=c(0.3, 0.15, 0.15, 0.15),
+ n=c(140,140,140,140), type = "Dunnett",
+ alternative = "less")
+
+
+powerbinomOR(p=c(0.3, 0.15, 0.15, 0.15),
+ n=c(140,140,140,140), type = "Dunnett",
+ alternative = "less")
 }
 
 \keyword{htest}

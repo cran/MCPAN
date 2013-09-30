@@ -40,4 +40,4 @@ Krishnamoorthy K, Mathew T (2003): Inferences on the means of lognormal distribu
 Frank Schaarschmidt
 }
 
-\keyword{ htest }
+\keyword{ internal }

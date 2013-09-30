@@ -6,7 +6,6 @@ function(x, ...){UseMethod("binomORci")}
 function(x, n, names=NULL, type="Dunnett", method="GLM",
  cmat=NULL, alternative="two.sided", conf.level=0.95, dist="MVN", ...)
 {
- require(multcomp)
 
 aargs<-list(...)
 
@@ -63,6 +62,7 @@ method<-match.arg(method, choices=c("GLM", "Woolf"))
     else {
         if (!is.matrix(cmat) || ncol(cmat) != k)
          {stop("cmat must be a matrix with number of columns = number of groups")}
+	attr(cmat, which="type")<-"User defined"
     }
 
 

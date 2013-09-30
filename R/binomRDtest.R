@@ -7,7 +7,6 @@
 
 aargs<-list(...)
 
- require(multcomp)
 
 # check x, n
 
@@ -93,8 +92,6 @@ aargs<-list(...)
  cmat=NULL, method="Wald", alternative="two.sided", dist="MVN", ...)
 {
 
- require(multcomp)
-
 aargs<-list(...)
 
 
@@ -151,8 +148,6 @@ aargs<-list(...)
  cmat=NULL, method="Wald", alternative="two.sided", dist="MVN",...)
 {
 
- require(multcomp)
-
  mat<-as.table(x)
 
  aargs<-list(...)
@@ -175,7 +170,6 @@ aargs<-list(...)
 'binomRDtest.formula' <- function(formula, data, type="Dunnett",
  cmat=NULL, method="Wald", alternative="two.sided", dist="MVN", ...)
 {
- require(multcomp)
 
  testaargs<-aargs<-list(...)
  aargs$formula<-formula
