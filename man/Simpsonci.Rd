@@ -3,10 +3,11 @@
 
 \title{ Confidence intervals for differences of Simpson indices }
 \description{
- Calculates simultaneous and local confidence intervals for differences of Simpson indices.
+ Calculates simultaneous and local confidence intervals for differences of Simpson indices under the assumption of multinomial count data.
 }
 \usage{
-Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.level = 0.95, dist = "MVN", \dots)
+Simpsonci(X, f, cmat = NULL, type = "Dunnett",
+ alternative = "two.sided", conf.level = 0.95, dist = "MVN", \dots)
 }
 \arguments{
   \item{X}{ a data.frame of dimensions n times p with integer entries, where n is the number of samples and p is the number of species  }
@@ -20,10 +21,9 @@ Simpsonci(X, f, cmat = NULL, type = "Dunnett", alternative = "two.sided", conf.l
 
 }
 \details{
-  This function implements confidence intervals described by Rogers and Hsu (1999) for the difference of Shannon indices between several groups.
- Deviating from Fritsch and Hsu, quantiles of the multivariate normal distribution are used which take the sample variance into account.
+This function implements confidence intervals described by Rogers and Hsu (1999) for the difference of Shannon indices between several groups. Deviating from Fritsch and Hsu, quantiles of the multivariate normal distribution based on a plug-in-estamator for the correlation matrix.
 
-Note, that this approach ignores the variability of the individual samples.
+Note, that this approach, by assuming multinomial distribution for the vectors of counts, ignores the variability of the individual samples. If such extra-multinomial variatio is present in the data, the intervals will be too narrow, coverage probability will be substantially lower than specified in 'conf.level'. Consider approaches based on bootstrap instead (e.g., package simboot).
   }
 
 \value{
@@ -91,7 +91,8 @@ cmatTREND<-rbind(
 "U-L"=c(-1,0,1)
 )
 
-TrendCI<-Simpsonci(X=HCDcounts, f=HCDf, cmat=cmatTREND, alternative = "greater", conf.level = 0.95, dist = "MVN")
+TrendCI<-Simpsonci(X=HCDcounts, f=HCDf, cmat=cmatTREND, 
+ alternative = "greater", conf.level = 0.95, dist = "MVN")
 TrendCI
 
 plot(TrendCI)
@@ -99,6 +100,3 @@ plot(TrendCI)
 
 }
 \keyword{ htest }
-\concept{ confidence }
-\concept{ biodiversity }
-\concept{ multiple comparisons }

@@ -10,15 +10,17 @@ Simultaneous confidence intervals for multiple contrasts of expected values of s
 
 }
 \usage{
-lnrci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"),
+lnrci(x, f, type = "Dunnett", cmat = NULL,
+ alternative = c("two.sided", "less", "greater"),
  conf.level = 0.95, method = c("GPQ", "AN"), ...)
-lndci(x, f, type = "Dunnett", cmat = NULL, alternative = c("two.sided", "less", "greater"),
+lndci(x, f, type = "Dunnett", cmat = NULL,
+ alternative = c("two.sided", "less", "greater"),
  conf.level = 0.95, method = c("GPQ", "AN"), ...)
 }
 
 \arguments{
   \item{x}{
-a numeric vector, the response variable, assumed tpo be lognormally dsitributed, should contain only positive values
+a numeric vector, the response variable, assumed to be lognormally distributed, should contain only positive values
 }
   \item{f}{
 a factor variable, of the same length as \code{x}, groupingt the observations in \code{x}
@@ -43,11 +45,12 @@ a single character string, naming the method by which to compute the confidence 
 }
 }
 \details{
-This is a testversion. In a setting with K treatment groups, assuming a completely randomized design and lognormal distribution of the response variable, multiple (M) ratios or differences among expected values of the K treatment groups may be of interest. The ratios or differences of interest can be specified via a character string (in argument \code{type}) or via an M x K matrix in argument \code{cmat}. Intervals for ratios can be computed (via linear contrasts on the log scale) in function \code{lnrci}, differences can be computed in fucntion \code{lndci}.
+In a setting with K treatment groups, assuming a completely randomized design and lognormal distribution of the response variable, multiple (M) ratios or differences among expected values of the K treatment groups may be of interest. The ratios or differences of interest can be specified via a character string (in argument \code{type}) or via an M x K matrix in argument \code{cmat}. Intervals for ratios can be computed (via linear contrasts on the log scale) in function \code{lnrci}, differences can be computed in fucntion \code{lndci}. A simulation study of the methods implemented here can be found in Schaarschmidt (2013).
+
 By default, the confidence intervals are adjusted for multiple comparisons. The asymptotic normal methods, rely on maximum likelihood estimates for the expected values and the corresponding variance estimates (as given in Chen and Zhou, 2006) and adjut for multiplicity via critical value from the multivariate normal distribution (correlation structure with plug-in of variance estimates).
 The generalized pivotal quantity methods rely on simulating the distribution of the parameters (number of samples B=10000 by default, Krishnamoorthy and Mathew, 2003; Chen and Zhou, 2006) and compute simultaneous intervals from this sample using the function \code{SCSrank}.
-
 }
+
 \value{
 A list with elements
 
@@ -57,11 +60,12 @@ A list with elements
 \item{conf.level}{a numeric value, as input}
 }
 \references{
+\emph{Schaarschmidt, F. (2013).} Simultaneous confidence intervals for multiple comparisons among expected values of log-normal variables. Computational Statistics and Data Analysis 58, 265-275
+
 \emph{Chen, Y-H, Zhou, X-H (2006).} Interval estimates for the ratio and the difference of two log-normal means.
 Statistics in Medicine 25, 4099-4113.
 
-\emph{Krishnamoorthy K, Mathew T (2003).} Inferences on the means of lognormal distributions using generalized p-values and generalized confidence intervals. Journal of Statistical Planning and Inference 115,
-103-121.
+\emph{Krishnamoorthy K, Mathew T (2003).} Inferences on the means of lognormal distributions using generalized p-values and generalized confidence intervals. Journal of Statistical Planning and Inference 115, 103-121.
 }
 
 \author{Frank Schaarschmidt}
@@ -72,10 +76,10 @@ x <- rlnorm(n=100, meanlog=rep(c(0,0.1,1,1), each=25), sdlog=0.5)
 f <- as.factor(rep(LETTERS[1:4], each=25))
 boxplot(x~f)
 
-lndci(x=x, f=f, type="Dunnett", method="GPQ", B=40000)
+lndci(x=x, f=f, type="Dunnett", method="GPQ", B=20000)
 lndci(x=x, f=f, type="Dunnett", method="AN")
 
-lnrci(x=x, f=f, type="Tukey", method="GPQ", B=40000)
+lnrci(x=x, f=f, type="Tukey", method="GPQ", B=20000)
 lnrci(x=x, f=f, type="Tukey", method="AN")
 }
 

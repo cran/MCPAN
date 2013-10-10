@@ -100,4 +100,4 @@ par(op)
 }
 
 \keyword{ hplot }
-\concept{ confidence interval }
+

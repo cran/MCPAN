@@ -20,7 +20,6 @@ dist<-match.arg(dist, choices=c("MVN", "N"))
 switch(dist,
 
 "MVN"={
- require(mvtnorm)
  
     # Berechnung des MVNORM quantils
 

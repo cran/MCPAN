@@ -24,4 +24,4 @@ For correlation of contrasts of binomial proportion, see:
  Detecting dose-response using contrasts: asymptotic power and sample size determination for binomial data.
  Statistics in Medicine 2002; 21: 3325-3335. }
 
-\keyword{ htest }
+\keyword{ INTERNAL }

@@ -7,19 +7,15 @@ corrMatgen,
 lndest,lnrest,lndci, lnrci,PQln,
 plotCI, plotCII,plotCI.default,plotCI.sci, plotCI.confint.glht, plotCI.sci.ratio,
 poly3ci,poly3est, poly3estf, poly3table, poly3test,
-powerbinom, powermcpn, powermcpt,
+powerbinom, powerbinomOR, powermcpn, powermcpt,
 Shannon, estShannon, estShannonf, Shannonci,
 Simpson, estSimpson, estSimpsonf, Simpsonci,
 mosaicdiv,
 SCSrank, Waldci, Waldtest
 )
 
-# Import all packages listed as Imports or Depends
-import(
-  graphics,
-  mvtnorm,
-  multcomp
-)
+importFrom(mvtnorm, qmvt, pmvt, qmvnorm, pmvnorm, rmvnorm)
+importFrom(multcomp, contrMat)
 
 S3method(plot, binomRDci)
 S3method(plot, binomRRci)
