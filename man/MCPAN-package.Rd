@@ -3,7 +3,7 @@
 \alias{MCPAN}
 \docType{package}
 \title{
-Multiple comparison procedures based on normal approximation.
+Multiple comparison procedures based on normal approximation and extensions.
 }
 \description{
 Multiple contrast tests and simultaneous confidence intervals using normal approximation, if individuals are randomly assigned to treatments in a oneway layout. For some cases improvements compared to crude normal approximation are implemented.
@@ -13,8 +13,8 @@ Multiple contrast tests and simultaneous confidence intervals using normal appro
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-15\cr
-Date: \tab 2013-09-30\cr
+Version: \tab 1.1-20\cr
+Date: \tab 2016-01-08\cr
 License: \tab GPL \cr
 }
 

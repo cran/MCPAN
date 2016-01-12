@@ -62,6 +62,7 @@ greater={if(crit<0){crit <- abs(crit); warning("Specified critical value 'crit' 
 
 
 ExpL <- cmat %*% MU
+Ltrue <- as.numeric(ExpL)
 ExpVL <- diag(VCOVL)
 ExpTeststat <- (as.numeric(ExpL)-RHS)/sqrt(as.numeric(ExpVL))
 
@@ -69,28 +70,28 @@ switch(EXPR=ptype,
 "global"={
 
 switch(EXPR=alternative,
-"two.sided"={beta <- pmvt(lower=rep(-crit,M), upper=rep(crit,M), delta=ExpTeststat, df=dfR, corr=CORR,...);whichHA <- which(ExpTeststat!=0)},
-"less"={beta <- pmvt(lower=rep(crit,M), upper=rep(Inf, M), delta=ExpTeststat, df=dfR, corr=CORR,...);whichHA <- which(ExpTeststat<0)},
-"greater"={beta <- pmvt(lower=rep(-Inf,M), upper=rep(crit,M), delta=ExpTeststat, df=dfR, corr=CORR,...);whichHA <- which(ExpTeststat>0)})
+"two.sided"={beta <- pmvt(lower=rep(-crit,M), upper=rep(crit,M), delta=ExpTeststat, df=dfR, corr=CORR,...); whichHA <- which(abs(Ltrue-RHS) > 10*.Machine$double.eps)},
+"less"={beta <- pmvt(lower=rep(crit,M), upper=rep(Inf, M), delta=ExpTeststat, df=dfR, corr=CORR,...); whichHA <- which(Ltrue-RHS < (-10)*.Machine$double.eps)},
+"greater"={beta <- pmvt(lower=rep(-Inf,M), upper=rep(crit,M), delta=ExpTeststat, df=dfR, corr=CORR,...); whichHA <- which(Ltrue-RHS > 10*.Machine$double.eps)})
 },
 
 "anypair"={
 
 switch(EXPR=alternative,
 "two.sided"={
-whichHA <- which(ExpTeststat!=0)
+whichHA <- which(abs(Ltrue-RHS) > 10*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under their corresponding null hypothesis, anypair power can not be calculated."); beta <- 1-alpha}else{
 beta <- pmvt(lower=rep(-crit, MHA), upper=rep(crit, MHA), delta=ExpTeststat[whichHA], df=dfR, corr=CORR[whichHA,whichHA],...)}
 },
 "less"={
-whichHA <- which(ExpTeststat<0)
+whichHA <- which(Ltrue-RHS < (-10)*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under their corresponding null hypothesis, anypair power can not be calculated."); beta <- 1-alpha}else{
 beta <- pmvt(lower=rep(crit, MHA), upper=rep(Inf, MHA), delta=ExpTeststat[whichHA], df=dfR, corr=CORR[whichHA,whichHA],...)}
 },
 "greater"={
-whichHA <- which(ExpTeststat>0)
+whichHA <- which(Ltrue-RHS > 10*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under their corresponding null hypothesis, anypair power can not be calculated."); beta <- 1-alpha}else{
 beta <- pmvt(lower=rep(-Inf,MHA), upper=rep(crit, MHA), delta=ExpTeststat[whichHA], df=dfR, corr=CORR[whichHA,whichHA],...)}
@@ -101,7 +102,7 @@ beta <- pmvt(lower=rep(-Inf,MHA), upper=rep(crit, MHA), delta=ExpTeststat[whichH
 
 switch(EXPR=alternative,
 "two.sided"={
-whichHA <- which(ExpTeststat!=0)
+whichHA <- which(abs(Ltrue-RHS) > 10*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under the corresponding null hypotheses, all pair power can not be calculated."); beta<-1-alpha}else{
 nsim <- 10000
@@ -112,13 +113,13 @@ simerror <- sqrt(beta*(1-beta)/nsim)
 attr(beta, which="simerror")<-simerror
 }},
 "less"={
-whichHA <- which(ExpTeststat<0)
+whichHA <- which(Ltrue-RHS < (-10)*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under the corresponding null hypotheses, all pair power can not be calculated."); beta<-1-alpha}else{
 beta <- 1 - pmvt(lower=rep(-Inf, MHA), upper=rep(crit,MHA), delta=ExpTeststat[whichHA], df=dfR, corr=CORR[whichHA, whichHA],...)
 }},
 "greater"={
-whichHA <- which(ExpTeststat>0)
+whichHA <- which(Ltrue-RHS > 10*.Machine$double.eps)
 MHA <- length(whichHA)
 if(MHA<1){warning("All contrasts are under the corresponding null hypotheses, all pair power can not be calculated."); beta<-1-alpha}else{
 beta <- 1 - pmvt(lower=rep(crit,MHA), upper=rep(Inf,MHA), delta=ExpTeststat[whichHA], df=dfR, corr=CORR[whichHA, whichHA],...)

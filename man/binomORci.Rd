@@ -10,8 +10,8 @@
 \description{
   Approximate simultaneous confidence intervals for (weighted geometric means of) odds ratios
 are constructed. Estimates are derived from fitting a glm on the logit-link,
- approximate intervals are constructed on the log-link,
- and transformed to origninal scale.}
+ approximate intervals are constructed on the logit-link,
+ and transformed to original scale.}
 
 \usage{
 binomORci(x, ...)

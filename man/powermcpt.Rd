@@ -40,6 +40,7 @@ The probability to reject at least one of those elementary null hypotheses which
 
 The probability to reject all elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="allpair"}). Also here, for 'two-sided' alternatives type III-error contribute to the computed 'allpair power'. Note further that two-sided allpair power is simulated based on multivariate t random numbers.
 
+
 }
 \value{
 A list consisting of the following items:

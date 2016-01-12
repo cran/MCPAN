@@ -40,9 +40,11 @@ For (standard type and user-defined) multiple contrast tests based on approximat
 
 The global rejection probability (\code{power="global"}), i.e. the probability that at least one of the elementary null hypotheses is rejected, irrespective, whether this (or any contrast!) is under the corresponding elementary alternative). As a consequence this probability involves elementary type-II-errors for those contrasts which are under their elementary null hypothesis.
 
-The probability to reject at least one of those elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="anypair"}). Technically, this is achieved by omitting those contrasts under the elementary null and compute the rejection probability for a given criticla value from a multivariate normal distribution with reduced dimension. Note that for \code{'two-sided'} alternatives, type III-errors (rejection of the two-sided null in favor of the wrong direction) are included in the power.
+The probability to reject at least one of those elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="anypair"}). Technically, this is achieved by omitting those contrasts under the elementary null and, for a given critical value, compute the rejection probability from a multivariate normal distribution with reduced dimension. Note that for \code{'two-sided'} alternatives, type III-errors (rejection of the two-sided null in favor of the wrong direction) are included in the power.
 
 The probability to reject all elementary null hypotheses which are indeed under their corresponding elementary alternatives (\code{power="allpair"}). Also here, for 'two-sided' alternatives type III-error contribute to the computed 'allpair power'. Note further that two-sided allpair power is simulated based on multivariate normal random numbers.
+
+Whether a given hypothesis is under the alternative hypothesis is currently checked via \code{abs(ExpTeststat) > 10*.Machine$double.eps},  \code{ExpTeststat < -10*.Machine$double.eps} and \code{ExpTeststat > 10*.Machine$double.eps}, for alternatives \code{c("two.sided", "less", "greater")}, respectively.
 
 }
 \value{

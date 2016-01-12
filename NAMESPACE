@@ -1,7 +1,7 @@
 
 exportPattern("binomest.", "binomORci.", "binomRDci.", "binomRDtest.", "binomRRci.")
 
-export(binomest, binomORci, binomRDci, binomRDtest, binomRRci,
+export(binomest, binomORci, binomRDci, binomRDtest, binomRRci, multinomORci,
 censsample,censsamplef,
 corrMatgen,
 lndest,lnrest,lndci, lnrci,PQln,
@@ -12,10 +12,17 @@ Shannon, estShannon, estShannonf, Shannonci,
 Simpson, estSimpson, estSimpsonf, Simpsonci,
 mosaicdiv,
 SCSrank, Waldci, Waldtest
+
 )
 
 importFrom(mvtnorm, qmvt, pmvt, qmvnorm, pmvnorm, rmvnorm)
 importFrom(multcomp, contrMat)
+importFrom(MCMCpack, rdirichlet)
+importFrom(magic, adiag)
+importFrom(plyr, alply)
+
+importFrom("graphics", "abline", "arrows", "axis", "box", "par", "plot.new", "strwidth")
+importFrom("stats", "cov2cor", "glm", "median", "model.frame", "pnorm", "qnorm", "rchisq", "rnorm", "rweibull", "var", "binomial", "coefficients", "vcov")
 
 S3method(plot, binomRDci)
 S3method(plot, binomRRci)
@@ -34,6 +41,7 @@ S3method(print, poly3est)
 S3method(print, poly3test)
 S3method(print, Shannonci)
 S3method(print, Simpsonci)
+S3method(print, multinomORci)
 
 S3method(summary, binomRDci)
 S3method(summary, binomRDtest)
@@ -41,3 +49,34 @@ S3method(summary, binomRRci)
 S3method(summary, binomORci)
 S3method(summary, Shannonci)
 S3method(summary, Simpsonci)
+
+S3method(binomRDci, default)
+S3method(binomRDci, formula)
+S3method(binomRDci, matrix)
+S3method(binomRDci, table)
+
+S3method(binomORci, default)
+S3method(binomORci, formula)
+S3method(binomORci, matrix)
+S3method(binomORci, table)
+
+S3method(binomRDtest, default)
+S3method(binomRDtest, formula)
+S3method(binomRDtest, matrix)
+S3method(binomRDtest, table)
+
+S3method(binomRRci, default)
+S3method(binomRRci, formula)
+S3method(binomRRci, matrix)
+S3method(binomRRci, table)
+
+S3method(binomest, default)
+S3method(binomest, formula)
+S3method(binomest, table)
+
+S3method(as.data.frame, multinomORci)
+
+S3method(plotCI, sci.ratio)
+S3method(plotCI, default)
+S3method(plotCI, sci)
+S3method(plotCI, confint.glht)
