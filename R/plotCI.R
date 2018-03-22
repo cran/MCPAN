@@ -292,10 +292,8 @@ abline(h=num, col="lightgrey", lty=3)
 
 abline(v=lines, lty=lineslty, lwd=lineslwd, col=linescol)
 
-if(is.null(CIlength))
-{
-arrlength<-1/(k*2)
-}
+if(is.null(CIlength)){arrlength<-1/(k*2)}
+else{arrlength<-CIlength}
 
 switch(alternative,
 

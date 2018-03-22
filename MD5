@@ -1,4 +1,4 @@
-0c9072e5ce645fa99c0585642a58f0c1 *DESCRIPTION
+111f92b625747db798a3ea01f821d1cb *DESCRIPTION
 d6386f47b75d290cba3f03619616d847 *NAMESPACE
 cb0cd88131ff9bf70f98411e0c47b0aa *R/PQln.R
 b91a393f8512c56e3dafd017aa143070 *R/SCSrank.R
@@ -18,9 +18,9 @@ c869262b2478d17b0368c611fc2b46d4 *R/lndci.R
 06ab78ff237945660f0f67ba23d09818 *R/lndest.R
 7dd302ec6a71005fdfd3665d0651e41c *R/lnrci.R
 c27d1eb1ac1a327b620873f00e671e02 *R/lnrest.R
-5be92406676471c959e8d9f94656905f *R/mosaicShannonSimpson.R
+bc2fb1b1b45a037c6d4c76794fa00ac5 *R/mosaicShannonSimpson.R
 638de9ed2917047e31871367da0f38b4 *R/multinomORci.R
-d6db8d8075bf02a5c3b982cecae6bbb6 *R/plotCI.R
+aa71371f5f38bc54c99e11db6caaa526 *R/plotCI.R
 c1ddfd7a5dd42cafe5f83f07ec058562 *R/poly3ci.R
 d8cb6a6aac91c54a3d60a9de4a414b4f *R/poly3est.R
 22cc1d50d20aa35aa19c8c07629dbff1 *R/poly3estf.R
@@ -46,7 +46,7 @@ edbc857b2c874ec9c348b5eb6e68ce3f *R/summary.binomRDtest.R
 4313d9ad8f29cf581477f6bd9255193f *data/liarozole.rda
 cc8d46921840d741c6c5479ba0e9510f *data/methyl.rda
 6ca9435e349c5a87a746ea5b5f7d8ee3 *man/HCD.Rd
-e14f8fbe7c93c2a70e92a59e10c1e2df *man/MCPAN-package.Rd
+1f115ce6600e173d725dc2a51c5de600 *man/MCPAN-package.Rd
 824fea1fd4c50da676553541000ea3b5 *man/PQln.Rd
 92ff1b16fa1badb5538e95ae94665ddf *man/SCSrank.Rd
 dc1d7665300b00f8f24373034d743f69 *man/Shannon.Rd
@@ -82,7 +82,7 @@ a30b29e206e2f8ba43a70f3316b17c77 *man/poly3est.Rd
 13e286f6e380bfb42db9a5716e02e4c9 *man/poly3estf.Rd
 d1d4d7542014b9c669cb8fd1f1ebb6c3 *man/poly3table.Rd
 98b852cf7c55cd995663be638fb5182b *man/poly3test.Rd
-134f7bd4f02fc929664f6966c255e446 *man/powerbinom.Rd
+829d234c7ad37eacec3641fd5477dfe2 *man/powerbinom.Rd
 16856facf5954302657f46837d6f26a0 *man/powermcpn.Rd
 8bc0b8a6b44a9135199d305eb806c618 *man/powermcpt.Rd
 b528e392edf779eb051882e711898806 *man/print.multinomORci.Rd

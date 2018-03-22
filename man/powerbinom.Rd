@@ -48,7 +48,7 @@ a character string, the method for variance estimation in test / confidence inte
 a single numeric value to serve as equicoordinate critical point in the multiple test; if it is not specified, it is computed as a quantile of the multivariate normal distribution based on the specifications in arguments \code{n}, \code{cmat} (or \code{type}); note that for alternatives \code{'two.sided'} and \code{'greater'}, \code{crit} should be a single positive value, while for alternative \code{'less'}, \code{crit} should be a single negative value. 
 }
   \item{\dots}{
-further arguments, which are passed to the functions \code{qmvnorm} and \code{pmvnorm}, mainly to control the computation errors, see \link[mvtnorm]{GenzBretz} for details
+further arguments, which are passed to the functions \code{qmvnorm} and \code{pmvnorm}, mainly to control the computation errors, see \code{GenzBretz} in package \code{mvtnorm} for details
 }
 
 }

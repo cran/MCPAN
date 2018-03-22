@@ -2,7 +2,7 @@
 
 mosaicdiv<-function(x, decreasing=NULL, ...)
 {
-if(!class(x)%in%c("Shannonci","Simpsonci")){warning("This is a convenience function for objects of class 'Shannonci' or 'Simpsonci'!")}
+if(!any(class(x)%in%c("Shannonci","Simpsonci"))){warning("This is a convenience function for objects of class 'Shannonci' or 'Simpsonci'!")}
 
 tab<-x$sample.estimate$table
 

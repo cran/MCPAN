@@ -13,8 +13,8 @@ Multiple contrast tests and simultaneous confidence intervals using normal appro
 \tabular{ll}{
 Package: \tab MCPAN\cr
 Type: \tab Package\cr
-Version: \tab 1.1-20\cr
-Date: \tab 2016-01-08\cr
+Version: \tab 1.1-21\cr
+Date: \tab 2018-03-22\cr
 License: \tab GPL \cr
 }
 
